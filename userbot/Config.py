@@ -221,7 +221,6 @@ if ENV:
         OPEN_LOAD_KEY = os.environ.get("OPEN_LOAD_KEY", None)
         # number of colums of buttons to be displayed in .legend command
 
-
 else:
 
     class Config(object):
