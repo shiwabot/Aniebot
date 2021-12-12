@@ -133,22 +133,12 @@ async def install(event):
                             await legend.edit(
                                 f"Installed module `{os.path.basename(downloaded_file_name)}`"
                             )
-                            return
-                        else:
-                            await eod(legend, f"{e}")
-                            return
                     else:
-                        await eod(legend, "First Turn On Eval = ON")
-                        return
+                        os.remove(downloaded_file_name)
+                        return await eod(legend, f"**Failed to Install** \n`Error`\nModule already installed or unknown format")
             except Exception as e:
                 await eod(legend, f"{e}")
                 return
-            else:
-                os.remove(downloaded_file_name)
-                return await eod(
-                    legend,
-                    f"**Failed to Install** \n`Error`\nModule already installed or unknown format",
-                )
         except Exception as e:
             await eod(legend, f"**Failed to Install** \n`Error`\n{str(e)}")
             return os.remove(downloaded_file_name)
