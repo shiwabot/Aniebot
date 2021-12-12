@@ -412,7 +412,7 @@ async def gm(event):
             await bot.send_file(
                 event.chat_id,
                 LEGEND_logo1,
-                caption=f"**(~‾▿‾)~ Chup [Madarchod](tg://user?id={userid}) ....**",
+                caption=f"**(~‾▿‾)~ Ab Chup Rah[GMUTE](tg://user?id={userid}) ....**",
                 reply_to=reply,
             )
             await event.delete()
@@ -425,12 +425,10 @@ async def gm(event):
 
 @bot.on(admin_cmd(outgoing=True, pattern=r"ungmute ?(\d+)?"))
 @bot.on(sudo_cmd(allow_sudo=True, pattern=r"ungmute ?(\d+)?"))
-async def gm(event):
+async def endgmute(event):
     private = False
-    if event.fwd_from:
-        return
-    elif event.is_private:
-        await eor(event, "`Trying to gmute user...`")
+    if event.is_private:
+        await eor(event, "`Trying to ungmute !!`")
         await asyncio.sleep(2)
         private = True
     reply = await event.get_reply_message()
@@ -441,37 +439,17 @@ async def gm(event):
     elif private is True:
         userid = event.chat_id
     else:
-        return await eod(
-            event, "Need a user to gmute. Reply or give userid to gmute them.."
-        )
+        return await eod(event,"Please reply to a user or add their into the command to ungmute them.")
     name = (await event.client.get_entity(userid)).first_name
     event.chat_id
-    await event.get_chat()
-    if gsql.is_gmuted(userid, "gmute"):
-        return await eod(event, "This kid is already Gmuted.")
+    if not gsql.is_gmuted(userid, "gmute"):
+        return await eod(event, "I don't remember I gmuted him...")
     try:
-        if str(userid) in DEVLIST:
-            return await eod(event, "**Sorry I'm not going to gmute them..**")
-    except:
-        pass
-    try:
-        gsql.gmute(userid, "gmute")
+        gsql.ungmute(userid, "gmute")
     except Exception as e:
         await eod(event, "Error occured!\nError is " + str(e))
     else:
-        if Config.ABUSE == "ON":
-            await bot.send_file(
-                event.chat_id,
-                shhh,
-                caption=f"**(~‾▿‾)~ Chup [{name}](tg://user?id={userid}) ....**",
-                reply_to=reply,
-            )
-            await event.delete()
-        else:
-            await eor(
-                event,
-                f"**Globally Muted [{name}](tg://user?id={userid}) !!**\n\n__Kid struggling to speak__ ♪～(´ε｀ )",
-            )
+        await eor(event, f"**Unmuted [{name}](tg://user?id={userid}) Globally !!**")
 
 
 @command(incoming=True)
