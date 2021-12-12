@@ -123,14 +123,14 @@ async def install(event):
                                 else:
                                     a = "__Installing...__"
                                     b = 1
-                                    await legend.edit(a)
+                                await legend.edit(a)
                                     return
-                                await legend.edit(
+                            await legend.edit(
                                     f"✅ **Installed module** :- `{shortname}` \n✨ BY :- {legend_mention}\n\n{string}\n\n        ⚡ **[ʟɛɢɛռɖaʀʏ ᴀғ Lêɠêɳ̃dẞø†]({chnl_link})** ⚡",
                                     link_preview=False,
                                 )
                                 return
-                            await legend.edit(
+                        await legend.edit(
                                 f"Installed module `{os.path.basename(downloaded_file_name)}`"
                             )
                     else:
