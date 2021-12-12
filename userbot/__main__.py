@@ -143,7 +143,7 @@ async def spams():
     else:
         print("⚠️Spam Not Loading⚠️")
 
-
+# Assistant 
 tgbot = bot.tgbot
 
 
