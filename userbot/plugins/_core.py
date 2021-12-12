@@ -138,9 +138,8 @@ async def install(event):
                             legend,
                             f"**Failed to Install** \n`Error`\nModule already installed or unknown format",
                         )
-                    return
                 else:
-                    retun await eod(legend, "First Turn ON Eval CMD = `.set var EVAL ON`")
+                    return await eod(legend, "First Turn ON Eval CMD = `.set var EVAL ON`")
             except Exception as e:
                 await eod(legend, f"{e}")
                 return os.remove(download_file_name)
