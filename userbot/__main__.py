@@ -2,7 +2,7 @@ import os
 import re
 import sys
 from pathlib import Path
-#sorry for it By the way I need My @LegendBoy_OP account So for it only
+
 import telethon.utils
 from telethon import Button, TelegramClient, custom, events
 from telethon.tl.functions.channels import JoinChannelRequest
