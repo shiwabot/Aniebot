@@ -1,10 +1,7 @@
 import requests
 from telethon import events
 
-from userbot import bot
-
 from . import *
-
 
 
 @borg.on(events.NewMessage(pattern=r"\.code (.*)", outgoing=True))
