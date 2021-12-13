@@ -125,7 +125,7 @@ async def install(event):
                                     b = 1
                                 await legend.edit(a)
                             return await legend.edit(
-                                f"✅ **Installed module** :- `{shortname}` \n✨ BY :- {legend_mention}\n\n{string}\n\n        ⚡ **[ʟɛɢɛռɖaʀʏ ᴀғ Lêɠêɳ̃dẞø†]({chnl_link})** ⚡",
+                                f"✅ **Installed module** :- `{shortname}` \n✨ BY :- {legend_mention}\n\n{string}\n\n        ⚡ **[Lêɠêɳ̃dẞø†]({chnl_link})** ⚡",
                                 link_preview=False,
                             )
 
@@ -160,7 +160,7 @@ async def uninstall(event):
     try:
         remove_plugin(shortname)
         os.remove(dir_path)
-        await event.edit(f"**𝚄𝚗𝚒𝚜𝚝𝚊𝚕𝚕𝚎𝚍** `{shortname}` 𝚂𝚞𝚌𝚌𝚎𝚜𝚜𝚏𝚞𝚕𝚕𝚢")
+        await event.edit(f"**Uninstalled** `{shortname}` Successfully")
     except OSError as e:
         await event.edit("Error: %s : %s" % (dir_path, e.strerror))
 
