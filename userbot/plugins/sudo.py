@@ -60,7 +60,7 @@ async def add(event):
     else:
         newsudo = f"{target}"
     await ok.edit(
-        f"✅** Added**  `{target}`  **in Sudo User.**\n\n 𝚁𝚎𝚜𝚝𝚊𝚛𝚝𝚒𝚗𝚐 𝙷𝚎𝚛𝚘𝚔𝚞 𝚝𝚘 𝙲𝚑𝚊𝚗𝚐𝚎𝚜 𝙸𝚗 𝚟𝚊𝚛. 𝚆𝚊𝚒𝚝 𝙵𝚘𝚛 𝙰 𝙼𝚒𝚗𝚞𝚝𝚎."
+        f"✅** Added**  `{target}`  **in Sudo User.**\n\n Restarting Heroku. Wait A Minute."
     )
     heroku_Config[bot] = newsudo
 
