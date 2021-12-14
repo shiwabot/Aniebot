@@ -41,7 +41,7 @@ async def sudo(event):
 
 @bot.on(admin_cmd(pattern="addsudo(?: |$)"))
 async def add(event):
-    ok = await eor(event, "**⌛ 𝙰𝚍𝚍𝚒𝚗𝚐 𝚂𝚞𝚍𝚘 𝚄𝚜𝚎𝚛𝚜...**")
+    ok = await eor(event, "**⌛ Adding Sudo Users...**")
     bot = "SUDO_USERS"
     if Config.HEROKU_APP_NAME is not None:
         app = Heroku.app(Config.HEROKU_APP_NAME)
@@ -87,27 +87,27 @@ async def remove_sudo(event):
             done = xxx.replace("'", "")
             heroku_var["SUDO_USERS"] = done
             await event.edit(
-                f"Tʜᴇ **{name}** ɪs ʀᴇᴍᴏᴠᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ (ᴘʟᴇᴀsᴇ ᴡᴀɪᴛ ɪ ᴀᴍ ʀᴇsᴛᴀʀᴛɪɴɢ)"
+                f"The **{name}** Has Been Removed Successfully(Please Wait I am Restarting)"
             )
         else:
-            await event.edit(f"ᴛʜᴇ {name} ɪs ɴᴏᴛ ɪɴ sᴜᴅᴏ 😑😑")
+            await event.edit(f"The {name} Is Not in Sudo 😑😑")
         if heroku_var["SUDO_USERS"] == None:
-            await event.edit(f"ᴛʜᴇ sᴜᴅᴏ ʟɪsᴛ ɪs ᴇᴍᴘʏᴛʏ 😑😑")
+            await event.edit(f"The Sudo List Is Empty😑😑")
 
 
 @bot.on(admin_cmd("listsudo"))
 async def sudolists(event):
-    op = await event.edit("ᴄʜᴇᴄᴋɪɴɢ ᴀʟʟ sᴜᴅᴏs ᴡᴀɪᴛ")
+    op = await event.edit("Checking All Sudos")
     Heroku = heroku3.from_key(LEGEND)
     app = Heroku.app(LOP)
     app.config()
     if not sudousers:
-        return await event.edit("sᴜᴅᴏ ʟɪsᴛ ɪs ᴇᴍᴘᴛʏ")
+        return await event.edit("Sudo List Is Empty")
     sudos = sudousers.split(" ")
-    sudoz = "**»sᴜᴅᴏ ʟɪsᴛ«**"
+    sudoz = "**»Sudo List«**"
     for sudo in sudos:
         k = await bot.get_entity(int(sudo))
-        pro = f"\n[**ɴᴀᴍᴇ:** {k.first_name} \n**ᴜsᴇʀɴᴀᴍᴇ:** @{k.username or None}]\n"
+        pro = f"\n[**Name:** {k.first_name} \n**Username:~** @{k.username or None}]\n"
         sudoz += pro
     await op.edit(sudoz)
 
