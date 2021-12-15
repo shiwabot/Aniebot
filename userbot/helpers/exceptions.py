@@ -1,5 +1,13 @@
+import hashlib
+import math
+import re
+import time
+from typing import Dict, Tuple
+
 from ..Config import Config
 from ..helpers.logger import logging
+
+from telethon.errors.rpcerrorlist import MessageNotModifiedError
 
 _TASKS: Dict[str, Tuple[int, int]] = {}
 
