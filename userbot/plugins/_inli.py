@@ -3,7 +3,9 @@ from math import ceil
 
 from telethon import custom, events
 from telethon.sync import custom
-from userbot.Config import Config 
+
+from userbot.Config import Config
+
 from . import *
 
 if Config.BOT_USERNAME is not None and tgbot is not None:
