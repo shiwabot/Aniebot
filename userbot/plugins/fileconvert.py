@@ -145,11 +145,11 @@ async def on_file_to_photo(event):
     try:
         image = target.media.document
     except AttributeError:
-        return await edit_delete(event, "`This isn't an image`")
+        return await eod(event, "`This isn't an image`")
     if not image.mime_type.startswith("image/"):
-        return await edit_delete(event, "`This isn't an image`")
+        return await eod(event, "`This isn't an image`")
     if image.mime_type == "image/webp":
-        return await edit_delete(event, "`For sticker to image use stoi command`")
+        return await eod(event, "`For sticker to image use stoi command`")
     if image.size > 10 * 1024 * 1024:
         return  # We'd get PhotoSaveFileInvalidError otherwise
     lot = await edit_or_reply(event, "`Converting.....`")
