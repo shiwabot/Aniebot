@@ -396,7 +396,7 @@ async def legends():
         pass
 
 
-plc = os.environ.get("PLUGGIN", None)
+plc = os.environ.get("PLUGIN", None)
 
 
 async def hekp():
