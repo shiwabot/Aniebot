@@ -3,7 +3,7 @@ from math import ceil
 
 from telethon import custom, events
 from telethon.sync import custom
-
+from userbot.Config import Config 
 from . import *
 
 if Config.BOT_USERNAME is not None and tgbot is not None:
@@ -94,7 +94,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
 
 
 def paginate_help(page_number, loaded_plugins, prefix):
-    number_of_rows = Config.NO_OF_BUTTONS_DISPLAYED_IN_H_ME_CMD
+    number_of_rows = Config.BUTTONS_IN_HELP
     number_of_cols = 2
     helpable_plugins = []
     for p in loaded_plugins:
