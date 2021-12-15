@@ -15,7 +15,7 @@ from LEGENDBOT.utils import admin_cmd, edit_or_reply, progress, sudo_cmd
 from userbot.cmdhelp import CmdHelp
 from userbot.helpers.funct import unzip
 
-from ..helpers.exception import progress
+from ..helpers.exceptions import progress
 from ..helpers.tools import media_type
 from . import *
 
