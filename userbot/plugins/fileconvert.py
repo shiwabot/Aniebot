@@ -1,28 +1,20 @@
 import asyncio
 import base64
 import io
-import logging
 import os
 import time
 from datetime import datetime
 from io import BytesIO
-from pathlib import Path
-from shutil import copyfile
 
 import fitz
-import requests
-from PIL import Image, ImageDraw, ImageFilter, ImageOps
-from pymediainfo import MediaInfo
-from telethon import functions, types
+from PIL import Image
+from telethon import types
 from telethon.errors import PhotoInvalidDimensionsError
-from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 from telethon.tl.functions.messages import SendMediaRequest
-from telethon.utils import get_attributes
 
 from LEGENDBOT.utils import admin_cmd, edit_or_reply, progress, sudo_cmd
 from userbot.cmdhelp import CmdHelp
-from userbot.helpers.funct import unzip
 
 from ..helpers.exceptions import progress
 from ..helpers.tools import media_type
@@ -494,9 +486,6 @@ async def teamcobra(hehe):
             await cobra.edit("Something went wrong")
     else:
         await cobra.edit("reply to a non animated sticker")
-
-
-from ..helpers.convert import parse, pre
 
 
 @bot.on(admin_cmd(pattern="ftt"))
