@@ -1,4 +1,4 @@
-import re
+"""import re
 from math import ceil
 
 from telethon import custom, events
@@ -126,3 +126,4 @@ def paginate_help(page_number, loaded_plugins, prefix):
             )
         ]
     return pairs
+"""
