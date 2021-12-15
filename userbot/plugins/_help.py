@@ -52,7 +52,7 @@ async def cmd_list(event):
             await event.delete()
 
 
-@Andencento.on(sudo_cmd(pattern="ihelp$", allow_sudo=True))
+@bot.on(sudo_cmd(pattern="ihelp$", allow_sudo=True))
 async def cmd_list(event):
     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
         tgbotusername = Config.BOT_USERNAME
