@@ -1,13 +1,10 @@
-import hashlib
 import math
-import re
 import time
 from typing import Dict, Tuple
 
-from ..Config import Config
-from ..helpers.logger import logging
-
 from telethon.errors.rpcerrorlist import MessageNotModifiedError
+
+from ..Config import Config
 
 _TASKS: Dict[str, Tuple[int, int]] = {}
 
@@ -16,6 +13,7 @@ class CancelProcess(Exception):
     """
     Cancel Process
     """
+
 
 async def progress(
     current,
@@ -86,5 +84,6 @@ async def progress(
             else:
                 await gdrive.edit(f"**{prog_type}**\n\n" f"**Status**\n{tmp}")
             oldtmp = tmp
+
 
 # legendbot

@@ -4,26 +4,19 @@ import time
 from datetime import datetime
 from io import BytesIO
 from pathlib import Path
-import os
-from datetime import datetime
-
-from LEGENDBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
-from userbot.cmdhelp import CmdHelp
-from LEGENDBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
-from userbot.cmdhelp import CmdHelp
 
 import requests
 from telethon import functions, types
 from telethon.errors import PhotoInvalidDimensionsError
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.messages import SendMediaRequest
-from ..helpers.tools import media_type
-from ..helpers.exception import progress
-from ..helpers.events import reply_id
+
 from LEGENDBOT.utils import admin_cmd, edit_or_reply, progress, sudo_cmd
 from userbot.cmdhelp import CmdHelp
 from userbot.helpers.funct import unzip
 
+from ..helpers.exception import progress
+from ..helpers.tools import media_type
 from . import *
 
 if not os.path.isdir("./temp"):
@@ -332,7 +325,6 @@ async def _(event):
             await event.delete()
 
 
-
 @bot.on(admin_cmd(pattern=r"open", outgoing=True))
 async def _(event):
     b = await event.client.download_media(await event.get_reply_message())
@@ -380,7 +372,7 @@ thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "thumb_image.jpg"
 @bot.on(admin_cmd(pattern="stoi"))
 @bot.on(sudo_cmd(pattern="stoi", allow_sudo=True))
 async def danish(hehe):
-    if hehe.fwd_from: 
+    if hehe.fwd_from:
         return
     thumb = None
     hehe.message.id
@@ -476,9 +468,8 @@ async def teamcobra(hehe):
             await cobra.edit("Something went wrong")
     else:
         await cobra.edit("reply to a non animated sticker")
-        
-        
-        
+
+
 @bot.on(admin_cmd(pattern="ftt"))
 @bot.on(sudo_cmd(pattern="ftt", allow_sudo=True))
 async def get(event):
@@ -517,8 +508,8 @@ async def get(event):
     )
     if os.path.exists(file_loc):
         os.remove(file_loc)
-        
-        
+
+
 @bot.on(admin_cmd(pattern="itog"))
 @bot.on(sudo_cmd(pattern="itog", allow_sudo=True))
 async def pic_gifcmd(event):  # sourcery no-metrics
@@ -580,8 +571,8 @@ async def pic_gifcmd(event):  # sourcery no-metrics
     for i in [final, "Output.gif", imag[1]]:
         if os.path.exists(i):
             os.remove(i)
-            
-            
+
+
 @bot.on(admin_cmd(pattern="vtog"))
 @bot.on(sudo_cmd(pattern="vtog", allow_sudo=True))
 async def _(event):
@@ -610,8 +601,8 @@ async def _(event):
     for i in [inputfile, outputfile]:
         if os.path.exists(i):
             os.remove(i)
-        
-        
+
+
 CmdHelp("fileconvert").add_command(
     "stim", "<reply to a sticker", "Converts the replied sticker into an image"
 ).add_command(
