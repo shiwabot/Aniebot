@@ -6,7 +6,6 @@ import time
 from datetime import datetime
 from io import BytesIO
 
-
 from PIL import Image
 from telethon import types
 from telethon.errors import PhotoInvalidDimensionsError
