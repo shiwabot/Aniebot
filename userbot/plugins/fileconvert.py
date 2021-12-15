@@ -479,7 +479,7 @@ async def teamcobra(hehe):
         
         
         
-  @bot.on(admin_cmd(pattern="ftt"))
+@bot.on(admin_cmd(pattern="ftt"))
 @bot.on(sudo_cmd(pattern="ftt", allow_sudo=True))
 async def get(event):
     "File to text message conversion."
