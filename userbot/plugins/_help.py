@@ -1,5 +1,5 @@
-from userbot.Config import Config
 from userbot import CMD_LIST
+from userbot.Config import Config
 
 from . import *
 
