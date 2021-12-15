@@ -1,10 +1,4 @@
 import asyncio
-import os
-import time
-from datetime import datetime
-from io import BytesIO
-from pathlib import Path
-import asyncio
 import base64
 import io
 import logging
@@ -12,22 +6,19 @@ import os
 import time
 from datetime import datetime
 from io import BytesIO
+from pathlib import Path
 from shutil import copyfile
 
 import fitz
+import requests
 from PIL import Image, ImageDraw, ImageFilter, ImageOps
 from pymediainfo import MediaInfo
-from telethon import types
-from telethon.errors import PhotoInvalidDimensionsError
-from telethon.tl.functions.messages import ImportChatInviteRequest as Get
-from telethon.tl.functions.messages import SendMediaRequest
-from telethon.utils import get_attributes
-
-import requests
 from telethon import functions, types
 from telethon.errors import PhotoInvalidDimensionsError
 from telethon.errors.rpcerrorlist import YouBlockedUserError
+from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 from telethon.tl.functions.messages import SendMediaRequest
+from telethon.utils import get_attributes
 
 from LEGENDBOT.utils import admin_cmd, edit_or_reply, progress, sudo_cmd
 from userbot.cmdhelp import CmdHelp
@@ -137,6 +128,7 @@ async def get(event):
     else:
         await edit_or_reply(event, "reply to text message as `.ttf <file name>`")
 
+
 @bot.on(admin_cmd(pattern="doc ?(.*)"))
 async def get(event):
     name = event.text[5:]
@@ -153,7 +145,7 @@ async def get(event):
     else:
         await event.edit("reply to text message as .doc <file name.extension>")
 
-        
+
 @bot.on(admin_cmd(pattern="ftoi$"))
 @bot.on(sudo_cmd(pattern="ftoi$", allow_sudo=True))
 async def on_file_to_photo(event):
@@ -187,7 +179,6 @@ async def on_file_to_photo(event):
     except PhotoInvalidDimensionsError:
         return
     await lot.delete()
-    
 
 
 @bot.on(admin_cmd(pattern="gif$"))
@@ -265,7 +256,8 @@ async def _(event):  # sourcery no-metrics
     for files in (catgif, catfile):
         if files and os.path.exists(files):
             os.remove(files)
-            
+
+
 """async def _(event):
     if event.fwd_from:
         return
@@ -452,7 +444,6 @@ async def _(event):
     os.remove(b)
 
 
-
 thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "thumb_image.jpg"
 
 
@@ -504,10 +495,10 @@ async def teamcobra(hehe):
     else:
         await cobra.edit("reply to a non animated sticker")
 
-        
-        
-        
-from ..helpers.convert import parse pre
+
+from ..helpers.convert import parse, pre
+
+
 @bot.on(admin_cmd(pattern="ftt"))
 @bot.on(sudo_cmd(pattern="ftt", allow_sudo=True))
 async def get(event):
