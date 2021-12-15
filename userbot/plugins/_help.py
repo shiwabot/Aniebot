@@ -4,7 +4,7 @@ from userbot.Config import Config
 from . import *
 
 
-@command(pattern="^.help ?(.*)")
+@command(pattern="^.ihelp ?(.*)")
 async def cmd_list(event):
     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
         tgbotusername = Config.BOT_USERNAME
@@ -52,7 +52,7 @@ async def cmd_list(event):
             await event.delete()
 
 
-@Andencento.on(sudo_cmd(pattern="help$", allow_sudo=True))
+@Andencento.on(sudo_cmd(pattern="ihelp$", allow_sudo=True))
 async def cmd_list(event):
     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
         tgbotusername = Config.BOT_USERNAME
