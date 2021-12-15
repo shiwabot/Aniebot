@@ -6,7 +6,7 @@ from telethon.sync import custom
 
 from . import *
 
-if Config.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
+if Config.BOT_USERNAME is not None and tgbot is not None:
 
     @tgbot.on(events.InlineQuery)  # pylint:disable=E0602
     async def inline_handler(event):
