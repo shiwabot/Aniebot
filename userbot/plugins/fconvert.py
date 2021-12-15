@@ -5,16 +5,7 @@ from datetime import datetime
 from io import BytesIO
 from pathlib import Path
 
-import os
-from datetime import datetime
-
 import requests
-
-from LEGENDBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
-from userbot.cmdhelp import CmdHelp
-
-from . import *
-
 from telethon import functions, types
 from telethon.errors import PhotoInvalidDimensionsError
 from telethon.errors.rpcerrorlist import YouBlockedUserError
@@ -23,6 +14,8 @@ from telethon.tl.functions.messages import SendMediaRequest
 from LEGENDBOT.utils import admin_cmd, edit_or_reply, progress, sudo_cmd
 from userbot.cmdhelp import CmdHelp
 from userbot.helpers.funct import unzip
+
+from . import *
 
 if not os.path.isdir("./temp"):
     os.makedirs("./temp")
@@ -329,9 +322,7 @@ async def _(event):
             os.remove(new_required_file_name)
             await event.delete()
 
-            
-            
-            
+
 import os
 from datetime import datetime
 
@@ -486,8 +477,7 @@ async def teamcobra(hehe):
             await cobra.edit("Something went wrong")
     else:
         await cobra.edit("reply to a non animated sticker")
-        
-        
+
 
 CmdHelp("fileconvert").add_command(
     "stim", "<reply to a sticker", "Converts the replied sticker into an image"
@@ -511,12 +501,14 @@ CmdHelp("fileconvert").add_command(
     "nfc mp3",
     "<reply to media to extract mp3>",
     "Converts the replied media file to mp3",
-).add_command("open", None, "open files as text "
+).add_command(
+    "open", None, "open files as text "
 ).add_command(
     ".doc <file name.extension> <reply to any text/media>",
     None,
     "Create a document of anything (example:- .doc dc.mp4, .doc dc.txt, .doc dc.webp)",
-).add_command("stoi", None, "★  Convert sticker to image"
+).add_command(
+    "stoi", None, "★  Convert sticker to image"
 ).add_command(
     "itos", None, "Convert Image to Sticker"
 ).add()
