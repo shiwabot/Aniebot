@@ -17,7 +17,9 @@ from telethon import functions, types
 from telethon.errors import PhotoInvalidDimensionsError
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.messages import SendMediaRequest
-
+from ..helpers.tools import media_type
+from ..helpers.exception import progress
+from ..helpers.events import reply_id
 from LEGENDBOT.utils import admin_cmd, edit_or_reply, progress, sudo_cmd
 from userbot.cmdhelp import CmdHelp
 from userbot.helpers.funct import unzip
