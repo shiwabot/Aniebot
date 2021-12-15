@@ -4,6 +4,13 @@ import time
 from datetime import datetime
 from io import BytesIO
 from pathlib import Path
+import os
+from datetime import datetime
+
+from LEGENDBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
+from userbot.cmdhelp import CmdHelp
+from LEGENDBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
+from userbot.cmdhelp import CmdHelp
 
 import requests
 from telethon import functions, types
@@ -323,16 +330,6 @@ async def _(event):
             await event.delete()
 
 
-import os
-from datetime import datetime
-
-import requests
-
-from LEGENDBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
-from userbot.cmdhelp import CmdHelp
-
-from . import *
-
 
 @bot.on(admin_cmd(pattern=r"open", outgoing=True))
 async def _(event):
@@ -381,7 +378,7 @@ thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "thumb_image.jpg"
 @bot.on(admin_cmd(pattern="stoi"))
 @bot.on(sudo_cmd(pattern="stoi", allow_sudo=True))
 async def danish(hehe):
-    if hehe.fwd_from:
+    if hehe.fwd_from: 
         return
     thumb = None
     hehe.message.id
@@ -477,8 +474,142 @@ async def teamcobra(hehe):
             await cobra.edit("Something went wrong")
     else:
         await cobra.edit("reply to a non animated sticker")
-
-
+        
+        
+        
+  @bot.on(admin_cmd(pattern="ftt"))
+@bot.on(sudo_cmd(pattern="ftt", allow_sudo=True))
+async def get(event):
+    "File to text message conversion."
+    reply = await event.get_reply_message()
+    mediatype = media_type(reply)
+    if mediatype != "Document":
+        return await edit_delete(
+            event, "__It seems this is not writable file. Reply to writable file.__"
+        )
+    file_loc = await reply.download_media()
+    file_content = ""
+    try:
+        with open(file_loc) as f:
+            file_content = f.read().rstrip("\n")
+    except UnicodeDecodeError:
+        pass
+    except Exception as e:
+        LOGS.info(e)
+    if file_content == "":
+        try:
+            with fitz.open(file_loc) as doc:
+                for page in doc:
+                    file_content += page.getText()
+        except Exception as e:
+            if os.path.exists(file_loc):
+                os.remove(file_loc)
+            return await edit_delete(event, f"**Error**\n__{e}__")
+    await edit_or_reply(
+        event,
+        file_content,
+        parse_mode=parse_pre,
+        aslink=True,
+        noformat=True,
+        linktext="**Telegram allows only 4096 charcters in a single message. But replied file has much more. So pasting it to pastebin\nlink :**",
+    )
+    if os.path.exists(file_loc):
+        os.remove(file_loc)
+        
+        
+@bot.on(admin_cmd(pattern="itog"))
+@bot.on(sudo_cmd(pattern="itog", allow_sudo=True))
+async def pic_gifcmd(event):  # sourcery no-metrics
+    "To convert replied image or sticker to gif"
+    reply = await event.get_reply_message()
+    mediatype = media_type(reply)
+    if not reply or not mediatype or mediatype not in ["Photo", "Sticker"]:
+        return await edit_delete(event, "__Reply to photo or sticker to make it gif.__")
+    if mediatype == "Sticker" and reply.document.mime_type == "application/i-tgsticker":
+        return await edit_delete(
+            event,
+            "__Reply to photo or sticker to make it gif. Animated sticker is not supported__",
+        )
+    args = event.pattern_match.group(1)
+    args = "i" if not args else args.replace("-", "")
+    catevent = await edit_or_reply(event, "__🎞 Making Gif from the relied media...__")
+    imag = await _cattools.media_to_pic(event, reply, noedits=True)
+    if imag[1] is None:
+        return await edit_delete(
+            imag[0], "__Unable to extract image from the replied message.__"
+        )
+    image = Image.open(imag[1])
+    w, h = image.size
+    outframes = []
+    try:
+        if args == "r":
+            outframes = await r_frames(image, w, h, outframes)
+        elif args == "l":
+            outframes = await l_frames(image, w, h, outframes)
+        elif args == "u":
+            outframes = await ud_frames(image, w, h, outframes)
+        elif args == "d":
+            outframes = await ud_frames(image, w, h, outframes, flip=True)
+        elif args == "s":
+            outframes = await spin_frames(image, w, h, outframes)
+        elif args == "i":
+            outframes = await invert_frames(image, w, h, outframes)
+    except Exception as e:
+        return await edit_delete(catevent, f"**Error**\n__{e}__")
+    output = io.BytesIO()
+    output.name = "Output.gif"
+    outframes[0].save(output, save_all=True, append_images=outframes[1:], duration=0.7)
+    output.seek(0)
+    with open("Output.gif", "wb") as outfile:
+        outfile.write(output.getbuffer())
+    final = os.path.join(Config.TEMP_DIR, "output.gif")
+    output = await vid_to_gif("Output.gif", final)
+    if output is None:
+        await edit_delete(
+            catevent, "__There was some error in the media. I can't format it to gif.__"
+        )
+        for i in [final, "Output.gif", imag[1]]:
+            if os.path.exists(i):
+                os.remove(i)
+        return
+    sandy = await event.client.send_file(event.chat_id, output, reply_to=reply)
+    await _catutils.unsavegif(event, sandy)
+    await catevent.delete()
+    for i in [final, "Output.gif", imag[1]]:
+        if os.path.exists(i):
+            os.remove(i)
+            
+            
+@bot.on(admin_cmd(pattern="vtog"))
+@bot.on(sudo_cmd(pattern="vtog", allow_sudo=True))
+async def _(event):
+    "Reply this command to a video to convert it to gif."
+    reply = await event.get_reply_message()
+    mediatype = media_type(event)
+    if mediatype and mediatype != "video":
+        return await edit_delete(event, "__Reply to video to convert it to gif__")
+    args = event.pattern_match.group(1)
+    if not args:
+        args = 2.0
+    else:
+        try:
+            args = float(args)
+        except ValueError:
+            args = 2.0
+    catevent = await edit_or_reply(event, "__🎞Converting into Gif..__")
+    inputfile = await reply.download_media()
+    outputfile = os.path.join(Config.TEMP_DIR, "vidtogif.gif")
+    result = await vid_to_gif(inputfile, outputfile, speed=args)
+    if result is None:
+        return await edit_delete(event, "__I couldn't convert it to gif.__")
+    sandy = await event.client.send_file(event.chat_id, result, reply_to=reply)
+    await _catutils.unsavegif(event, sandy)
+    await catevent.delete()
+    for i in [inputfile, outputfile]:
+        if os.path.exists(i):
+            os.remove(i)
+        
+        
 CmdHelp("fileconvert").add_command(
     "stim", "<reply to a sticker", "Converts the replied sticker into an image"
 ).add_command(
