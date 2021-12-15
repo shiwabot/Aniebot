@@ -1,17 +1,13 @@
 import os
 import re
 import time
-import datetime
 
-from bs4 import BeautifulSoup
-from markdown import markdown
-from telethon.tl.tlobject import TLObject
+from PIL import Image
 from telethon.tl.types import MessageEntityPre
 from telethon.utils import add_surrogate
 
-from PIL import Image
-
 # convertions are done here...
+
 
 def parse_pre(text):
     text = text.strip()
@@ -19,6 +15,7 @@ def parse_pre(text):
         text,
         [MessageEntityPre(offset=0, length=len(add_surrogate(text)), language="")],
     )
+
 
 # make a image
 def convert_toimage(image):
