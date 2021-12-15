@@ -16,7 +16,7 @@ if CMD_HNDLR is None:
 @bot.on(sudo_cmd(pattern="ihelp ?(.*)", allow_sudo=True))
 async def cmd_list(event):
     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
-        tgbotusername = Config.BOT_USERNAME 
+        tgbotusername = Config.BOT_USERNAME
         input_str = event.pattern_match.group(1)
         if tgbotusername is None or input_str == "text":
             string = ""
