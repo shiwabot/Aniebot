@@ -1,18 +1,17 @@
 from userbot.plugins.sql_helper import chatbot_sql as sql
 
-AI_API_KEY = os.environ.get("AI_API_KEY", sk-vcZIC3jAhTXVJBET3BlbkFJtrBdYkQVwmQx0IG3v76d)
+AI_API_KEY = os.environ.get(
+    "AI_API_KEY", sk - vcZIC3jAhTXVJBET3BlbkFJtrBdYkQVwmQx0IG3v76d
+)
 
 CoffeeHouseAPI = API(AI_API_KEY)
 api_client = LydiaAI(CoffeeHouseAPI)
-import html
 
 # AI module using Intellivoid's Coffeehouse API by @TheRealPhoenix
 from time import sleep, time
 
-
-from coffeehouse.api import API
 from coffeehouse.exception import CoffeeHouseError as CFError
-from coffeehouse.lydia import LydiaAI
+
 
 def chatbot(event):
     global api_client
@@ -38,8 +37,9 @@ def chatbot(event):
             rep = api_client.think_thought(sesh, query)
             sleep(0.3)
             msg.reply_text(rep, timeout=60)
-        except CFError as e:
+        except CFError:
             pass
+
 
 @bot.on(admin_cmd(pattern="adai(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern="adai(?: |$)(.*)", allow_sudo=True))
@@ -47,7 +47,7 @@ def add_chat(event):
     global api_client
     chat = event.effective_chat
     msg = event.effective_message
-    user = event.sender_id
+    event.sender_id
     is_chat = sql.is_chat(chat.id)
     if chat.type == "private":
         msg.reply_text("You can't enable AI in PM.")
@@ -58,11 +58,7 @@ def add_chat(event):
         expires = str(ses.expires)
         sql.set_ses(chat.id, ses_id, expires)
         await eod("AI successfully enabled for this chat!")
-        message = (
-            f".."
-            f"#AI_ENABLED\n"
-            f"Admin"
-        )
+        message = f".." f"#AI_ENABLED\n" f"Admin"
         return message
     else:
         await eod("AI is already enabled for this chat!")
