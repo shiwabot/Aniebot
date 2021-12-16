@@ -7,7 +7,7 @@ from PIL import Image, ImageOps
 
 from userbot.helpers.tools import media_type
 
-from ..utils import edit_or_reply
+from userbot.utils import edit_or_reply
 from .helpers.runner import runcmd
 
 LOGS = logging.getLogger(__name__)
