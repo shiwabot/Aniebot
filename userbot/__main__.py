@@ -423,15 +423,17 @@ async def hekp():
     except BaseException:
         pass
 
-    try:
+   """ try:
         if plc == "ON":
-            await bot(JoinChannelRequest("@Legend_UserbotPlugin"))
-    except BaseException:
-        pass
+"""
 
 
 async def install():
     if plc == "ON":
+        try:
+            await bot(JoinChannelRequest("@Legend_UserbotPlugin"))
+    except BaseException:
+        pass
         i = 0
         chat = -1001518412326
         documentss = await bot.get_messages(
