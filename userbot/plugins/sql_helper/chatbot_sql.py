@@ -1,7 +1,6 @@
-from sqlalchemy import Column, String, UnicodeText
+from sqlalchemy import Column, String
 
 from . import BASE, SESSION
-
 
 """class ChatBot(BASE):
     __tablename__ = "chatbot"
