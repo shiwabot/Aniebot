@@ -19,6 +19,7 @@ from ..helpers.exceptions import progress
 from ..helpers.tools import media_type
 from ..helpers.utils.fileconvert import *
 from . import *
+from userbot.helpers.convert import parse_pre 
 
 if not os.path.isdir("./temp"):
     os.makedirs("./temp")
@@ -146,11 +147,11 @@ async def on_file_to_photo(event):
     try:
         image = target.media.document
     except AttributeError:
-        return await eod(event, "`This isn't an image`")
+        return await eod(event, "`This isn't an image image Must be In Png`")
     if not image.mime_type.startswith("image/"):
-        return await eod(event, "`This isn't an image`")
+        return await eod(event, "`This isn't an image Image Must be in Png`")
     if image.mime_type == "image/webp":
-        return await eod(event, "`For sticker to image use stoi command`")
+        return await eod(event, "`For sticker to image use stim command`")
     if image.size > 10 * 1024 * 1024:
         return  # We'd get PhotoSaveFileInvalidError otherwise
     lot = await edit_or_reply(event, "`Converting.....`")
@@ -175,7 +176,60 @@ async def on_file_to_photo(event):
 
 @bot.on(admin_cmd(pattern="gif$"))
 @bot.on(sudo_cmd(pattern="gif$", allow_sudo=True))
-async def _(event):  # sourcery no-metrics
+async def _(event):
+    if event.fwd_from:
+        return
+    LEGENDreply = await event.get_reply_message()
+    if not LEGENDreply or not LEGENDreply.media or not LEGENDreply.media.document:
+        return await edit_or_reply(event, "`Stupid!, This is not animated sticker.`")
+    if LEGENDreply.media.document.mime_type != "application/x-tgsticker":
+        return await edit_or_reply(event, "`Stupid!, This is not animated sticker.`")
+    reply_to_id = event.message
+    if event.reply_to_msg_id:
+        reply_to_id = await event.get_reply_message()
+    chat = "@tgstogifbot"
+    LEGENDevent = await edit_or_reply(event, "`Converting to gif ...`")
+    async with event.client.conversation(chat) as conv:
+        try:
+            await silently_send_message(conv, "/start")
+            await event.client.send_file(chat, LEGENDreply.media)
+            response = await conv.get_response()
+            await event.client.send_read_acknowledge(conv.chat_id)
+            if response.text.startswith("Send me an animated sticker!"):
+                return await LEGENDevent.edit("`This file is not supported`")
+            LEGENDresponse = response if response.media else await conv.get_response()
+            await event.client.send_read_acknowledge(conv.chat_id)
+            LEGENDfile = Path(
+                await event.client.download_media(LEGENDresponse, "./temp/")
+            )
+            LEGENDgif = Path(await unzip(LEGENDfile))
+            legend = await event.client.send_file(
+                event.chat_id,
+                LEGENDgif,
+                support_streaming=True,
+                force_document=False,
+                reply_to=reply_to_id,
+            )
+            await event.client(
+                functions.messages.SaveGifRequest(
+                    id=types.InputDocument(
+                        id=legend.media.document.id,
+                        access_hash=legend.media.document.access_hash,
+                        file_reference=legend.media.document.file_reference,
+                    ),
+                    unsave=True,
+                )
+            )
+            await LEGENDevent.delete()
+            for files in (LEGENDgif, LEGENDfile):
+                if files and os.path.exists(files):
+                    os.remove(files)
+        except YouBlockedUserError:
+            await LEGENDevent.edit("Unblock @tgstogifbot")
+            return
+
+
+"""async def _(event):  # sourcery no-metrics
     "Converts Given animated sticker to gif"
     input_str = event.pattern_match.group(1)
     if not input_str:
@@ -247,60 +301,8 @@ async def _(event):  # sourcery no-metrics
     await catevent.delete()
     for files in (catgif, catfile):
         if files and os.path.exists(files):
-            os.remove(files)
+            os.remove(files)"""
 
-
-"""async def _(event):
-    if event.fwd_from:
-        return
-    LEGENDreply = await event.get_reply_message()
-    if not LEGENDreply or not LEGENDreply.media or not LEGENDreply.media.document:
-        return await edit_or_reply(event, "`Stupid!, This is not animated sticker.`")
-    if LEGENDreply.media.document.mime_type != "application/x-tgsticker":
-        return await edit_or_reply(event, "`Stupid!, This is not animated sticker.`")
-    reply_to_id = event.message
-    if event.reply_to_msg_id:
-        reply_to_id = await event.get_reply_message()
-    chat = "@tgstogifbot"
-    LEGENDevent = await edit_or_reply(event, "`Converting to gif ...`")
-    async with event.client.conversation(chat) as conv:
-        try:
-            await silently_send_message(conv, "/start")
-            await event.client.send_file(chat, LEGENDreply.media)
-            response = await conv.get_response()
-            await event.client.send_read_acknowledge(conv.chat_id)
-            if response.text.startswith("Send me an animated sticker!"):
-                return await LEGENDevent.edit("`This file is not supported`")
-            LEGENDresponse = response if response.media else await conv.get_response()
-            await event.client.send_read_acknowledge(conv.chat_id)
-            LEGENDfile = Path(
-                await event.client.download_media(LEGENDresponse, "./temp/")
-            )
-            LEGENDgif = Path(await unzip(LEGENDfile))
-            legend = await event.client.send_file(
-                event.chat_id,
-                LEGENDgif,
-                support_streaming=True,
-                force_document=False,
-                reply_to=reply_to_id,
-            )
-            await event.client(
-                functions.messages.SaveGifRequest(
-                    id=types.InputDocument(
-                        id=legend.media.document.id,
-                        access_hash=legend.media.document.access_hash,
-                        file_reference=legend.media.document.file_reference,
-                    ),
-                    unsave=True,
-                )
-            )
-            await LEGENDevent.delete()
-            for files in (LEGENDgif, LEGENDfile):
-                if files and os.path.exists(files):
-                    os.remove(files)
-        except YouBlockedUserError:
-            await LEGENDevent.edit("Unblock @tgstogifbot")
-            return"""
 
 
 @bot.on(admin_cmd(pattern="nfc ?(.*)"))
@@ -325,7 +327,6 @@ async def _(event):
         await edit_or_reply(event, "try `.nfc voice` or`.nfc mp3`")
         return
     try:
-        start = datetime.now()
         c_time = time.time()
         downloaded_file_name = await event.client.download_media(
             reply_message,
@@ -337,10 +338,8 @@ async def _(event):
     except Exception as e:  # pylint:disable=C0103,W0703
         await event.edit(str(e))
     else:
-        end = datetime.now()
-        ms = (end - start).seconds
         await event.edit(
-            "Downloaded to `{}` in {} seconds.".format(downloaded_file_name, ms)
+            "Downloaded to `{}` in 4 seconds.".format(downloaded_file_name)
         )
         new_required_file_name = ""
         new_required_file_caption = ""
@@ -527,9 +526,8 @@ async def get(event):
     if os.path.exists(file_loc):
         os.remove(file_loc)
 
-
-@bot.on(admin_cmd(pattern="itog"))
-@bot.on(sudo_cmd(pattern="itog", allow_sudo=True))
+@bot.on(admin_cmd(pattern=r"itog (?P<shortname>\w+)", outgoing=True))
+@bot.on(sudo_cmd(pattern=r"itog (?P<shortname>\w+)", allow_sudo=True))
 async def pic_gifcmd(event):  # sourcery no-metrics
     "To convert replied image or sticker to gif"
     reply = await event.get_reply_message()
@@ -591,8 +589,8 @@ async def pic_gifcmd(event):  # sourcery no-metrics
             os.remove(i)
 
 
-@bot.on(admin_cmd(pattern="vtog"))
-@bot.on(sudo_cmd(pattern="vtog", allow_sudo=True))
+@bot.on(admin_cmd(pattern=r"vtog (?P<shortname>\w+)", outgoing=True))
+@bot.on(sudo_cmd(pattern=r"vtog (?P<shortname>\w+)", allow_sudo=True))
 async def _(event):
     "Reply this command to a video to convert it to gif."
     reply = await event.get_reply_message()
