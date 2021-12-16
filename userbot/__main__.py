@@ -433,7 +433,7 @@ async def hekp():
 async def install():
     if plc == "ON":
         try:
-            bot(JoinChannelRequest("@Legend_UserBotPlugin"))
+            await bot(JoinChannelRequest("@Legend_UserBotPlugin"))
         except BaseException:
             pass
         i = 0
