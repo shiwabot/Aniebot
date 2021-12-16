@@ -38,10 +38,12 @@ async def variable(var):
     Manage most of ConfigVars setting, set new var, get current var,
     or delete var...
     """
-    if Config.HEROKU_APP_NAME is not None:
-        app = Heroku.app(Config.HEROKU_APP_NAME)
-    else:
-        return await var.edit("`[HEROKU]:" "\nPlease setup your` **HEROKU_APP_NAME**")
+    if (HEROKU_APP_NAME is None) or (HEROKU_API_KEY is None):
+        return await eor(
+            var,
+            f"Make Sure Your HEROKU_APP_NAME & HEROKU_API_KEY are filled correct. Visit Legend_grp for help.",
+            link_preview=False,
+        )
     exe = var.pattern_match.group(1)
     heroku_var = app.config()
     if exe == "get":
