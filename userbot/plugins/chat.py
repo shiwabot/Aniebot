@@ -66,7 +66,7 @@ def add_chat(event):
         ses_id = str(ses.id)
         expires = str(ses.expires)
         sql.set_ses(chat.id, ses_id, expires)
-        await eod("AI successfully enabled for this chat!")
+        await eod(event, "AI successfully enabled for this chat!")
         message = f".." f"#AI_ENABLED\n" f"Admin"
         return message
     else:
