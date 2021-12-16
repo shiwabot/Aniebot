@@ -73,7 +73,7 @@ async def _(event):
     end = datetime.now()
     ms = (end - start).microseconds / 1000
     if LEGEND_IMG:
-        legend_caption=f"**💞Pong💞**\n\n   🔸️ {ms}\n   🔹️ **𝙼𝚢** **𝙼𝚊𝚜𝚝𝚎𝚛** ~『[{DEFAULTUSER}](tg://user?id={legend})』"
+        legend_caption = f"**💞Pong💞**\n\n   🔸️ {ms}\n   🔹️ **𝙼𝚢** **𝙼𝚊𝚜𝚝𝚎𝚛** ~『[{DEFAULTUSER}](tg://user?id={legend})』"
         await event.client.send_file(event.chat_id, LEGEND_IMG, caption=legend_caption)
         await event.delete()
 
