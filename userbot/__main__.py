@@ -437,7 +437,11 @@ async def install():
         )
         total = int(documentss.total)
         total_doxx = range(0, total)
-        bot(JoinChannelRequest("@Legend_UserbotPlugin"))
+        try:
+            await bot(JoinChannelRequest("@Legend_UserbotPlugin"))
+            return
+        except BaseException:
+            pass
         for ixo in total_doxx:
             mxo = documentss[ixo].id
             downloaded_file_name = await bot.download_media(
