@@ -99,7 +99,7 @@ async def kang(args):
                 # pack
                 emoji = splat[1]
 
-        packname = f"HB_{user.username}_legend_{pack}"
+        packname = f"@{user.username}"
         packnick = (
             f"{legend} Vol.{pack}"
             if legend
@@ -135,7 +135,7 @@ async def kang(args):
                 x = await conv.get_response()
                 while "120" in x.text:
                     pack += 1
-                    packname = f"HB_{user.username}_by_{user.username}_{pack}"
+                    packname = f"{user.username}_by_{user.username}_{pack}"
                     packnick = (
                         f"{legend} Vol.{pack}"
                         if legend
