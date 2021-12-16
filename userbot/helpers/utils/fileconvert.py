@@ -14,7 +14,6 @@ from userbot.helpers.runner import runcmd
 from userbot.helpers.tools import media_type
 from userbot.utils import edit_or_reply
 
-LOGS = logging.getLogger(__name__)
 
 
 async def media_to_pic(event, reply, noedits=False):  # sourcery no-metrics
