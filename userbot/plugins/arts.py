@@ -257,7 +257,7 @@ J = (
     "╢┊┊┃┏┳┳━━┓┏┳┫┊┊┣\n"
     "╨━━┗┛┗┛━━┗┛┗┛━━┻\n"
 )
-K = "╔┓┏╦━╦┓╔┓╔━━╗\n" "║┗┛║┗╣┃║┃║X X║\n" "║┏┓║┏╣┗╣┗╣╰╯║\n" "╚┛┗╩━╩━╩━╩━━╝\n"
+
 
 L = (
     "▬▬▬.◙.▬▬▬ \n"
@@ -460,8 +460,6 @@ Q = (
 )
 
 
-R = "[🚶🏻‍♂️🚶🏻‍♂️ɮʏɛ ʄʀɨɛռɖֆ...](https://telegra.ph/file/de154141d5e7c507184c1.jpg)"
-
 S = (
     "╭━━━┳╮╱╱╭╮╱╭━━━┳━━━╮\n"
     "┃╭━╮┃┃╱╭╯╰╮┃╭━╮┃╭━╮┃\n"
@@ -520,13 +518,16 @@ async def bluedevildog(dog):
         return
     await edit_or_reply(dog, J)
 
+K = "╔┓┏╦━╦┓╔┓╔━━╗\n" "║┗┛║┗╣┃║┃║X X║\n" "║┏┓║┏╣┗╣┗╣╰╯║\n" "╚┛┗╩━╩━╩━╩━━╝\n"
 
-@bot.on(admin_cmd(pattern=r"^Hello$"))
-@bot.on(sudo_cmd(pattern="^Hello$", allow_sudo=True))
+helpoc = "https://te.legra.ph/file/b86eff074051b0b2d4513.jpg"
+
+@bot.on(admin_cmd(pattern=r".hello$"))
+@bot.on(sudo_cmd(pattern=".hello$", allow_sudo=True))
 async def bluedevilhello(hello):
     if hello.fwd_from:
         return
-    await edit_or_reply(hello, K)
+    await bot.send_file(hello, helpoc, caption=K)
 
 
 @bot.on(admin_cmd(pattern=r"hmf$"))
@@ -576,13 +577,15 @@ async def bluedevilsnake(snake):
         return
     await edit_or_reply(snake, Q)
 
+R = "[🚶🏻‍♂️🚶🏻‍♂️ɮʏɛ ʄʀɨɛռɖֆ...](https://telegra.ph/file/de154141d5e7c507184c1.jpg)"
+pic = "https://te.legra.ph/file/aa16cad62645045062c0f.jpg"
 
 @bot.on(admin_cmd(pattern=r"bye$"))
 @bot.on(sudo_cmd(pattern="bye$", allow_sudo=True))
 async def bluedevilbye(bye):
     if bye.fwd_from:
         return
-    await edit_or_reply(bye, R)
+    await bot.send_file(bye, pic, caption=R)
 
 
 @bot.on(admin_cmd(pattern=r"shitos$"))
