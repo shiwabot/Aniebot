@@ -423,11 +423,6 @@ async def hekp():
     except BaseException:
         pass
 
-   """ try:
-        if plc == "ON":
-"""
-
-
 async def install():
     if plc == "ON":
         i = 0
