@@ -34,16 +34,13 @@ heroku_api = "https://api.heroku.com"
 async def variable(var):
     if var.fwd_from:
         return
-    """
-    Manage most of ConfigVars setting, set new var, get current var,
-    or delete var...
-    """
     if (HEROKU_APP_NAME is None) or (HEROKU_API_KEY is None):
         return await eor(
             var,
             f"Make Sure Your HEROKU_APP_NAME & HEROKU_API_KEY are filled correct. Visit Legend_grp for help.",
             link_preview=False,
         )
+    app = Heroku.app(HEROKU_APP_NAME)
     exe = var.pattern_match.group(1)
     heroku_var = app.config()
     if exe == "get":
