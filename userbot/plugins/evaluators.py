@@ -57,8 +57,6 @@ async def _(event):
         cmd = "".join(event.text.split(maxsplit=1)[1:])
         if not cmd:
             return await eor(event, "`What should i run ?..`")
-        if "LEGEND_STRING" in cmd:
-            return await eor(event, "String Is a sensitive Data")
         LEGENDevent = await eor(event, "`Running ...`")
         old_stderr = sys.stderr
         old_stdout = sys.stdout
@@ -87,7 +85,7 @@ async def _(event):
         # LEGENDevent,
         # "**Eval Command Executed. Check out LOGGER_ID Group[Private Group Where All Message Forward]for result.**",
         # )
-        if "session" in cmd:
+        if "session" or "LEGEND_STRING" in cmd:
             await eor(
                 event, "String is a  Sensetive Data.\nSo, Its Protected By LegendBot"
             )
