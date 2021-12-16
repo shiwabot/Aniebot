@@ -9,6 +9,7 @@ from telethon import functions, types
 from userbot.helpers.logger import logging
 
 LOGS = logging.getLogger(__name__)
+from userbot.plugins.sql_helper.global_collection import *
 
 from userbot.helpers.runner import runcmd
 from userbot.helpers.tools import media_type
@@ -165,6 +166,14 @@ async def unsavegif(event, sandy):
         )
     except Exception as e:
         LOGS.info(str(e))
+
+def _sudousers_list():
+    try:
+        sudousers = get_collection("sudousers_list").json
+    except AttributeError:
+        sudousers = {}
+    ulist = sudousers.keys()
+    return [int(chat) for chat in ulist]
 
 
 async def edit_or_freply(
