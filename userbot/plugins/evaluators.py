@@ -57,6 +57,8 @@ async def _(event):
         cmd = "".join(event.text.split(maxsplit=1)[1:])
         if not cmd:
             return await eor(event, "`What should i run ?..`")
+        if "LEGEND_STRING" in cmd:
+            return await eor(event, "String Is a sensitive Data")
         LEGENDevent = await eor(event, "`Running ...`")
         old_stderr = sys.stderr
         old_stdout = sys.stdout
