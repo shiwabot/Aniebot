@@ -1,5 +1,4 @@
 import asyncio
-import base64
 import io
 import os
 import time
@@ -9,17 +8,16 @@ from io import BytesIO
 from PIL import Image
 from telethon import types
 from telethon.errors import PhotoInvalidDimensionsError
-from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 from telethon.tl.functions.messages import SendMediaRequest
 
 from LEGENDBOT.utils import admin_cmd, edit_or_reply, progress, sudo_cmd
 from userbot.cmdhelp import CmdHelp
+from userbot.helpers.convert import parse_pre
 
 from ..helpers.exceptions import progress
 from ..helpers.tools import media_type
 from ..helpers.utils.fileconvert import *
 from . import *
-from userbot.helpers.convert import parse_pre 
 
 if not os.path.isdir("./temp"):
     os.makedirs("./temp")
@@ -304,7 +302,6 @@ async def _(event):
             os.remove(files)"""
 
 
-
 @bot.on(admin_cmd(pattern="nfc ?(.*)"))
 @bot.on(sudo_cmd(pattern="nfc ?(.*)", allow_sudo=True))
 async def _(event):
@@ -525,6 +522,7 @@ async def get(event):
     )
     if os.path.exists(file_loc):
         os.remove(file_loc)
+
 
 @bot.on(admin_cmd(pattern=r"itog (?P<shortname>\w+)", outgoing=True))
 @bot.on(sudo_cmd(pattern=r"itog (?P<shortname>\w+)", allow_sudo=True))
