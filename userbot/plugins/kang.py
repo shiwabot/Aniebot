@@ -99,7 +99,7 @@ async def kang(args):
                 # pack
                 emoji = splat[1]
 
-        packname = f"@{user.username}"
+        packname = f"{user.username}"
         packnick = (
             f"{legend} Vol.{pack}"
             if legend
