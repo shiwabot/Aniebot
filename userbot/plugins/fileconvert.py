@@ -512,7 +512,7 @@ async def get(event):
             if os.path.exists(file_loc):
                 os.remove(file_loc)
             return await eod(event, f"**Error**\n__{e}__")
-    await edit_or_reply(
+    await edit_or_freply(
         event,
         file_content,
         parse_mode=parse_pre,
