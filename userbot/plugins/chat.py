@@ -62,10 +62,10 @@ def add_chat(event):
         msg.reply_text("You can't enable AI in PM.")
         return
     if not is_chat:
-        ses = api_client.create_session()
+        ses = await api_client.create_session()
         ses_id = str(ses.id)
         expires = str(ses.expires)
-        sql.set_ses(chat.id, ses_id, expires)
+        await sql.set_ses(chat.id, ses_id, expires)
         await eod(event, "AI successfully enabled for this chat!")
         message = f".." f"#AI_ENABLED\n" f"Admin"
         return message
