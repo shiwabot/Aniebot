@@ -422,12 +422,12 @@ async def hekp():
         await bot(JoinChannelRequest("@Legend_Userbot"))
     except BaseException:
         pass
-    
-    #try:
-        #await bot(JoinChannelRequest("@Legend_UserbotPlugin"))
-       # return
-    #except BaseException:
-      #  pass
+
+    # try:
+    # await bot(JoinChannelRequest("@Legend_UserbotPlugin"))
+    # return
+    # except BaseException:
+    #  pass
 
 
 async def install():
