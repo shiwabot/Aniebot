@@ -1,22 +1,12 @@
-import asyncio
-import functools
-import shlex
-from typing import Tuple
 import logging
+import os
 import random
 
 from moviepy.editor import VideoFileClip
 from PIL import Image, ImageOps
 
-import os
-from typing import Optional
-
-from moviepy.editor import VideoFileClip
-from PIL import Image
-
-
-from ..utils import edit_or_reply
 from ..helpers.tools import media_type
+from ..utils import edit_or_reply
 from .helpers.runner import runcmd
 
 LOGS = logging.getLogger(__name__)
@@ -157,9 +147,13 @@ async def invert_frames(image, w, h, outframes):
     outframes.append(invert)
     return outframes
 
+
 from telethon import functions, types
+
 from ..helpers.logger import logging
+
 LOGS = logging.getLogger(__name__)
+
 
 async def unsavegif(event, sandy):
     try:
