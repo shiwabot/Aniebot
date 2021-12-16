@@ -65,6 +65,7 @@ langdetect
 lyricsgenius
 lxml
 lottie
+moviepy
 nekos.py
 numpy
 oauth2client
