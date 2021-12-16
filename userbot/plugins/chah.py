@@ -10,7 +10,7 @@ from userbot.plugins.sql_helper import chatbot_sql as sql
 
 SUPPORT_CHAT = "Legend_Userbot"
 OWNER_ID = "2082798662"
-AI_API_KEY = os.environ.get("AI_API_KEY", None)
+AI_API_KEY = os.environ.get("AI_API_KEY", sk-vcZIC3jAhTXVJBET3BlbkFJtrBdYkQVwmQx0IG3v76d)
 CoffeeHouseAPI = API(AI_API_KEY)
 api_client = LydiaAI(CoffeeHouseAPI)
 
