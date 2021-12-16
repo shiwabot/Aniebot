@@ -5,6 +5,12 @@ import random
 from moviepy.editor import VideoFileClip
 from PIL import Image, ImageOps
 
+from telethon import functions, types
+
+from userbot.helpers.logger import logging
+
+LOGS = logging.getLogger(__name__)
+
 from userbot.helpers.runner import runcmd
 from userbot.helpers.tools import media_type
 from userbot.utils import edit_or_reply
@@ -146,13 +152,6 @@ async def invert_frames(image, w, h, outframes):
     outframes.append(image)
     outframes.append(invert)
     return outframes
-
-
-from telethon import functions, types
-
-from ..helpers.logger import logging
-
-LOGS = logging.getLogger(__name__)
 
 
 async def unsavegif(event, sandy):
