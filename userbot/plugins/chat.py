@@ -70,5 +70,5 @@ def add_chat(event):
         message = f".." f"#AI_ENABLED\n" f"Admin"
         return message
     else:
-        await edit_or_reply("AI is already enabled for this chat!")
+        await edit_or_reply(event, "AI is already enabled for this chat!")
         return
