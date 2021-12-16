@@ -213,7 +213,7 @@ async def upstream(event):
             "\n**😎 Lêɠêɳ̃dẞø† is UP-TO-DATE.**"
             f"\n\n**Version :**  {LEGENDversion}"
             f"\n**Owner :**  {legend_mention}"
-            "Release Date : 16 December 2021"
+            "\nRelease Date : 16 December 2021"
             f"\n**Git Branch :**  {UPSTREAM_REPO_BRANCH}\n"
         )
     if conf == "now":
