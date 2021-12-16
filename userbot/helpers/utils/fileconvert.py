@@ -15,7 +15,6 @@ from userbot.helpers.tools import media_type
 from userbot.utils import edit_or_reply
 
 
-
 async def media_to_pic(event, reply, noedits=False):  # sourcery no-metrics
     mediatype = media_type(reply)
     if mediatype not in [
