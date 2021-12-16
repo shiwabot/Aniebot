@@ -5,7 +5,7 @@ import random
 from moviepy.editor import VideoFileClip
 from PIL import Image, ImageOps
 
-from ..helpers.tools import media_type
+from userbot.helpers.tools import media_type
 from ..utils import edit_or_reply
 from .helpers.runner import runcmd
 
