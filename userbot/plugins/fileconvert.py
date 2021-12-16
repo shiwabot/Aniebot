@@ -14,7 +14,7 @@ from telethon.tl.functions.messages import SendMediaRequest
 
 from LEGENDBOT.utils import admin_cmd, edit_or_reply, progress, sudo_cmd
 from userbot.cmdhelp import CmdHelp
-
+from ..helpers.utils.fileconverter import *
 from ..helpers.exceptions import progress
 from ..helpers.tools import media_type
 from . import *
@@ -183,7 +183,7 @@ async def _(event):  # sourcery no-metrics
     else:
         loc = input_str.split(";")
         if len(loc) > 2:
-            return await edit_delete(
+            return await eod(
                 event,
                 "wrong syntax . syntax is `.gif quality ; fps(frames per second)`",
             )
@@ -192,30 +192,30 @@ async def _(event):  # sourcery no-metrics
                 loc[0] = int(loc[0])
                 loc[1] = int(loc[1])
             except ValueError:
-                return await edit_delete(
+                return await eod(
                     event,
                     "wrong syntax . syntax is `.gif quality ; fps(frames per second)`",
                 )
             if 0 < loc[0] < 721:
                 quality = loc[0].strip()
             else:
-                return await edit_delete(event, "Use quality of range 0 to 721")
+                return await eod(event, "Use quality of range 0 to 721")
             if 0 < loc[1] < 20:
                 quality = loc[1].strip()
             else:
-                return await edit_delete(event, "Use quality of range 0 to 20")
+                return await eod(event, "Use quality of range 0 to 20")
         if len(loc) == 1:
             try:
                 loc[0] = int(loc[0])
             except ValueError:
-                return await edit_delete(
+                return await eod(
                     event,
                     "wrong syntax . syntax is `.gif quality ; fps(frames per second)`",
                 )
             if 0 < loc[0] < 721:
                 quality = loc[0].strip()
             else:
-                return await edit_delete(event, "Use quality of range 0 to 721")
+                return await eod(event, "Use quality of range 0 to 721")
     catreply = await event.get_reply_message()
     cat_event = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
     if not catreply or not catreply.media or not catreply.media.document:
@@ -534,18 +534,18 @@ async def pic_gifcmd(event):  # sourcery no-metrics
     reply = await event.get_reply_message()
     mediatype = media_type(reply)
     if not reply or not mediatype or mediatype not in ["Photo", "Sticker"]:
-        return await edit_delete(event, "__Reply to photo or sticker to make it gif.__")
+        return await eod(event, "__Reply to photo or sticker to make it gif.__")
     if mediatype == "Sticker" and reply.document.mime_type == "application/i-tgsticker":
-        return await edit_delete(
+        return await eod(
             event,
             "__Reply to photo or sticker to make it gif. Animated sticker is not supported__",
         )
     args = event.pattern_match.group(1)
     args = "i" if not args else args.replace("-", "")
     catevent = await edit_or_reply(event, "__🎞 Making Gif from the relied media...__")
-    imag = await _cattools.media_to_pic(event, reply, noedits=True)
+    imag = await media_to_pic(event, reply, noedits=True)
     if imag[1] is None:
-        return await edit_delete(
+        return await eod(
             imag[0], "__Unable to extract image from the replied message.__"
         )
     image = Image.open(imag[1])
@@ -565,17 +565,17 @@ async def pic_gifcmd(event):  # sourcery no-metrics
         elif args == "i":
             outframes = await invert_frames(image, w, h, outframes)
     except Exception as e:
-        return await edit_delete(catevent, f"**Error**\n__{e}__")
+        return await eod(catevent, f"**Error**\n__{e}__")
     output = io.BytesIO()
     output.name = "Output.gif"
     outframes[0].save(output, save_all=True, append_images=outframes[1:], duration=0.7)
     output.seek(0)
     with open("Output.gif", "wb") as outfile:
         outfile.write(output.getbuffer())
-    final = os.path.join(Config.TEMP_DIR, "output.gif")
+    final = os.path.join(Config.TEMP_DOWNLOAD_DIRECTORY, "output.gif")
     output = await vid_to_gif("Output.gif", final)
     if output is None:
-        await edit_delete(
+        await eod(
             catevent, "__There was some error in the media. I can't format it to gif.__"
         )
         for i in [final, "Output.gif", imag[1]]:
@@ -583,7 +583,7 @@ async def pic_gifcmd(event):  # sourcery no-metrics
                 os.remove(i)
         return
     sandy = await event.client.send_file(event.chat_id, output, reply_to=reply)
-    await _catutils.unsavegif(event, sandy)
+    await unsavegif(event, sandy)
     await catevent.delete()
     for i in [final, "Output.gif", imag[1]]:
         if os.path.exists(i):
@@ -597,7 +597,7 @@ async def _(event):
     reply = await event.get_reply_message()
     mediatype = media_type(event)
     if mediatype and mediatype != "video":
-        return await edit_delete(event, "__Reply to video to convert it to gif__")
+        return await eod(event, "__Reply to video to convert it to gif__")
     args = event.pattern_match.group(1)
     if not args:
         args = 2.0
@@ -611,9 +611,9 @@ async def _(event):
     outputfile = os.path.join(Config.TEMP_DIR, "vidtogif.gif")
     result = await vid_to_gif(inputfile, outputfile, speed=args)
     if result is None:
-        return await edit_delete(event, "__I couldn't convert it to gif.__")
+        return await eod(event, "__I couldn't convert it to gif.__")
     sandy = await event.client.send_file(event.chat_id, result, reply_to=reply)
-    await _catutils.unsavegif(event, sandy)
+    await unsavegif(event, sandy)
     await catevent.delete()
     for i in [inputfile, outputfile]:
         if os.path.exists(i):
