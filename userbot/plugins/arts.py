@@ -580,7 +580,7 @@ async def bluedevilsnake(snake):
     await edit_or_reply(snake, Q)
 
 
-R = "[🚶🏻‍♂️🚶🏻‍♂️ɮʏɛ ʄʀɨɛռɖֆ...](https://telegra.ph/file/de154141d5e7c507184c1.jpg)"
+R = f"🚶🏻‍♂️🚶🏻‍♂️ɮʏɛ ʄʀɨɛռɖֆ..."
 pic = "https://te.legra.ph/file/aa16cad62645045062c0f.jpg"
 
 
@@ -589,7 +589,8 @@ pic = "https://te.legra.ph/file/aa16cad62645045062c0f.jpg"
 async def bluedevilbye(bye):
     if bye.fwd_from:
         return
-    await bot.send_file(bye, pic, caption=R)
+    bye = await edit_or_reply(bye, "**(❛ Bye ❜!**")
+    await event.client.send_file(bye.chat_id, pic, caption=R)
 
 
 @bot.on(admin_cmd(pattern=r"shitos$"))
