@@ -524,8 +524,8 @@ K = "╔┓┏╦━╦┓╔┓╔━━╗\n" "║┗┛║┗╣┃║┃║X
 helpoc = "https://te.legra.ph/file/b86eff074051b0b2d4513.jpg"
 
 
-@bot.on(admin_cmd(pattern=r".hello$"))
-@bot.on(sudo_cmd(pattern=".hello$", allow_sudo=True))
+@bot.on(admin_cmd(pattern=r"hello$"))
+@bot.on(sudo_cmd(pattern="hello$", allow_sudo=True))
 async def bluedevilhello(hello):
     if hello.fwd_from:
         return
