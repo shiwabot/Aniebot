@@ -60,7 +60,7 @@ async def hlo(event):
     )
 
 
-@borg.on(admin_cmd(pattern=r"by ?(.*)"))
+@borg.on(admin_cmd(pattern=r"byes ?(.*)"))
 async def bye(event):
     giveVar = event.text
     a = giveVar[5:6]
