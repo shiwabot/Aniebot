@@ -527,9 +527,11 @@ helpoc = "https://te.legra.ph/file/b86eff074051b0b2d4513.jpg"
 @bot.on(admin_cmd(pattern=r"hello$"))
 @bot.on(sudo_cmd(pattern="hello$", allow_sudo=True))
 async def bluedevilhello(hello):
-    if hello.fwd_from:
-        return
-    await bot.send_file(hello, helpoc, caption=K)
+    try:
+        
+    #if hello.fwd_from:
+        #return
+        await bot.send_file(hello, helpoc, caption=K)
 
 
 @bot.on(admin_cmd(pattern=r"hmf$"))
@@ -587,10 +589,11 @@ pic = "https://te.legra.ph/file/aa16cad62645045062c0f.jpg"
 @bot.on(admin_cmd(pattern=r"bye$"))
 @bot.on(sudo_cmd(pattern="bye$", allow_sudo=True))
 async def bluedevilbye(bye):
-    if bye.fwd_from:
-        return
-    bye = await edit_or_reply(bye, "**(❛ Bye ❜!**")
-    await bot.send_file(bye, pic, caption=R)
+    try:
+    #if bye.fwd_from:
+        #return
+        bye = await edit_or_reply(bye, "**(❛ Bye ❜!**")
+        await bot.send_file(bye, pic, caption=R)
 
 
 @bot.on(admin_cmd(pattern=r"shitos$"))
