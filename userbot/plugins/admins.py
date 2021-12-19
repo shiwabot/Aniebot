@@ -361,8 +361,8 @@ async def kick(usr):
         )
 
 
-@bot.on(admin_cmd("undelet$"))
-@bot.on(sudo_cmd(pattern="undelet$", allow_sudo=True))
+@bot.on(admin_cmd("undelete$"))
+@bot.on(sudo_cmd(pattern="undelete$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -457,5 +457,5 @@ CmdHelp("admins").add_command(
 ).add_command(
     "kick", "<username/reply>", "kick the person off your chat"
 ).add_command(
-    "undelet", None, "display last 5 deleted messages in group."
+    "undelete", None, "display last 5 deleted messages in group."
 ).add()
