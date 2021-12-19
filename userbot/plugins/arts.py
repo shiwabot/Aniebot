@@ -519,7 +519,7 @@ async def bluedevildog(dog):
     await edit_or_reply(dog, J)
 
 
-K = "╔┓┏╦━╦┓╔┓╔━━╗\n" #"║┗┛║┗╣┃║┃║X X║\n" "║┏┓║┏╣┗╣┗╣╰╯║\n" "╚┛┗╩━╩━╩━╩━━╝\n"
+K = "╔┓┏╦━╦┓╔┓╔━━╗\n"  # "║┗┛║┗╣┃║┃║X X║\n" "║┏┓║┏╣┗╣┗╣╰╯║\n" "╚┛┗╩━╩━╩━╩━━╝\n"
 
 helpoc = "https://te.legra.ph/file/b86eff074051b0b2d4513.jpg"
 
