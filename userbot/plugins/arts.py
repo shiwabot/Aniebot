@@ -519,7 +519,7 @@ async def bluedevildog(dog):
     await edit_or_reply(dog, J)
 
 
-K = "╔┓┏╦━╦┓╔┓╔━━╗\n" "║┗┛║┗╣┃║┃║X X║\n" "║┏┓║┏╣┗╣┗╣╰╯║\n" "╚┛┗╩━╩━╩━╩━━╝\n"
+K = "╔┓┏╦━╦┓╔┓╔━━╗\n" #"║┗┛║┗╣┃║┃║X X║\n" "║┏┓║┏╣┗╣┗╣╰╯║\n" "╚┛┗╩━╩━╩━╩━━╝\n"
 
 helpoc = "https://te.legra.ph/file/b86eff074051b0b2d4513.jpg"
 
@@ -580,7 +580,7 @@ async def bluedevilsnake(snake):
     await edit_or_reply(snake, Q)
 
 
-R = f"🚶🏻‍♂️🚶🏻‍♂️ɮʏɛ ʄʀɨɛռɖֆ..."
+R = "🚶🏻‍♂️🚶🏻‍♂️ɮʏɛ ʄʀɨɛռɖֆ..."
 pic = "https://te.legra.ph/file/aa16cad62645045062c0f.jpg"
 
 
@@ -590,7 +590,7 @@ async def bluedevilbye(bye):
     if bye.fwd_from:
         return
     bye = await edit_or_reply(bye, "**(❛ Bye ❜!**")
-    await event.client.send_file(bye.chat_id, pic, caption=R)
+    await bot.send_file(bye, pic, caption=R)
 
 
 @bot.on(admin_cmd(pattern=r"shitos$"))
