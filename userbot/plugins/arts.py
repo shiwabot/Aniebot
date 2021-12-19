@@ -532,6 +532,10 @@ async def bluedevilhello(hello):
     #if hello.fwd_from:
         #return
         await bot.send_file(hello, helpoc, caption=K)
+    
+    except Exception as e:
+        print(str(e))
+        
 
 
 @bot.on(admin_cmd(pattern=r"hmf$"))
@@ -594,6 +598,8 @@ async def bluedevilbye(bye):
         #return
         bye = await edit_or_reply(bye, "**(❛ Bye ❜!**")
         await bot.send_file(bye, pic, caption=R)
+    except Exception as e:
+        print(str(e))
 
 
 @bot.on(admin_cmd(pattern=r"shitos$"))
