@@ -41,7 +41,7 @@ async def variable(var):
         if (HEROKU_APP_NAME is None) or (HEROKU_API_KEY is None):
             return await eod(
                 var,
-                f"Make Sure Your HEROKU_APP_NAME & HEROKU_API_KEY are filled correct. Visit Legend_grp for help.",
+                f"Go To @Legend_Userbot\n Type #reveal Then click on Img \n Then Check HEROKU_APP_NAME OR HEROKU_API_KEY Are Filled Correctly",
                 link_preview=False,
             )
         await var.edit("`Getting information...`")
@@ -86,7 +86,7 @@ async def variable(var):
         if (HEROKU_APP_NAME is None) or (HEROKU_API_KEY is None):
             return await eod(
                 var,
-                f"Make Sure Your HEROKU_APP_NAME & HEROKU_API_KEY are filled correct. Visit Legend_grp for help.",
+                f"Go To @Legend_Userbot\n Type #reveal Then click on Img \n Then Check HEROKU_APP_NAME OR HEROKU_API_KEY Are Filled Correctly.",
                 link_preview=False,
             )
         await var.edit("`Setting information...weit ser`")
@@ -117,7 +117,7 @@ async def variable(var):
         if (HEROKU_APP_NAME is None) or (HEROKU_API_KEY is None):
             return await eod(
                 var,
-                f"Make Sure Your HEROKU_APP_NAME & HEROKU_API_KEY are filled correct. Visit Legend_grp for help.",
+                f"Go To @Legend_Userbot\n Type #reveal Then click on Img \n Then Check HEROKU_APP_NAME OR HEROKU_API_KEY Are Filled Correctly.",
                 link_preview=False,
             )
         await var.edit("`Getting information to deleting variable...`")
@@ -212,7 +212,7 @@ async def _(event):
         app = Heroku.app(HEROKU_APP_NAME)
     except BaseException:
         return await event.reply(
-            f"Make Sure Your Heroku AppName & API Key are filled correct. Visit {my_group} for help.",
+            f".",
             link_preview=False,
         )
     # event = await eor(dyno, "Downloading Logs...")
