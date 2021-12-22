@@ -526,6 +526,7 @@ K_PIC = "https://telegra.ph/Lêɠêɳdẞøy-12-22"
 L_PIC = "https://telegra.ph/Lêɠêɳdẞøy-12-22-2"
 M_PIC = "https://te.legra.ph/file/4d0c641e085f7ed15dfec.jpg"
 
+
 @borg.on(admin_cmd(outgoing=True, pattern="^Hello$"))
 @borg.on(sudo_cmd(pattern="^Hello$", allow_sudo=True))
 async def bluedevilhello(hello):
