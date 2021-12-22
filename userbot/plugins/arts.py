@@ -520,18 +520,20 @@ async def bluedevildog(dog):
         return
     await edit_or_reply(dog, J)
 
+  
+HELL_PIC = "https://te.legra.ph/file/b86eff074051b0b2d4513.jpg"
 
-K = "╔┓┏╦━╦┓╔┓╔━━╗\n"  # "║┗┛║┗╣┃║┃║X X║\n" "║┏┓║┏╣┗╣┗╣╰╯║\n" "╚┛┗╩━╩━╩━╩━━╝\n"
-
-helpoc = "https://te.legra.ph/file/b86eff074051b0b2d4513.jpg"
-
-
-@bot.on(admin_cmd(pattern=r"hello$"))
+@bot.on(admin_cmd(outgoing=True, pattern="hello$"))
 @bot.on(sudo_cmd(pattern="hello$", allow_sudo=True))
 async def bluedevilhello(hello):
     if hello.fwd_from:
         return
-    await edit_or_reply(hello, K)
+    if HELL_PIC:
+        HELLO = f"╔┓┏╦━╦┓╔┓╔━━╗\n"
+        HELLO += f"║┗┛║┗╣┃║┃║X X║\n"
+        HELLO += f"║┏┓║┏╣┗╣┗╣╰╯║\n"
+        HELLO += f"╚┛┗╩━╩━╩━╩━━╝\n"
+        await hello.client.send_file(hello.chat_id, HELL_PIC, caption=HELLO)
 
 
 @bot.on(admin_cmd(pattern=r"hmf$"))
@@ -582,9 +584,8 @@ async def bluedevilsnake(snake):
     await edit_or_reply(snake, Q)
 
 
-R = "🚶🏻‍♂️🚶🏻‍♂️ɮʏɛ ʄʀɨɛռɖֆ..."
-BYE_PIC = "https://te.legra.ph/file/aa16cad62645045062c0f.jpg"
 
+BYE_PIC = "https://te.legra.ph/file/aa16cad62645045062c0f.jpg"
 
 @bot.on(admin_cmd(outgoing=True, pattern="bye$"))
 @bot.on(sudo_cmd(pattern="bye$", allow_sudo=True))
@@ -592,10 +593,11 @@ async def bluedevilbye(bye):
     if bye.fwd_from:
         return
     if BYE_PIC:
-        BYE = f"BYE FRIENDS\n"
-        BYE += f"TAKE CARE"
+        BYE = f"🚶🏻‍♂️🚶🏻‍♂️ɮʏɛ ʄʀɨɛռɖֆ..."
+        
         bye = await edit_or_reply(bye, "**(❛ Bye ❜!**")
         await bye.client.send_file(bye.chat_id, BYE_PIC, caption=BYE)
+        await bye.delete()
 
 
 @bot.on(admin_cmd(pattern=r"shitos$"))
