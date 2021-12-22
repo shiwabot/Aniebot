@@ -556,6 +556,7 @@ async def bluedevilhello(hello):
         ok5 = await borg.edit_message(hello.chat_id, ok4, file=HELL_PIC)
         await hello.delete()
 
+
 @bot.on(admin_cmd(pattern=r"hmf$"))
 @bot.on(sudo_cmd(pattern="hmf$", allow_sudo=True))
 async def bluedevilhmf(hmf):
