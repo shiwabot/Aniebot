@@ -1,6 +1,6 @@
 import asyncio
 import os
-from datetime import datetime
+import datetime
 
 from .. import ALIVE_NAME
 from ..cmdhelp import CmdHelp
@@ -13,8 +13,8 @@ LEGEND_IMG = os.environ.get(
     "PING_PIC", "https://te.legra.ph/file/a59da36828333262c9848.jpg"
 )
 
-start = datetime.now()
-end = datetime.now()
+start = datetime.datetime.now()
+end = datetime.datetime.now()
 ms = (end - start).microseconds / 1000
 
 
