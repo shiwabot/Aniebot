@@ -534,8 +534,8 @@ M_PIC = "https://te.legra.ph/file/4d0c641e085f7ed15dfec.jpg"
 async def bluedevilhello(hello):
     if hello.fwd_from:
         return
-    bye = await edit_or_reply(hello, "**(❛ Bye ❜!**")
     await hello.get_chat()
+    hello = await eod(hello, "**(❛ Hi ❜!**")
     if HELL_PIC:
         HELLO = f"╔┓┏╦━╦┓╔┓╔━━╗\n"
         HELLO += f"║┗┛║┗╣┃║┃║X X ║\n"
@@ -554,9 +554,7 @@ async def bluedevilhello(hello):
         ok4 = await borg.edit_message(hello.chat_id, ok3, file=K_PIC)
         await asyncio.sleep(5)
         ok5 = await borg.edit_message(hello.chat_id, ok4, file=HELL_PIC)
-        await bye.delete()
-        # await hello.delete()
-
+        await hello.delete()
 
 @bot.on(admin_cmd(pattern=r"hmf$"))
 @bot.on(sudo_cmd(pattern="hmf$", allow_sudo=True))
