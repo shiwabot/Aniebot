@@ -230,7 +230,7 @@ async def install(event):
             )
             await edit_or_reply(
                 LEGEND_file,
-                f"**Output Too Large. This is the file for the list of plugins in ✞︎t͛ẞ̸ 𝖑𝖊ɠêɳ̃dẞø✞︎ .\n\n**BY :- {DEFAULTUSER}**",
+                f"**Output Too Large. This is the file for the list of plugins in L𝖊ɠêɳ̃dẞø✞︎**.\n\nBY :- **{DEFAULTUSER}**",
             )
             await event.delete()
 
