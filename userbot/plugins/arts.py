@@ -1,28 +1,9 @@
 from LEGENDBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 from userbot import ALIVE_NAME
 from userbot.cmdhelp import CmdHelp
-import os
-import re
-import sys
-from pathlib import Path
-import time
-
-from telethon import version
-from telethon.errors import ChatSendInlineForbiddenError as noin
-from telethon.errors.rpcerrorlist import BotMethodInvalidError as dedbot
-
-from LEGENDBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
-from userbot import ALIVE_NAME, LEGENDversion
-from userbot.cmdhelp import CmdHelp
-from userbot.Config import Config
 
 from . import *
 
-
-import telethon.utils
-from telethon import Button, TelegramClient, custom, events
-from telethon.tl.functions.channels import JoinChannelRequest
-from telethon.tl.types import InputMessagesFilterDocument
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "LEGEND User"
 
 USERID = bot.uid
@@ -614,9 +595,7 @@ async def bluedevilbye(bye):
         BYE = f"BYE FRIENDS\n"
         BYE += f"TAKE CARE"
         bye = await edit_or_reply(bye, "**(❛ Bye ❜!**")
-        await bye.client.send_file(bye.chat_id, BYE_PIC, caption=BYE
-                                   )
-                        
+        await bye.client.send_file(bye.chat_id, BYE_PIC, caption=BYE)
 
 
 @bot.on(admin_cmd(pattern=r"shitos$"))
