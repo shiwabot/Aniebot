@@ -547,7 +547,7 @@ async def bluedevilhello(hello):
         ok1 = await borg.edit_message(hello.chat_id, on, file=L_PIC)
         await asyncio.sleep(3)
         ok2 = await borg.edit_message(hello.chat_id, ok1, file=M_PIC)
-        await ayncio.sleep(5)
+        await asyncio.sleep(5)
         ok3 = await borg.edit_message(hello.chat_id, ok2, file=L_PIC)
         await asyncio.sleep(5)
         ok4 = await borg.edit_message(hello.chat_id, ok3, file=K_PIC)
