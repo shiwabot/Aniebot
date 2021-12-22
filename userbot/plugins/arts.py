@@ -524,8 +524,8 @@ async def bluedevildog(dog):
 
 
 HELL_PIC = "https://te.legra.ph/file/b86eff074051b0b2d4513.jpg"
-K_PIC = "https://telegra.ph/Lêɠêɳdẞøy-12-22"
-L_PIC = "https://telegra.ph/Lêɠêɳdẞøy-12-22-2"
+K_PIC = "https://te.legra.ph/file/a679e3d061ac6b349cd60.jpg"
+L_PIC = "https://te.legra.ph/file/96c2b61d6361f112ceac5.jpg"
 M_PIC = "https://te.legra.ph/file/4d0c641e085f7ed15dfec.jpg"
 
 
