@@ -586,7 +586,7 @@ R = "🚶🏻‍♂️🚶🏻‍♂️ɮʏɛ ʄʀɨɛռɖֆ..."
 BYE_PIC = "https://te.legra.ph/file/aa16cad62645045062c0f.jpg"
 
 
-@bot.on(admin_cmd(pattern=r"bye$"))
+@bot.on(admin_cmd(outgoing=True, pattern="bye$"))
 @bot.on(sudo_cmd(pattern="bye$", allow_sudo=True))
 async def bluedevilbye(bye):
     if bye.fwd_from:
