@@ -17,6 +17,7 @@ start = datetime.now()
 end = datetime.now()
 ms = (end - start).microseconds / 1000
 
+
 @bot.on(admin_cmd(pattern=f"hbping$", outgoing=True))
 @bot.on(sudo_cmd(pattern=f"hbping$", allow_sudo=True))
 async def _(event):
