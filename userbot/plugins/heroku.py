@@ -92,14 +92,14 @@ async def variable(var):
         await var.edit("`Setting information...weit ser`")
         variable = var.pattern_match.group(2)
         if not variable:
-            return await var.edit("`.set var <ConfigVars-name> <value>`")
+            return await var.edit(f"`.set var <VARS NAME> <value>`")
         value = var.pattern_match.group(3)
         if not value:
             variable = variable.split()[0]
             try:
                 value = var.pattern_match.group(2).split()[1]
             except IndexError:
-                return await var.edit("`.set var <ConfigVars-name> <value>`")
+                return await var.edit(f"`.set var <VARS NAME> <value>`")
         await asyncio.sleep(1.5)
         if "LEGEND_STRING" in variable:
             await eor(var, "Successfully Changed To {value}")
@@ -202,9 +202,9 @@ async def dyno_usage(dyno):
 @bot.on(sudo_cmd(pattern="logs$", allow_sudo=True))
 async def _(event):
     if (HEROKU_APP_NAME is None) or (HEROKU_API_KEY is None):
-        return await eor(
+        return await eod(
             dyno,
-            f"Make Sure Your HEROKU_APP_NAME & HEROKU_API_KEY are filled correct. Visit {my_group} for help.",
+            f"Go To @Legend_Userbot\n Type #reveal Then click on Img \n Then Check HEROKU_APP_NAME OR HEROKU_API_KEY Are Filled Correctly",
             link_preview=False,
         )
     try:
@@ -212,7 +212,7 @@ async def _(event):
         app = Heroku.app(HEROKU_APP_NAME)
     except BaseException:
         return await event.reply(
-            f".",
+            f"Go To @Legend_Userbot\n Type #reveal Then click on Img \n Then Check HEROKU_APP_NAME OR HEROKU_API_KEY Are Filled Correctly.",
             link_preview=False,
         )
     # event = await eor(dyno, "Downloading Logs...")
