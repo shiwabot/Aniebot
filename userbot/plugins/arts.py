@@ -555,7 +555,7 @@ async def bluedevilhello(hello):
         await asyncio.sleep(5)
         ok5 = await borg.edit_message(hello.chat_id, ok4, file=HELL_PIC)
         await bye.delete()
-        #await hello.delete()
+        # await hello.delete()
 
 
 @bot.on(admin_cmd(pattern=r"hmf$"))
