@@ -526,7 +526,6 @@ K_PIC = "https://telegra.ph/Lêɠêɳdẞøy-12-22"
 L_PIC = "https://telegra.ph/Lêɠêɳdẞøy-12-22-2"
 M_PIC = "https://te.legra.ph/file/4d0c641e085f7ed15dfec.jpg"
 
-
 @borg.on(admin_cmd(outgoing=True, pattern="^Hello$"))
 @borg.on(sudo_cmd(pattern="^Hello$", allow_sudo=True))
 async def bluedevilhello(hello):
@@ -539,12 +538,20 @@ async def bluedevilhello(hello):
         HELLO += f"║┏┓║┏╣┗╣┗╣╰╯║\n"
         HELLO += f"╚┛┗╩━╩━╩━╩━━╝\n"
         on = await borg.send_file(hello.chat_id, file=HELL_PIC, caption=HELLO)
-        await asyncio.sleep(5)
+        await asyncio.sleep(3)
         ok = await borg.edit_message(hello.chat_id, on, file=K_PIC)
-        await ayncio.sleep(5)
-        ok1 = await borg.edit_message(hello.chat_id, ok, file=L_PIC)
+        await ayncio.sleep(3)
+        ok1 = await borg.edit_message(hello.chat_id, on, file=L_PIC)
+        await asyncio.sleep(3)
+        ok2 = await borg.edit_message(hello.chat_id, ok1, file=M_PIC)
         await asyncio.sleep(5)
-        ok1 = await borg.edit_message(hello.chat_id, ok1, file=M_PIC)
+        ok3 = await borg.edit_message(hello.chat_id, ok2, file=M_PIC)
+        await ayncio.sleep(5)
+        ok4 = await borg.edit_message(hello.chat_id, ok3, file=L_PIC)
+        await asyncio.sleep(5)
+        ok5 = await borg.edit_message(hello.chat_id, ok4, file=K_PIC)
+        await asyncio.sleep(5)
+        ok6 = await borg.edit_message(hello.chat_id, ok5, file=HELL_PIC)
         await hello.delete()
 
 
