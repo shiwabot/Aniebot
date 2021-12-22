@@ -535,7 +535,7 @@ async def bluedevilhello(hello):
     if hello.fwd_from:
         return
     await hello.get_chat()
-    hello = await eod(hello, "**(❛ Hi ❜!**")
+    hello = await eor(hello, "**(❛ Hi ❜!**")
     if HELL_PIC:
         HELLO = f"╔┓┏╦━╦┓╔┓╔━━╗\n"
         HELLO += f"║┗┛║┗╣┃║┃║X X ║\n"
