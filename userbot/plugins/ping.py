@@ -69,8 +69,8 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    start = datetime.now()
     event = await edit_or_reply(event, "**(❛ ᑭσɳց ❜!**")
+    start = datetime.now()
     end = datetime.now()
     ms = (end - start).microseconds / 1000
     if LEGEND_IMG:
