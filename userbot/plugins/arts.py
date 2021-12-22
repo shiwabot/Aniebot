@@ -535,6 +535,7 @@ async def bluedevilhello(hello):
         HELLO += f"║┏┓║┏╣┗╣┗╣╰╯║\n"
         HELLO += f"╚┛┗╩━╩━╩━╩━━╝\n"
         await hello.client.send_file(hello.chat_id, HELL_PIC, caption=HELLO)
+        await hello.delete()
 
 
 @bot.on(admin_cmd(pattern=r"hmf$"))
