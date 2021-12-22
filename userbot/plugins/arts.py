@@ -536,7 +536,7 @@ async def bluedevilhello(hello):
         HELLO += f"║┗┛║┗╣┃║┃║X X ║\n"
         HELLO += f"║┏┓║┏╣┗╣┗╣╰╯║\n"
         HELLO += f"╚┛┗╩━╩━╩━╩━━╝\n"
-        await borg.send_file(hello.chat_id, file=HELL_PIC, caption=HELLO)
+        on = await borg.send_file(hello.chat_id, file=HELL_PIC, caption=HELLO)
         await asyncio.sleep(5)
         await borg.edit_message(hello.chat_id, on, file=K_PIC)
         await hello.delete()
