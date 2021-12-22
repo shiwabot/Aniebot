@@ -34,16 +34,16 @@ heroku_api = "https://api.heroku.com"
 async def variable(var):
     if var.fwd_from:
         return
-    if (HEROKU_APP_NAME is None) or (HEROKU_API_KEY is None):
-        return await eor(
-            var,
-            f"Make Sure Your HEROKU_APP_NAME & HEROKU_API_KEY are filled correct. Visit Legend_grp for help.",
-            link_preview=False,
-        )
     app = Heroku.app(HEROKU_APP_NAME)
     exe = var.pattern_match.group(1)
     heroku_var = app.config()
     if exe == "get":
+        if (HEROKU_APP_NAME is None) or (HEROKU_API_KEY is None):
+            return await eod(
+                var,
+                f"Make Sure Your HEROKU_APP_NAME & HEROKU_API_KEY are filled correct. Visit Legend_grp for help.",
+                link_preview=False,
+            )
         await var.edit("`Getting information...`")
         await asyncio.sleep(1.5)
         try:
@@ -83,6 +83,12 @@ async def variable(var):
             os.remove("configs.json")
             return
     elif exe == "set":
+        if (HEROKU_APP_NAME is None) or (HEROKU_API_KEY is None):
+            return await eod(
+                var,
+                f"Make Sure Your HEROKU_APP_NAME & HEROKU_API_KEY are filled correct. Visit Legend_grp for help.",
+                link_preview=False,
+            )
         await var.edit("`Setting information...weit ser`")
         variable = var.pattern_match.group(2)
         if not variable:
@@ -108,6 +114,12 @@ async def variable(var):
             )
         heroku_var[variable] = value
     elif exe == "del":
+        if (HEROKU_APP_NAME is None) or (HEROKU_API_KEY is None):
+            return await eod(
+                var,
+                f"Make Sure Your HEROKU_APP_NAME & HEROKU_API_KEY are filled correct. Visit Legend_grp for help.",
+                link_preview=False,
+            )
         await var.edit("`Getting information to deleting variable...`")
         try:
             variable = var.pattern_match.group(2).split()[0]
