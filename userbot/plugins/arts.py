@@ -522,8 +522,9 @@ async def bluedevildog(dog):
 
 
 HELL_PIC = "https://te.legra.ph/file/b86eff074051b0b2d4513.jpg"
-K_PIC = "https://te.legra.ph/file/aa16cad62645045062c0f.jpg"
-
+K_PIC = "https://telegra.ph/Lêɠêɳdẞøy-12-22"
+L_PIC = "https://telegra.ph/Lêɠêɳdẞøy-12-22-2"
+M_PIC = "https://te.legra.ph/file/4d0c641e085f7ed15dfec.jpg"
 
 @borg.on(admin_cmd(outgoing=True, pattern="^Hello$"))
 @borg.on(sudo_cmd(pattern="^Hello$", allow_sudo=True))
@@ -538,7 +539,11 @@ async def bluedevilhello(hello):
         HELLO += f"╚┛┗╩━╩━╩━╩━━╝\n"
         on = await borg.send_file(hello.chat_id, file=HELL_PIC, caption=HELLO)
         await asyncio.sleep(5)
-        await borg.edit_message(hello.chat_id, on, file=K_PIC)
+        ok = await borg.edit_message(hello.chat_id, on, file=K_PIC)
+        await ayncio.sleep(5)
+        ok1 = await borg.edit_message(hello.chat_id, ok, file=L_PIC)
+        await asyncio.sleep(5)
+        ok1 = await borg.edit_message(hello.chat_id, ok1, file=M_PIC)
         await hello.delete()
 
 
