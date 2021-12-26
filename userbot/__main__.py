@@ -25,12 +25,15 @@ l1 = Config.COMMAND_HAND_LER
 
 music = os.environ.get("MUSIC", False)
 
+
 def start():
-  if str(music) == "True":
-    os.system ("git clone -b new https://github.com/LEGEND-OS/MUSIC-VC.git && cd MUSIC-VC && python3 main.py")
-  else:
-    print ("You Are using Ul please update your bot")
-    pass
+    if str(music) == "True":
+        os.system(
+            "git clone -b new https://github.com/LEGEND-OS/MUSIC-VC.git && cd MUSIC-VC && python3 main.py"
+        )
+    else:
+        print("You Are using Ul please update your bot")
+
 
 async def add_bot(bot_token):
     try:
@@ -463,6 +466,7 @@ async def install():
                 print(f"{i} plugin install")
             else:
                 print("Failed")
+
 
 start()
 bot.loop.run_until_complete(module())
