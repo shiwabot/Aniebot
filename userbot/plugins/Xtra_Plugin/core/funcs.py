@@ -16,33 +16,33 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>
 """
 
-import os
-import re
-import random
 import asyncio
-import aiohttp
+import os
+import random
+import re
+from typing import AsyncIterator, Optional, Tuple, Union
+
 import aiofiles
+import aiohttp
 from config import config
+from core.groups import get_group, set_title
 from core.song import Song
-from pytube import Playlist
+from PIL import Image, ImageDraw, ImageFont
 from pyrogram import Client
-from yt_dlp import YoutubeDL
 from pyrogram.types import Message
 from pytgcalls import PyTgCalls, StreamType
-from PIL import Image, ImageDraw, ImageFont
-from core.groups import get_group, set_title
-from youtubesearchpython import VideosSearch
-from typing import Optional, Union, Tuple, AsyncIterator
 from pytgcalls.types.input_stream import AudioPiped, AudioVideoPiped
 from pytgcalls.types.input_stream.quality import (
     HighQualityAudio,
     HighQualityVideo,
-    MediumQualityAudio,
-    MediumQualityVideo,
     LowQualityAudio,
     LowQualityVideo,
+    MediumQualityAudio,
+    MediumQualityVideo,
 )
-
+from pytube import Playlist
+from youtubesearchpython import VideosSearch
+from yt_dlp import YoutubeDL
 
 safone = {}
 ydl_opts = {

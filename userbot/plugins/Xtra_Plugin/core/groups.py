@@ -16,12 +16,13 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>
 """
 
+from typing import Any, Dict, Union
+
 from config import config
 from core.queue import Queue
-from pyrogram.types import Message
-from typing import Dict, Any, Union
 from pyrogram.raw.functions.channels import GetFullChannel
 from pyrogram.raw.functions.phone import EditGroupCallTitle
+from pyrogram.types import Message
 
 GROUPS: Dict[int, Dict[str, Any]] = {}
 
