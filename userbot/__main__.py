@@ -19,7 +19,7 @@ from userbot.utils import (
     start_spam,
 )
 from var import Var
-
+from main import *
 l2 = Config.SUDO_COMMAND_HAND_LER
 LEGEND_PIC = "https://telegra.ph/file/e753315316673cff51085.mp4"
 l1 = Config.COMMAND_HAND_LER
