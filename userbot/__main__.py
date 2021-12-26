@@ -456,6 +456,7 @@ async def install():
             else:
                 print("Failed")
 
+
 bot.loop.run_until_complete(module())
 bot.loop.run_until_complete(addons())
 bot.loop.run_until_complete(abuses())
