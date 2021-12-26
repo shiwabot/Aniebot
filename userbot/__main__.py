@@ -484,5 +484,6 @@ bot.loop.run_until_complete(legends())
 if len(sys.argv) not in (1, 3, 4):
     bot.disconnect()
 else:
+    pytgcalls.run()
     bot.tgbot = None
     bot.run_until_disconnected()
