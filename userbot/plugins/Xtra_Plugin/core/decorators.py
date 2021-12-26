@@ -21,13 +21,14 @@ from datetime import datetime
 from traceback import format_exc
 from typing import Callable, Union
 
-from config import config
-from core.groups import all_groups, get_group, set_default
-from lang import load
 from pyrogram import Client
 from pyrogram.types import Message
 from pytgcalls import PyTgCalls
 from pytgcalls.types import Update
+
+from config import config
+from core.groups import all_groups, get_group, set_default
+from lang import load
 
 
 def register(func: Callable) -> Callable:
