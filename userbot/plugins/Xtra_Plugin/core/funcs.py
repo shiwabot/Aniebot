@@ -24,9 +24,6 @@ from typing import AsyncIterator, Optional, Tuple, Union
 
 import aiofiles
 import aiohttp
-from userbot.plugins.Xtra_Plugin.config import config
-from userbot.plugins.Xtra_Plugin.core.groups import get_group, set_title
-from userbot.plugins.Xtra_Plugin.core.song import Song
 from PIL import Image, ImageDraw, ImageFont
 from pyrogram import Client
 from pyrogram.types import Message
@@ -43,6 +40,10 @@ from pytgcalls.types.input_stream.quality import (
 from pytube import Playlist
 from youtubesearchpython import VideosSearch
 from yt_dlp import YoutubeDL
+
+from userbot.plugins.Xtra_Plugin.config import config
+from userbot.plugins.Xtra_Plugin.core.groups import get_group, set_title
+from userbot.plugins.Xtra_Plugin.core.song import Song
 
 safone = {}
 ydl_opts = {
