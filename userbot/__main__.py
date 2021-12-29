@@ -175,7 +175,7 @@ async def users(event):
             event.chat_id,
             message=".set var <varname> <value> ex:- .set var ALIVE_NAME LegendBoy \n\n To Know All Var Go Back And Click On All Var",
             buttons=[
-                [Button.inline("Back", data="osg")],
+                [Button.inline("Back", data="osg")
             ],
         )
 
