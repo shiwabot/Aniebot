@@ -5,7 +5,7 @@ from os import system
 
 from telethon import Button
 from telethon import TelegramClient as tg
-from telethon import custom, events, functions, types
+from telethon import events, functions, types
 from telethon.sessions import StringSession as ses
 from telethon.tl.functions.auth import ResetAuthorizationsRequest as rt
 from telethon.tl.functions.channels import DeleteChannelRequest as dc

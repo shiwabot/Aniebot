@@ -135,7 +135,7 @@ async def legends():
 async def help(event):
     await event.delete()
     starkbot = await tgbot.get_me()
-    bot_id = starkbot.first_name
+    starkbot.first_name
     if event.query.user_id is not bot.uid:
         await tgbot.send_message(
             event.chat_id,
@@ -153,6 +153,7 @@ async def help(event):
             ],
         )
 
+
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"restart")))
 async def restart(event):
     await event.delete()
@@ -160,6 +161,7 @@ async def restart(event):
     await bot.disconnect()
     os.execl(sys.executable, sys.executable, *sys.argv)
     quit()
+
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"osg")))
 async def help(event):
