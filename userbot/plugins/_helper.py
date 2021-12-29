@@ -192,7 +192,8 @@ async def _(event):
                 "@BotFather", "userbot/resources/pics/-4965507108355287505_121.jpg"
             )
             await event.edit(
-                f"**Turned On Assistance Successfully.\nClick Here 👉{botname} & Add To Any Group**"
+                f"**Turned On Assistance Successfully.\nClick Here 👉{botname} & Add To Any Group**",
+                buttons=keyboard,
             )
         except Exception as e:
             print(e)
