@@ -206,6 +206,7 @@ async def users(event):
             ],
         )
 
+
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"allvar")))
 async def users(event):
     await event.delete()
@@ -214,10 +215,13 @@ async def users(event):
             event.chat_id,
             message="Some Extra Features Are Given Below",
             buttons=[
-                [custom.Button.inline("Back", data="osg"),
-                 custom.Button.inline("Back", data="osg")],
+                [
+                    custom.Button.inline("Back", data="osg"),
+                    custom.Button.inline("Back", data="osg"),
+                ],
             ],
         )
+
 
 menu = """
 Reply To My Message If I am using In Group
@@ -269,6 +273,7 @@ async def start(event):
         await x.send_message(
             f"Choose what you want with string session \n\n{menu}", buttons=keyboard
         )
+
 
 bot.loop.run_until_complete(module())
 bot.loop.run_until_complete(addons())
