@@ -61,6 +61,7 @@ async def start(event):
 
 # Data's
 
+
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"rules")))
 async def help(event):
     await event.delete()
