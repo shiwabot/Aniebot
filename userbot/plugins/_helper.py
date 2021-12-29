@@ -212,7 +212,7 @@ async def _(event):
                     fiveteen.id,
                     sixteen.id,
                     seventeen.id,
-                    eightteen.id,"""
+                    eightteen.id,""",
                 ],
             )
     else:
