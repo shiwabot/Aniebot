@@ -185,7 +185,9 @@ async def _(event):
             await asyncio.sleep(1)
             await bot.send_message("@BotFather", botname)
             await asyncio.sleep(1)
-            await bot.send_file("@BotFather", "userbot/resources/pics/-4965507108355287505_121.jpg")
+            await bot.send_file(
+                "@BotFather", "userbot/resources/pics/-4965507108355287505_121.jpg"
+            )
             await eor(
                 f"**Turned On Assistance Successfully.\nClick Here 👉{botname} & Add To Any Group**"
             )
