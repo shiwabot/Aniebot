@@ -2,7 +2,7 @@ import os
 import re
 from os import system
 
-from telethon import Button
+from telethon import Button, custom, events
 from telethon import TelegramClient as tg
 from telethon import events, functions, types
 from telethon.sessions import StringSession as ses
@@ -249,9 +249,7 @@ keyboard = [
         Button.inline("L", data="L"),
         Button.inline("M", data="M"),
     ],
-    [
-        Button.inline("Back", data"osg"),
-    ],
+    [custom.Button.inline("Back", data"osg")],
 ]
 
 
