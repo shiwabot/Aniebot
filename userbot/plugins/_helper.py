@@ -191,17 +191,12 @@ async def _(event):
             await bot.send_file(
                 "@BotFather", "userbot/resources/pics/-4965507108355287505_121.jpg"
             )
-            await event.edit(
-                f"**Turned On Assistance Successfully.\nClick Here 👉{botname} & Add To Any Group**",
-                buttons=keyboard,
-            )
+            await event.respond(f"Turned On Assistance Successfully.\nClick Here 👉{botname} & Add To Any Group",buttons=keyboard,)
         except Exception as e:
             print(e)
     else:
         return await event.edit(
-            "**Plz First Turn On Assistant.** Click Here👉 `.set var ASSISTANT ON` And send",
-            buttons=keyboard,
-        )
+            "**Plz First Turn On Assistant.** Click Here👉 `.set var ASSISTANT ON` And send", buttons=keyboard)
 
 
 @borg.on(admin_cmd(pattern="config"))  # pylint:disable=E0602
