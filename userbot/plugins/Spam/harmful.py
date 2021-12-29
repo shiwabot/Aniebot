@@ -1,7 +1,9 @@
 import asyncio
 import os
 from os import system
+
 from telethon import Button
+
 api_id = os.environ.get("APP_ID")
 api_hash = os.environ.get("API_HASH")
 token = os.environ.get("BOT_TOKEN")
