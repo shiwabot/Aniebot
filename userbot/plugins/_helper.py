@@ -166,7 +166,7 @@ async def _(event):
             await asyncio.sleep(1)
             await bot.send_message("@botfather" "onbot")
         except Exception as e:
-            return await legend.edit(e)
+            return await event.edit(e)
             """
                 third = await conv.send_message(botname)
                 fourth = await conv.get_response()
@@ -212,12 +212,12 @@ async def _(event):
                     seventeen.id,
                     eightteen.id,
                 ],
-            )
+            )"""
     else:
         return await event.edit(
             "**Plz First Turn On Assistant.** Click Here👉 `.set var ASSISTANT ON` Anf send"
         )
-        """
+        
 
 
 @borg.on(admin_cmd(pattern="config"))  # pylint:disable=E0602
