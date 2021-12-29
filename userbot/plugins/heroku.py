@@ -133,6 +133,16 @@ async def variable(var):
             return await var.edit(f"**{variable}**  `is not exists`")
 
 
+@bot.on(admin_cmd(pattern="var(?: |$)", outgoing=True))
+@bot.on(sudo_cmd(pattern="var(?: |$)", allow_sudo=True))
+async def view_config(config):
+    if var.fwd_from:
+        return
+    app = Heroku.app(HEROKU_APP_NAME) 
+    legend = app.config()
+    await edit_or_reply(config, f"{app}")
+
+
 @bot.on(admin_cmd(pattern="usage(?: |$)", outgoing=True))
 @bot.on(sudo_cmd(pattern="usage(?: |$)", allow_sudo=True))
 async def dyno_usage(dyno):
