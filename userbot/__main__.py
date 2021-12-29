@@ -1,7 +1,7 @@
 import os
 import re
 import sys
-
+import asyncio 
 os.system("pip install telethon==1.24.0")
 
 import telethon.utils
@@ -139,10 +139,6 @@ async def help(event):
             message="Hello sir/miss,\nHow can i help u",
             buttons=[
                 [
-                    custom.Button.inline("🙇 Usᴇʀs Lɪsᴛ 🙇", data="users"),
-                    custom.Button.inline("👾 Cᴏᴍᴍᴀɴᴅs ✘👾", data="ibcmd"),
-                ],
-                [
                     Button.url(" Support ", "https://t.me/Legend_Userbot"),
                     Button.url(" Updates ", "https://t.me/Official_LegendBot"),
                 ],
@@ -150,184 +146,6 @@ async def help(event):
                 [custom.Button.inline("⚜ Hack ⚜", data="hck")],
             ],
         )
-
-
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"ules")))
-async def help(event):
-    await event.delete()
-    if event.query.user_id is not bot.uid:
-        await tgbot.send_message(
-            event.chat_id,
-            message="🔰Rᴇᴀᴅ Tʜᴇ Rᴜʟᴇꜱ Tᴏᴏ🔰\n\n🔹 Dᴏɴ'ᴛ Sᴩᴀᴍ\n🔹 ᴛᴀʟᴋ Fʀɪᴇɴᴅʟy\n🔹 Dᴏɴ'ᴛ Bᴇ Rᴜᴅᴇ\n🔹 Sᴇɴᴅ Uʀ Mᴇꜱꜱᴀɢᴇꜱ Hᴇʀᴇ\n🔹 Nᴏ Pᴏʀɴᴏɢʀᴀᴘʜʏ\n🔹 Dᴏɴ'ᴛ Wʀɪᴛᴇ Bᴀᴅ Wᴏʀᴅs.\n\nWʜᴇɴ I Gᴇᴛ Fʀᴇᴇ Tɪᴍᴇ , I'ʟʟ Rᴇᴩʟy U 💯✅",
-            buttons=[
-                [
-                    custom.Button.inline(
-                        "🚫 Cʟᴏsᴇ 🚫",
-                        data="lse_vcc",
-                    )
-                ],
-            ],
-        )
-
-
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"lse_vcc")))
-async def users(event):
-    if event.query.user_id == bot.uid:
-        await event.delete()
-
-
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"lose")))
-async def users(event):
-    if event.query.user_id == bot.uid:
-        await event.delete()
-
-
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile("live")))
-async def help(event):
-    await event.delete()
-    if event.query.user_id == bot.uid:
-        await tgbot.send_message(
-            event.chat_id,
-            message=f"**Wʜᴀᴛ Dᴏ Yᴏᴜ Wᴀɴᴛ Yᴏ Eᴅɪᴛ Iɴ Aʟɪᴠᴇ?\nFᴏʀ Aɴʏ Kɪɴᴅ Oғ Hᴇʟᴘ Dᴏ Jᴏɪɴ [Đ₳Ɽ₭ Ƒմʂʂìօղ](https://t.me/Dark_Fussion_chat)**",
-            buttons=[
-                [
-                    Button.inline("✘ Aʟɪᴠᴇ Nᴀᴍᴇ ✘", data="ame"),
-                    Button.inline("✘ Aʟɪᴠᴇ Pɪᴄ ✘", data="mg"),
-                ],
-                [Button.inline("🚫 Cᴀɴᴄᴇʟ 🚫", data="osg")],
-            ],
-        )
-
-
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"mg")))
-async def help(event):
-    await event.delete()
-    if event.query.user_id == bot.uid:
-        await tgbot.send_message(
-            event.chat_id,
-            message=f"**Wʜɪᴄʜ Aʟɪᴠᴇ Pɪᴄ Dᴏ Yᴏᴜ Wᴀɴᴛ Tᴏ Cʜᴀɴɢᴇ?\nFᴏʀ Aɴʏ Kɪɴᴅ Oғ Hᴇʟᴘ Dᴏ Jᴏɪɴ [Lêɠêɳ̃dẞø†](https://t.me/Official_LegendBot)**",
-            buttons=[
-                [Button.inline("✘ Dᴇғᴀᴜʟᴛ Aʟɪᴠᴇ ✘", data="aig")],
-                [Button.inline("✘ Bᴀᴄᴋ ✘", data="live")],
-                [Button.inline("🚫 Cᴀɴᴄᴇʟ 🚫", data="osg")],
-            ],
-        )
-
-
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"ame")))
-async def help(event):
-    await event.delete()
-    if event.query.user_id == bot.uid:
-        await tgbot.send_message(
-            event.chat_id,
-            message=f"**Yᴏᴜ Cᴀɴ Cʜᴀɴɢᴇ Aʟɪᴠᴇ Nᴀᴍᴇ..!!\nJᴜsᴛ Fᴏʟʟᴏᴡ Tʜᴇ Sᴛᴇᴘs.! \n\nFᴏʀ Aɴʏ Kɪɴᴅ Oғ Pʀᴏʙʟᴇᴍ Oʀ Dᴏᴜʙᴛ Dᴏ Jᴏɪɴ [Lêɠêɳ̃dẞø†](http://t.me/Official_LegendBot)\n\nJᴜsᴛ Tʏᴘᴇ\n\n`.set var ALIVE_NAME <Name>`\n\nRᴇᴍᴏᴠᴇ `<>` Tʜɪs.**",
-            buttons=[
-                [Button.inline("✘ Bᴀᴄᴋ ✘", data="live")],
-                [Button.inline("🚫 Cᴀɴᴄᴇʟ 🚫", data="osg")],
-            ],
-        )
-
-
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"aig")))
-async def help(event):
-    await event.delete()
-    if event.query.user_id == bot.uid:
-        await tgbot.send_message(
-            event.chat_id,
-            message=f"**You can change Alive Pic for `.alive`\nJust follow the steps.!\nAny kind of Problem or doubt do join [Lêɠêɳ̃dẞø†](t.me/Official_LegendBot)\n\nJust type\n\n`.set var ALIVE_PIC <Telegraph Link>`\n\nRemove `<>` this**",
-            buttons=[
-                [Button.inline("✘ Bᴀᴄᴋ ✘", data="img")],
-                [Button.inline("🚫 Cᴀɴᴄᴇʟ 🚫", data="osg")],
-            ],
-        )
-
-
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"dive")))
-async def help(event):
-    await event.delete()
-    if event.query.user_id == bot.uid:
-        await tgbot.send_message(
-            event.chat_id,
-            message=f"**You can change Alive Pic for `.dalive` \nJust follow the steps.!\nAny kind of Problem or doubt do join [Lêɠêɳ̃dẞø†](t.me/Official_LegendBot)\n\nJust type\n\n`.set var AWAKE_PIC <Telegraph Link>`\n\nRemove `<>` this.**",
-            buttons=[
-                [Button.inline("✘ Bᴀᴄᴋ ✘", data="img")],
-                [Button.inline("🚫 Cᴀɴᴄᴇʟ 🚫", data="osg")],
-            ],
-        )
-
-
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"aimg")))
-async def help(event):
-    await event.delete()
-    if event.query.user_id == bot.uid:
-        await tgbot.send_message(
-            event.chat_id,
-            message=f"**You can change Alive Pic for `.alive`\nJust follow the steps.!\nAny kind of Problem or doubt do join [Lêɠêɳ̃dẞø†](t.me/Official_LegendBot)\n\nJust type\n\n`.set var ALIVE_PIC <Telegraph Link>`\n\nRemove `<>` this**",
-            buttons=[
-                [Button.inline("✘ Bᴀᴄᴋ ✘", data="img")],
-                [Button.inline("🚫 Cᴀɴᴄᴇʟ 🚫", data="osg")],
-            ],
-        )
-
-
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"dive")))
-async def help(event):
-    await event.delete()
-    if event.query.user_id == bot.uid:
-        await tgbot.send_message(
-            event.chat_id,
-            message=f"**You can change Alive Pic for `.dalive` \nJust follow the steps.!\nAny kind of Problem or doubt do join [Lêɠêɳ̃dẞø†](t.me/Official_LegendBot)\n\nJust type\n\n`.set var AWAKE_PIC <Telegraph Link>`\n\nRemove `<>` this.**",
-            buttons=[
-                [Button.inline("✘ Bᴀᴄᴋ ✘", data="img")],
-                [Button.inline("🚫 Cᴀɴᴄᴇʟ 🚫", data="osg")],
-            ],
-        )
-
-
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"pmit")))
-async def help(event):
-    await event.delete()
-    if event.query.user_id == bot.uid:
-        await tgbot.send_message(
-            event.chat_id,
-            message=f"**What do you want to edit in Pm Permit?\nFor Any kind of Problem or doubt do join [Lêɠêɳ̃dẞø†](t.me/Official_LegendBot)**",
-            buttons=[
-                [
-                    Button.inline("✘ Pᴍ Pᴇʀᴍɪᴛ Tᴇxᴛ ✘", data="txt"),
-                    Button.inline("✘ Pᴍ Pᴇʀᴍɪᴛ Mᴇᴅɪᴀ ✘", data="edia"),
-                ],
-                [Button.inline("🚫 Cᴀɴᴄᴇʟ 🚫", data="osg")],
-            ],
-        )
-
-
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"edia")))
-async def help(event):
-    await event.delete()
-    if event.query.user_id == bot.uid:
-        await tgbot.send_message(
-            event.chat_id,
-            message=f"**You can change Pic permit Pic..!! \nJust follow the steps.!\nAny kind of Problem or doubt do join [Lêɠêɳ̃dẞø†](t.me/Official_LegendBot) type\n\n`.set var PM_PIC <Telegraph Link>`\n\nRemove `<>` this.**",
-            buttons=[
-                [Button.inline("✘ Bᴀᴄᴋ ✘", data="pmit")],
-                [Button.inline("🚫 Cᴀɴᴄᴇʟ 🚫", data="osg")],
-            ],
-        )
-
-
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"txt")))
-async def help(event):
-    await event.delete()
-    if event.query.user_id == bot.uid:
-        await tgbot.send_message(
-            event.chat_id,
-            message=f"**You can change Pic permit message..!! \nJust follow the steps.!\nAny kind of Problem or doubt do join [Lêɠêɳ̃dẞø†](t.me/Official_LegendBot)\n\nJust type\n\n`.set var PM_MSG <Text>`\n\nRemove `<>` this.**",
-            buttons=[
-                [Button.inline("✘ Bᴀᴄᴋ ✘", data="pmit")],
-                [Button.inline("🚫 Cᴀɴᴄᴇʟ 🚫", data="osg")],
-            ],
-        )
-
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"osg")))
 async def help(event):
@@ -338,23 +156,26 @@ async def help(event):
             message=f"**Which type of setting do you want to edit?\nYou can change anything from these..!!\nAny kind for help do join [Lêɠêɳ̃dẞø†](t.me/Official_LegendBot)**",
             buttons=[
                 [
-                    Button.inline("✘ Aʟɪᴠᴇ ✘", data="live"),
-                    Button.inline("✘ Pᴍ Pᴇʀᴍɪᴛ ✘", data="pmit"),
+                    Button.inline("Var Explain", data="var"),
+                    Button.inline("All Var", data="allvar"),
                 ],
-                [
-                    Button.inline("✘ Chat Bot ✘", data="chat"),
-                    Button.inline("✘ Vc Bot ✘", data="V_Bot"),
-                ],
-                [Button.inline("✘ Cʟᴏsᴇ ✘", data="lose")],
+                [Button.inline("Close", data="close")],
             ],
         )
 
 
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"ibcmd")))
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"var")))
 async def users(event):
     await event.delete()
-    grabon = "🇮🇳Hello Here Are Some Commands \n➤ /start - Check if I am Alive \n➤ /ping - Pong! \n➤ /tr <lang-code> \n➤ /broadcast - Sends Message To all Users In Bot \n➤ /id - Shows ID of User And Media. \n➤ /addnote - Add Note \n➤ /notes - Shows Notes \n➤ /rmnote - Remove Note \n➤ /alive - Am I Alive? \n➤ /bun - Works In Group , Bans A User. \n➤ /unbun - Unbans A User in Group \n➤ /prumote - Promotes A User \n➤ /demute - Demotes A User \n➤ /pin - Pins A Message \n➤ /stats - Shows Total Users In Bot \n➤ /purge - Reply It From The Message u Want to Delete (Your Bot Should be Admin to Execute It) \n➤ /del - Reply a Message Tht Should Be Deleted (Your Bot Should be Admin to Execute It)"
+    grabon = ".set var <varname> <value> ex:- .set var ALIVE_NAME LegendBoy \n\n To Know All Var Go Back And Click On All Var"
     await tgbot.send_message(event.chat_id, grabon)
+
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"allvar")))
+async def users(event):
+    await event.delete()
+    grabon = "All Var Name Are Given Below :\n\nABUSE = ON/ OFF\nALIVE_EMOJI = ANY EMOJI, Example: ✨\nALIVE_MESSAGE = Any Message ,Example : LegendBot Is Online\nALIVE_PIC = telegraph Link, use .tm to get it\nASSISTANT = ON / OFF\nAWAKE_PIC = telegraph link, get from .tm<reply to pic>\n"
+    await tgbot.send_message(event.chat_id, grabon)
+
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"hck")))
