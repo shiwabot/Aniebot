@@ -70,6 +70,8 @@ else:
 
 print("📍⚜Loading Modules / Plugins⚜✔")
 
+tgbot = bot.tgbot
+
 
 bot.loop.run_until_complete(killer())
 bot.loop.run_until_complete(module())
