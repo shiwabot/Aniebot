@@ -248,7 +248,7 @@ keyboard = [
         Button.inline("L", data="L"),
         Button.inline("M", data="M"),
     ],
-    [Button.inlind("Back", data="osg")],
+    [Button.inline("Back", data="osg")],
 ]
 
 
