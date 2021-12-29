@@ -3,7 +3,7 @@ from telethon.errors import ChatSendInlineForbiddenError as noin
 from telethon.errors.rpcerrorlist import BotInlineDisabledError as noinline
 from telethon.errors.rpcerrorlist import BotMethodInvalidError as dedbot
 from telethon.errors.rpcerrorlist import YouBlockedUserError
-
+import asyncio 
 from LEGENDBOT.utils import admin_cmd, sudo_cmd
 from userbot import CMD_LIST, bot
 from userbot.Config import Config
@@ -153,8 +153,6 @@ async def legendbott(event):
 
 
 assist = os.environ.get("ASSISTANT", None)
-
-
 @bot.on(admin_cmd("on ?(.*)"))
 @bot.on(sudo_cmd("on ?(.*)", allow_sudo=True))
 async def _(event):
@@ -166,7 +164,7 @@ async def _(event):
             await asyncio.sleep(1)
             await bot.send_message("@botfather" "onbot")
         except Exception as e:
-            return await event.edit(e)
+            return await eor("e")
             """
                 third = await conv.send_message(botname)
                 fourth = await conv.get_response()
