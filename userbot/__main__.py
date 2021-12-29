@@ -433,7 +433,6 @@ async def hekp():
 
 
 async def killer():
-    keyboard = [[Button.url("Click Here", f"https://t.me/{botname}")]]
     if Config.ASSISTANT == "ON":
         try:
             await bot.send_message("@BotFather", "/setcommands")
@@ -464,7 +463,7 @@ async def killer():
         except Exception as e:
             print(e)
     else:
-        print(Turn On ASSISTANT to Use This)
+        print("Turn On ASSISTANT to Use This")
 
 async def install():
     if plc == "ON":
