@@ -8,7 +8,7 @@ from userbot import LOGS, LEGENDversion, bot
 from userbot.Config import Config
 from var import Var
 
-from .start import *
+from .start import legends, hekp, module, assistants, addons, abuses, spams, killer, install
 
 os.system("pip install telethon==1.24.0")
 l2 = Config.SUDO_COMMAND_HAND_LER
