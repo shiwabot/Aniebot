@@ -229,7 +229,7 @@ Reply To My Message If I am using In Group
 I will add more features Later 😅
 """
 
-keyboard = [
+keyword = [
     [
         Button.inline("A", data="A"),
         Button.inline("B", data="B"),
@@ -258,7 +258,7 @@ async def start(event):
     global menu
     async with tgbot.conversation(event.chat_id) as x:
         await x.send_message(
-            f"Choose what you want with string session \n\n{menu}", buttons=keyboard
+            f"Choose what you want with string session \n\n{menu}", buttons=keyword
         )
 
 
