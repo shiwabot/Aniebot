@@ -2,7 +2,7 @@ import os
 import re
 import sys
 from pathlib import Path
-
+import asyncio 
 import telethon.utils
 from telethon import Button, TelegramClient, custom, events
 from telethon.tl.functions.channels import JoinChannelRequest
@@ -433,8 +433,6 @@ async def hekp():
 
 
 async def killer():
-    if event.fwd_from:
-        return
     keyboard = [[Button.url("Click Here", f"https://t.me/{botname}")]]
     if Config.ASSISTANT == "ON":
         try:
