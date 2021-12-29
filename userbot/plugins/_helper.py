@@ -18,7 +18,6 @@ onbot = "start - Check if I am Alive \nhack - Hack Anyone Through String Session
 
 name = f"{legend_mention}'s Assistant"
 
-file = "https://te.legra.ph/file/0a1fa23cbb1e6520f6550.jpg"
 description = (
     f"I am Assistant Of {legend_mention}.This Bot Can Help U To Chat With My Master"
 )
@@ -186,12 +185,12 @@ async def _(event):
             await asyncio.sleep(1)
             await bot.send_message("@BotFather", botname)
             await asyncio.sleep(1)
-            await bot.send_file("@BotFather", file)
-            await event.edit(
+            await bot.send_file("@BotFather", "userbot/resources/pics/-4965507108355287505_121.jpg")
+            awair eor(
                 f"**Turned On Assistance Successfully.\nClick Here 👉{botname} & Add To Any Group**"
             )
             await bot.delete_messages(
-                conv.chat_id,
+                "@BotFather",
                 [
                     first.id,
                     second.id,
