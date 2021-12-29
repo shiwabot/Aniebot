@@ -29,11 +29,8 @@ perf = "[ †hê Lêɠêɳ̃dẞø† ]"
 
 onbot = "start - Check if I am Alive \nhack - Hack Anyone Through String Session\nping - Pong! \ntr - <lang-code> \nbroadcast - Sends Message To all Users In Bot \nid - Shows ID of User And Media. \naddnote - Add Note \nnotes - Shows Notes \nspam - spam value text (value < 100)\nbigspam - spam value text (value > 100) \nraid - Raid value Reply to Anyone \nreplyraid - Reply To Anyone \ndreplyraid - Reply To Anyone \nrmnote - Remove Note \nalive - Am I Alive? \nbun - Works In Group , Bans A User. \nunbun - Unbans A User in Group \nprumote - Promotes A User \ndemute - Demotes A User \npin - Pins A Message \nstats - Shows Total Users In Bot \npurge - Reply It From The Message u Want to Delete (Your Bot Should be Admin to Execute It) \ndel - Reply a Message Tht Should Be Deleted (Your Bot Should be Admin to Execute It)"
 
-
-description = (
-    f"I am Assistant Of {legend_mention}.This Bot Can Help U To Chat With My Master"
-)
 bot_father = "@BotFather"
+
 mybot = Config.BOT_USERNAME
 if mybot.startswith("@"):
     botname = mybot
@@ -170,6 +167,7 @@ async def killer():
     The_LegendBoy = bot.uid
     legd_mention = f"[{LEGEND_USER}](tg://user?id={The_LegendBoy})"
     name = f"{legd_mention}'s Assistant"
+    description = (f"I am Assistant Of {legd_mention}.This Bot Can Help U To Chat With My Master")
     if Config.ASSISTANT == "ON":
         try:
             await bot.send_message("@BotFather", "/setcommands")
