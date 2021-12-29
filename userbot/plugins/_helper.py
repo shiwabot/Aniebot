@@ -161,10 +161,7 @@ assist = os.environ.get("ASSISTANT", None)
 async def _(event):
     if event.fwd_from:
         return
-    keyboard = [
-        [Button.url("Click Here", f"https://t.me/{botname}")
-        ]
-    ]
+    keyboard = [[Button.url("Click Here", f"https://t.me/{botname}")]]
     if Config.ASSISTANT == "ON":
         try:
             await bot.send_message("@BotFather", "/setcommands")
