@@ -161,6 +161,10 @@ assist = os.environ.get("ASSISTANT", None)
 async def _(event):
     if event.fwd_from:
         return
+    keyboard = [
+        [
+            Button.url("Click Here", f"https://t.me/{botname}")],
+        ]
     if Config.ASSISTANT == "ON":
         try:
             await bot.send_message("@BotFather", "/setcommands")
@@ -188,14 +192,14 @@ async def _(event):
             await bot.send_file(
                 "@BotFather", "userbot/resources/pics/-4965507108355287505_121.jpg"
             )
-            await event.reply(
+            await event.edit(
                 f"**Turned On Assistance Successfully.\nClick Here 👉{botname} & Add To Any Group**"
             )
         except Exception as e:
             print(e)
     else:
         return await event.edit(
-            "**Plz First Turn On Assistant.** Click Here👉 `.set var ASSISTANT ON` And send"
+            "**Plz First Turn On Assistant.** Click Here👉 `.set var ASSISTANT ON` And send", buttons=keyboard 
         )
 
 
