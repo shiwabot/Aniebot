@@ -1,21 +1,17 @@
 import os
 import re
 import sys
+
 os.system("pip install telethon==1.24.0")
 
-from telethon import Button, custom, events
 import telethon.utils
-from telethon import TelegramClient
-from telethon.events import InlineQuery, callbackquery
+from telethon import Button, TelegramClient, custom, events
 
-
-from userbot import LEGENDversion, bot
-from userbot.Config import Config
 from userbot import LOGS, LEGENDversion, bot
 from userbot.Config import Config
 from var import Var
-from .start import abuses, addons, assistants, hekp, install, module, spams
 
+from .start import abuses, addons, assistants, hekp, install, module, spams
 
 l1 = Config.COMMAND_HAND_LER
 l2 = Config.SUDO_COMMAND_HAND_LER
