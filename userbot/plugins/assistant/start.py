@@ -32,23 +32,13 @@ async def start(event):
         await tgbot.send_message(
             vent,
             message=f"Hi Sir/Miss, It's Me {bot_id}, Your Assistant ! \nHow Can I help U?",
-            buttons=[
-                [
-                    Button.url(
-                        "🗣 Aᴅᴅ Mᴇ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ 🗣",
-                        f"t.me/{bot_username}?startgroup=true",
-                    )
-                ],
-                [
-                    custom.Button.inline("🙇 Usᴇʀs Lɪsᴛ 🙇", data="users"),
-                    custom.Button.inline("👾 Cᴏᴍᴍᴀɴᴅs ✘👾", data="gibcmd"),
-                ],
+             buttons=[
                 [
                     Button.url(" Support ", "https://t.me/Legend_Userbot"),
                     Button.url(" Updates ", "https://t.me/Official_LegendBot"),
                 ],
-                [custom.Button.inline("⚙ Sᴇᴛᴛɪɴɢs ⚙", data="settings")],
-                [custom.Button.inline("⚜ Hack ⚜", data="hack")],
+                [custom.Button.inline("Settings", data="osg")],
+                [custom.Button.inline("Hack", data="hack")],
             ],
         )
     else:
@@ -62,8 +52,8 @@ async def start(event):
             link_preview=False,
             buttons=[
                 [
-                    custom.Button.inline("📝 Rᴜʟᴇꜱ 📝", data="rules"),
-                    custom.Button.inline("🚫 Cʟᴏsᴇ 🚫", data="close"),
+                    custom.Button.inline("📝 Rules 📝", data="rules"),
+                    custom.Button.inline("🚫 Close 🚫", data="close"),
                 ],
                 [custom.Button.inline("⚜ Hack ⚜", data="v_hack")],
             ],
@@ -84,7 +74,7 @@ async def help(event):
                 [
                     custom.Button.inline(
                         "🚫 Cʟᴏsᴇ 🚫",
-                        data="close_vcc",
+                        data="osg",
                     )
                 ],
             ],
@@ -101,7 +91,7 @@ async def users(event):
 async def users(event):
     await event.delete()
 
-
+"""
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"users")))
 async def users(event):
     if event.query.user_id == bot.uid:
@@ -282,7 +272,7 @@ async def users(event):
     await event.delete()
     grabon = "Sorry, Only My Owner Can Acess This Button. If U Want To Use Then Deploy Ur Own Lêɠêɳ̃dẞø†"
     await tgbot.send_message(event.chat_id, grabon)
-
+"""
 
 # Bot Permit.
 @tgbot.on(events.NewMessage(func=lambda e: e.is_private))
