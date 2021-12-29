@@ -1,23 +1,11 @@
 import os
-import sys
-import asyncio
-import os
 import re
-from pathlib import Path
+import sys
 
 from telethon import Button, custom, events
-from telethon.tl.functions.channels import JoinChannelRequest
-from telethon.tl.types import InputMessagesFilterDocument
 
 from userbot import LEGENDversion, bot
 from userbot.Config import Config
-from userbot.utils import (
-    load_abuse,
-    load_addons,
-    load_module,
-    start_assistant,
-    start_spam,
-)
 
 os.system("pip install telethon==1.24.0")
 l2 = Config.SUDO_COMMAND_HAND_LER
@@ -43,16 +31,7 @@ from userbot import LOGS, LEGENDversion, bot
 from userbot.Config import Config
 from var import Var
 
-from .start import (
-    abuses,
-    addons,
-    assistants,
-    hekp,
-    install,
-    killer,
-    module,
-    spams,
-)
+from .start import abuses, addons, assistants, hekp, install, killer, module, spams
 
 os.system("pip install telethon==1.24.0")
 l2 = Config.SUDO_COMMAND_HAND_LER
@@ -105,6 +84,7 @@ else:
 print("📍⚜Loading Modules / Plugins⚜✔")
 
 tgbot = bot.tgbot
+
 
 async def legends():
     LEGEND_USER = bot.me.first_name

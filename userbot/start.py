@@ -1,9 +1,7 @@
 import asyncio
 import os
-import re
 from pathlib import Path
 
-from telethon import Button, custom, events
 from telethon.tl.functions.channels import JoinChannelRequest
 from telethon.tl.types import InputMessagesFilterDocument
 
@@ -33,7 +31,6 @@ if mybot.startswith("@"):
     botname = mybot
 else:
     botname = f"@{mybot}"
-
 
 
 plc = os.environ.get("PLUGIN", None)
@@ -230,7 +227,3 @@ async def install():
                 print(f"{i} plugin install")
             else:
                 print("Failed")
-
-
-
-
