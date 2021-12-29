@@ -2,7 +2,6 @@ import os
 import re
 from os import system
 
-from telethon import Button, custom, events
 from telethon import TelegramClient as tg
 from telethon import events, functions, types
 from telethon.sessions import StringSession as ses
@@ -199,7 +198,6 @@ logging.basicConfig(level=logging.WARNING)
 channel = "Its_LegendBot"
 
 
-
 menu = """
 Reply To My Message If I am using In Group
 "A" :~ [Check user own groups and channels]
@@ -264,6 +262,8 @@ async def start(event):
         )
 
 """
+
+
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"A")))
 async def users(event):
     async with tgbot.conversation(event.chat_id) as x:
