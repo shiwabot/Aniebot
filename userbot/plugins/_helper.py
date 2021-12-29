@@ -164,9 +164,11 @@ async def _(event):
         return
     if Config.ASSISTANT == "ON":
         try:
-            await bot.send_message("botfather", "/setcommands")
-            asyncio.sleep(1)
-            await bot.send_message("@botfather", onbot)
+            first = await bot.send_message("@BotFather", "/setcommands")
+            second = await asyncio.sleep(1)
+            third = await bot.send_message("@BotFather", botname)
+            fourth = await asyncio.sleep(1)
+            fifth = await bot.send_message("@BotFather", onbot)
         except Exception as e:
             print(e)
             """
@@ -186,9 +188,7 @@ async def _(event):
                 sixteen = await conv.get_response()
                 seventeen = await conv.send_message(description)
                 eightteen = await conv.get_response()
-                await bot.send_read_acknowledge(conv.chat_id)
-            except YouBlockedUserError:
-                return await legend.edit("Unblock @Botfather first.")
+                await bot.send_read_acknowledge(conv.chat_id)"""
             await event.edit(
                 f"**Turned On Assistance Successfully.\nClick Here 👉{botname} & Add To Any Group**"
             )
@@ -200,7 +200,7 @@ async def _(event):
                     third.id,
                     fourth.id,
                     fifth.id,
-                    sixth.id,
+                    """sixth.id,
                     seventh.id,
                     eighth.id,
                     nineth.id,
@@ -212,9 +212,9 @@ async def _(event):
                     fiveteen.id,
                     sixteen.id,
                     seventeen.id,
-                    eightteen.id,
+                    eightteen.id,"""
                 ],
-            )"""
+            )
     else:
         return await event.edit(
             "**Plz First Turn On Assistant.** Click Here👉 `.set var ASSISTANT ON` Anf send"
