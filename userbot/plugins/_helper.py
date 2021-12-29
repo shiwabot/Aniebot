@@ -191,7 +191,7 @@ async def _(event):
             await bot.send_file(
                 "@BotFather", "userbot/resources/pics/-4965507108355287505_121.jpg"
             )
-            await event.respond(
+            await tgbot.send_message(
                 f"Turned On Assistance Successfully.\nClick Here 👉{botname} & Add To Any Group",
                 buttons=keyboard,
             )
