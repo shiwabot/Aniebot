@@ -217,7 +217,6 @@ async def _(event):
         return await event.edit(
             "**Plz First Turn On Assistant.** Click Here👉 `.set var ASSISTANT ON` Anf send"
         )
-        
 
 
 @borg.on(admin_cmd(pattern="config"))  # pylint:disable=E0602
