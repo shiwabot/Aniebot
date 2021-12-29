@@ -7,7 +7,7 @@ from telethon import Button, custom, events
 from telethon.tl.functions.channels import JoinChannelRequest
 from telethon.tl.types import InputMessagesFilterDocument
 
-from userbot import LEGENDversion, bot, Legend
+from userbot import Legend, LEGENDversion, bot
 from userbot.Config import Config
 from userbot.utils import (
     load_abuse,
