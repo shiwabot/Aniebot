@@ -165,7 +165,8 @@ async def spams():
 
 
 # Assistant
-tgbot = Legend.tgbot
+bot.tgbot = None
+tgbot = bot.tgbot
 
 
 async def killer():
