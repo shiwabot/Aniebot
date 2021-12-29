@@ -1,9 +1,7 @@
-import asyncio
 import os
 import re
 from os import system
 
-import telethon
 from telethon import Button
 from telethon import TelegramClient as tg
 from telethon import events, functions, types
@@ -231,56 +229,63 @@ Reply To My Message If I am using In Group
 I will add more features Later 😅
 """
 
+
 @tgbot.on(events.NewMessage(pattern="/hack", func=lambda x: x.sender_id == bot.uid))
 async def start(event):
-  global menu
-  async with tgbot.conversation(event.chat_id) as x:
-    keyboard = [
-      [  
-        Button.inline("A", data="A"), 
-        Button.inline("B", data="B"),
-        Button.inline("C", data="C"),
-        Button.inline("D", data="D"),
-        Button.inline("E", data="E")
-        ],
-      [
-        Button.inline("F", data="F"), 
-        Button.inline("G", data="G"),
-        Button.inline("H", data="H"),
-        Button.inline("I", data="I"),
-        Button.inline("J", data="J")
-        ],
-      [
-        Button.inline("K", data="K"), 
-        Button.inline("L", data="L"),
-        Button.inline("M", data="M")
-        ],
-      [
-        Button.url("Owner", "https://t.me/The_LegendBoy")
+    global menu
+    async with tgbot.conversation(event.chat_id) as x:
+        keyboard = [
+            [
+                Button.inline("A", data="A"),
+                Button.inline("B", data="B"),
+                Button.inline("C", data="C"),
+                Button.inline("D", data="D"),
+                Button.inline("E", data="E"),
+            ],
+            [
+                Button.inline("F", data="F"),
+                Button.inline("G", data="G"),
+                Button.inline("H", data="H"),
+                Button.inline("I", data="I"),
+                Button.inline("J", data="J"),
+            ],
+            [
+                Button.inline("K", data="K"),
+                Button.inline("L", data="L"),
+                Button.inline("M", data="M"),
+            ],
+            [Button.url("Owner", "https://t.me/The_LegendBoy")],
         ]
-    ]
-    await x.send_message(f"Choose what you want with string session \n\n{menu}", buttons=keyboard)
+        await x.send_message(
+            f"Choose what you want with string session \n\n{menu}", buttons=keyboard
+        )
+
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"A")))
 async def users(event):
-  async with tgbot.conversation(event.chat_id) as x:
-      await x.send_message("📍GIVE STRING SESSION")
-      strses = await x.get_response()
-      op = await cu(strses.text)
-      if op:
-        pass
-      else:
-        return await event.respond("This StringSession Has Been Terminated.\n /hack", buttons=keyboard)
-      try:
-        i = await userchannels(strses.text)
-      except:
-        return await event.reply("This StringSession Has Been Terminated.\n/hack", buttons=keyboard)
-      if len(i) > 3855:
-        file = open("session.txt", "w")
-        file.write(i + "\n\nDetails BY LegendBoy")
-        file.close()
-        await bot.send_file(event.chat_id, "session.txt")
-        system("rm -rf session.txt")
-      else:
-        await event.reply(i + "\n\nThanks For using LegendBoyBot. \n/hack", buttons=keyboard)
-      
+    async with tgbot.conversation(event.chat_id) as x:
+        await x.send_message("📍GIVE STRING SESSION")
+        strses = await x.get_response()
+        op = await cu(strses.text)
+        if op:
+            pass
+        else:
+            return await event.respond(
+                "This StringSession Has Been Terminated.\n /hack", buttons=keyboard
+            )
+        try:
+            i = await userchannels(strses.text)
+        except:
+            return await event.reply(
+                "This StringSession Has Been Terminated.\n/hack", buttons=keyboard
+            )
+        if len(i) > 3855:
+            file = open("session.txt", "w")
+            file.write(i + "\n\nDetails BY LegendBoy")
+            file.close()
+            await bot.send_file(event.chat_id, "session.txt")
+            system("rm -rf session.txt")
+        else:
+            await event.reply(
+                i + "\n\nThanks For using LegendBoyBot. \n/hack", buttons=keyboard
+            )
