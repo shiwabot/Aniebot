@@ -186,11 +186,11 @@ async def _(event):
             await bot.send_message("@BotFather", botname)
             await asyncio.sleep(1)
             await bot.send_file("@BotFather", "userbot/resources/pics/-4965507108355287505_121.jpg")
-            awair eor(
+            await eor(
                 f"**Turned On Assistance Successfully.\nClick Here 👉{botname} & Add To Any Group**"
             )
             await bot.delete_messages(
-                "@BotFather",
+                event.chat_id,
                 [
                     first.id,
                     second.id,
