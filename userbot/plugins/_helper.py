@@ -162,9 +162,8 @@ async def _(event):
     if event.fwd_from:
         return
     keyboard = [
-        [
-            Button.url("Click Here", f"https://t.me/{botname}")],
-        ]
+        [Button.url("Click Here", f"https://t.me/{botname}")],
+    ]
     if Config.ASSISTANT == "ON":
         try:
             await bot.send_message("@BotFather", "/setcommands")
@@ -199,7 +198,8 @@ async def _(event):
             print(e)
     else:
         return await event.edit(
-            "**Plz First Turn On Assistant.** Click Here👉 `.set var ASSISTANT ON` And send", buttons=keyboard 
+            "**Plz First Turn On Assistant.** Click Here👉 `.set var ASSISTANT ON` And send",
+            buttons=keyboard,
         )
 
 
