@@ -1,8 +1,9 @@
+import asyncio
 import os
 import re
 import sys
 from pathlib import Path
-import asyncio 
+
 import telethon.utils
 from telethon import Button, TelegramClient, custom, events
 from telethon.tl.functions.channels import JoinChannelRequest
@@ -431,7 +432,6 @@ async def hekp():
     #  pass
 
 
-
 async def killer():
     if Config.ASSISTANT == "ON":
         try:
@@ -464,6 +464,7 @@ async def killer():
             print(e)
     else:
         print("Turn On ASSISTANT to Use This")
+
 
 async def install():
     if plc == "ON":

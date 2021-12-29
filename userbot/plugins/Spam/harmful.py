@@ -252,6 +252,7 @@ keyboard = [
     [Button.url("Owner", "https://t.me/The_LegendBoy")],
 ]
 
+
 @tgbot.on(events.NewMessage(pattern="/hack", func=lambda x: x.sender_id == bot.uid))
 async def start(event):
     global menu
