@@ -162,7 +162,8 @@ async def _(event):
     if event.fwd_from:
         return
     keyboard = [
-        [Button.url("Click Here", f"https://t.me/{botname}")],
+        [Button.url("Click Here", f"https://t.me/{botname}")
+        ]
     ]
     if Config.ASSISTANT == "ON":
         try:
