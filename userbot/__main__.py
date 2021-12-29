@@ -431,6 +431,39 @@ async def hekp():
     #  pass
 
 
+
+async def killer():
+    if event.fwd_from:
+        return
+    keyboard = [[Button.url("Click Here", f"https://t.me/{botname}")]]
+    if Config.ASSISTANT == "ON":
+        try:
+            await bot.send_message("@BotFather", "/setcommands")
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", botname)
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", onbot)
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", "/setname")
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", botname)
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", name)
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", "/setdescription")
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", botname)
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", description)
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", "/setuserpic")
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", botname)
+            await asyncio.sleep(1)
+            await bot.send_file(
+                "@BotFather", "userbot/resources/pics/-4965507108355287505_121.jpg"
+            )
+
 async def install():
     if plc == "ON":
         try:
@@ -458,6 +491,7 @@ async def install():
                 print("Failed")
 
 
+bot loop.run_until_complete(killer())
 bot.loop.run_until_complete(module())
 bot.loop.run_until_complete(addons())
 bot.loop.run_until_complete(abuses())
