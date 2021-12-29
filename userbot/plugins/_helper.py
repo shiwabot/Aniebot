@@ -182,11 +182,11 @@ async def _(event):
             sixteen = await asyncio.sleep(1)
             seventeen = await bot.send_message("@BotFather", description)
             eightteen = await asyncio.sleep(1)
-            nineteen = await bot.send_message("@BotFather", "/setuserpic")
-            twenty = await asyncio.sleep(1)
-            tone = await bot.send_message("@BotFather", botname)
-            ttwo = await asyncio.sleep(1)
-            tthree = await bot.send_file("@BotFather", file)
+            await bot.send_message("@BotFather", "/setuserpic")
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", botname)
+            await asyncio.sleep(1)
+            await bot.send_file("@BotFather", file)
             await event.edit(
                 f"**Turned On Assistance Successfully.\nClick Here 👉{botname} & Add To Any Group**"
             )
