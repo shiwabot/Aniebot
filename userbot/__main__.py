@@ -158,11 +158,11 @@ async def help(event):
             message=f"Var Explaination Without Going To Heroku",
             buttons=[
                 [
-                    Button.inline("Var Explain", data="var"),
-                    Button.inline("All Var", data="allvar"),
-                    Button.inline("Get All Var", data="getvar"),   
+                    custom.Button.inline("Var Explain", data="var"),
+                    custom.Button.inline("All Var", data="allvar"),
+                    custom.Button.inline("Get All Var", data="getvar"),   
                 ],
-                [Button.inline("back", data="start")],
+                [custom.Button.inline("back", data="start")],
             ],
         )
 
@@ -175,7 +175,11 @@ async def users(event):
             event.chat_id,
             message=".set var <varname> <value> ex:- .set var ALIVE_NAME LegendBoy \n\n To Know All Var Go Back And Click On All Var",
             buttons=[
-                [Button.inline("Back", data="osg")
+                [
+                    custom.Button.inline(
+                        "Back",
+                        data="osg",
+                    )
                 ],
             ],
         )
@@ -189,7 +193,7 @@ async def users(event):
             event.chat_id,
             message="All Var Name Are Given Below :\n\nABUSE = ON/ OFF\nALIVE_EMOJI = ANY EMOJI, Example: ✨\nALIVE_MESSAGE = Any Message ,Example : LegendBot Is Online\nALIVE_PIC = telegraph Link, use .tm to get it\nASSISTANT = ON / OFF\nAWAKE_PIC = telegraph link, get from .tm<reply to pic>\n"
             buttons=[
-                [Button.inline("Back", data="osg")],
+            [custom.Button.inline("Back", data="osg")],
             ],
         )
 
