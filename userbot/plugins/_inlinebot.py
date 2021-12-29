@@ -66,9 +66,9 @@ var_txt = """
 
 
 alive_txt = """
-Hey...
-  **{}**
-≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈
+**Hey,
+     {}**
+  ≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈
   🏅Bø† ẞ†α†µѕ🏅
 **•{}•Oաղ̃ҽ̈r :** {}
 **•{}•Lêɠêɳ̃dẞø† :** {}
@@ -103,11 +103,11 @@ def button(page, modules):
     buttons.append(
         [
             custom.Button.inline(
-                f"⬅️ẞαƈƙ", data=f"page({(max_pages - 1) if page == 0 else (page - 1)})"
+                f"ẞαƈƙ", data=f"page({(max_pages - 1) if page == 0 else (page - 1)})"
             ),
             custom.Button.inline(f"🔥 ❌ 🔥", data="close"),
             custom.Button.inline(
-                f"ɳ̃êӿ†➡️", data=f"page({0 if page == (max_pages - 1) else page + 1})"
+                f"ɳ̃êӿ†", data=f"page({0 if page == (max_pages - 1) else page + 1})"
             ),
         ]
     )
