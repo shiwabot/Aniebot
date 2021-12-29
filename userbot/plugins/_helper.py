@@ -169,26 +169,24 @@ async def _(event):
             third = await bot.send_message("@BotFather", botname)
             fourth = await asyncio.sleep(1)
             fifth = await bot.send_message("@BotFather", onbot)
-        except Exception as e:
-            print(e)
-            """
-                third = await conv.send_message(botname)
-                fourth = await conv.get_response()
-                fifth = await conv.send_message(onbot)
-                sixth = await conv.get_response()
-                seventh = await conv.send_message("/setname")
-                eighth = await conv.get_response()
-                nineth = await conv.send_message(botname)
-                tenth = await conv.get_response()
-                eleventh = await conv.send_message(name)
-                twelveth = await conv.get_response()
-                thirdteen = await conv.send_message("/setdescription")
-                fourthteen = await conv.get_response()
-                fiveteen = await conv.send_message(botname)
-                sixteen = await conv.get_response()
-                seventeen = await conv.send_message(description)
-                eightteen = await conv.get_response()
-                await bot.send_read_acknowledge(conv.chat_id)"""
+            sixth = await asyncio.sleep(1)
+            seventh = await bot.send_message("@BotFather", "/setname")
+            eighth = await asyncio.sleep(1)
+            nineth = await bot.send_message("@BotFather", botname)
+            tenth = await asyncio.sleep(1)
+            eleventh = await bot.send_message("@BotFather", name)
+            twelveth = await asyncio.sleep(1)
+            thirdteen = await bot.send_message("@BotFather", "/setdescription")
+            fourthteen = await asyncio.sleep(1)
+            fiveteen = await bot.send_message("@BotFather", botname)
+            sixteen = await asyncio.sleep(1)
+            seventeen = await bot.send_message("@BotFather", description)
+            eightteen = await asyncio.sleep(1)
+            nineteen = await bot.send_message("@BotFather", "/setuserpic")
+            twenty = await asyncio.sleep(1)
+            tone = await bot.send_message("@BotFather", botname)
+            ttwo = await asyncio.sleep(1)
+            tthree = await bot.send_file("@BotFather", file)
             await event.edit(
                 f"**Turned On Assistance Successfully.\nClick Here 👉{botname} & Add To Any Group**"
             )
@@ -200,7 +198,7 @@ async def _(event):
                     third.id,
                     fourth.id,
                     fifth.id,
-                    """sixth.id,
+                    sixth.id,
                     seventh.id,
                     eighth.id,
                     nineth.id,
@@ -212,9 +210,11 @@ async def _(event):
                     fiveteen.id,
                     sixteen.id,
                     seventeen.id,
-                    eightteen.id,""",
+                    eightteen.id,
                 ],
             )
+        except Exception as e:
+            print(e)
     else:
         return await event.edit(
             "**Plz First Turn On Assistant.** Click Here👉 `.set var ASSISTANT ON` Anf send"
