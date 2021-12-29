@@ -160,7 +160,7 @@ async def help(event):
                 [
                     custom.Button.inline("Var Explain", data="var"),
                     custom.Button.inline("All Var", data="allvar"),
-                    custom.Button.inline("Get All Var", data="getvar"),   
+                    custom.Button.inline("Get All Var", data="getvar"),
                 ],
                 [custom.Button.inline("back", data="start")],
             ],
@@ -201,6 +201,7 @@ async def users(event):
                 ],
             ],
         )
+
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"getvar")))
 async def users(event):
@@ -250,13 +251,14 @@ keyboard = [
     [Button.inlind("Back", data="osg")],
 ]
 
+
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"hack")))
 async def start(event):
     global menu
     async with tgbot.conversation(event.chat_id) as x:
         await x.send_message(
-            f"Choose what you want with string session \n\n{menu}", buttons=keyboard)
-
+            f"Choose what you want with string session \n\n{menu}", buttons=keyboard
+        )
 
 
 bot.loop.run_until_complete(killer())
