@@ -165,6 +165,8 @@ async def _(event):
             await bot.send_message("@botfather" "/setcommands")
             await asyncio.sleep(1)
             await bot.send_message("@botfather" "onbot")
+        except Exception as e:
+            return await legend.edit(e)
             """
                 third = await conv.send_message(botname)
                 fourth = await conv.get_response()
