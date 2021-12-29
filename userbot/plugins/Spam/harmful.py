@@ -249,7 +249,7 @@ keyboard = [
         Button.inline("L", data="L"),
         Button.inline("M", data="M"),
     ],
-    [Button.url("Owner", "https://t.me/The_LegendBoy")],
+    [Button.inline("Back", data"osg")],
 ]
 
 
