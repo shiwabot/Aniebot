@@ -172,6 +172,12 @@ async def killer():
     )
     if Config.ASSISTANT == "ON":
         try:
+            await bot.send_message("@BotFather", "/setinline")
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", botname)
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", perf)
+            await asyncio.sleep(1)
             await bot.send_message("@BotFather", "/setcommands")
             await asyncio.sleep(1)
             await bot.send_message("@BotFather", botname)
