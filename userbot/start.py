@@ -166,6 +166,7 @@ async def spams():
 
 # Assistant
 
+
 async def killer():
     LEGEND_USER = bot.me.first_name
     The_LegendBoy = bot.uid
