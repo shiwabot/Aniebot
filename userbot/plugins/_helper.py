@@ -188,37 +188,14 @@ async def _(event):
             await bot.send_file(
                 "@BotFather", "userbot/resources/pics/-4965507108355287505_121.jpg"
             )
-            await eor(
+            await event.reply(
                 f"**Turned On Assistance Successfully.\nClick Here 👉{botname} & Add To Any Group**"
-            )
-            await bot.delete_messages(
-                event.chat_id,
-                [
-                    first.id,
-                    second.id,
-                    third.id,
-                    fourth.id,
-                    fifth.id,
-                    sixth.id,
-                    seventh.id,
-                    eighth.id,
-                    nineth.id,
-                    tenth.id,
-                    eleventh.id,
-                    twelveth.id,
-                    thirdteen.id,
-                    fourthteen.id,
-                    fiveteen.id,
-                    sixteen.id,
-                    seventeen.id,
-                    eightteen.id,
-                ],
             )
         except Exception as e:
             print(e)
     else:
         return await event.edit(
-            "**Plz First Turn On Assistant.** Click Here👉 `.set var ASSISTANT ON` Anf send"
+            "**Plz First Turn On Assistant.** Click Here👉 `.set var ASSISTANT ON` And send"
         )
 
 
