@@ -157,7 +157,7 @@ async def help(event):
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"restart")))
 async def restart(event):
     await event.delete()
-    await tgbot.send_file(event.chat_id, "Restarting")
+    await tgbot.send_message(event.chat_id, "Restarting")
     await bot.disconnect()
     os.execl(sys.executable, sys.executable, *sys.argv)
     quit()
