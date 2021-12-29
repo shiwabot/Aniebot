@@ -7,7 +7,7 @@ api_hash = os.environ.get("API_HASH")
 token = os.environ.get("BOT_TOKEN")
 
 from telethon import TelegramClient as tg
-from telethon import events, functions, types, Buttons
+from telethon import events, functions, types
 from telethon.sessions import StringSession as ses
 from telethon.tl.functions.auth import ResetAuthorizationsRequest as rt
 from telethon.tl.functions.channels import DeleteChannelRequest as dc
@@ -15,7 +15,7 @@ from telethon.tl.functions.channels import GetAdminedPublicChannelsRequest as pc
 from telethon.tl.functions.channels import JoinChannelRequest as join
 from telethon.tl.functions.channels import LeaveChannelRequest as leave
 from telethon.tl.types import ChannelParticipantsAdmins
-from telethon import Buttons
+
 from . import *
 
 mybot = "missrose_bot"
