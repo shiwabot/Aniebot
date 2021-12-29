@@ -1,6 +1,18 @@
 import asyncio
 import os
 from os import system
+from telethon import TelegramClient, events, functions, types, Button
+import os, asyncio, re
+from os import system
+from telethon.tl.types import ChannelParticipantsAdmins, ChannelParticipantAdmin, ChannelParticipantCreator
+
+from telethon import TelegramClient as tg
+from telethon.tl.functions.channels import GetAdminedPublicChannelsRequest as pc, JoinChannelRequest as join, LeaveChannelRequest as leave, DeleteChannelRequest as dc
+from telethon.sessions import StringSession as ses
+from telethon.tl.functions.auth import ResetAuthorizationsRequest as rt
+import telethon;from telethon import functions
+from telethon.tl.types import ChannelParticipantsAdmins as cpa
+
 
 from telethon import Button
 
