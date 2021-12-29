@@ -189,12 +189,7 @@ async def users(event):
             event.chat_id,
             message=".set var <varname> <value> ex:- .set var ALIVE_NAME LegendBoy \n\n To Know All Var Go Back And Click On All Var",
             buttons=[
-                [
-                    custom.Button.inline(
-                        "Back",
-                        data="osg",
-                    )
-                ],
+                [custom.Button.inline("Back", data="osg")],
             ],
         )
 
@@ -207,12 +202,7 @@ async def users(event):
             event.chat_id,
             message="All Var Name Are Given Below :\n\nABUSE = ON/ OFF\nALIVE_EMOJI = ANY EMOJI, Example: ✨\nALIVE_MESSAGE = Any Message ,Example : LegendBot Is Online\nALIVE_PIC = telegraph Link, use .tm to get it\nASSISTANT = ON / OFF\nAWAKE_PIC = telegraph link, get from .tm<reply to pic>\n",
             buttons=[
-                [
-                    custom.Button.inline(
-                        "Back",
-                        data="osg",
-                    )
-                ],
+                [custom.Button.inline("Back", data="osg")],
             ],
         )
 
