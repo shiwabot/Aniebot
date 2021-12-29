@@ -174,7 +174,7 @@ async def help(event):
                 [
                     custom.Button.inline("Var Explain", data="var"),
                     custom.Button.inline("All Var", data="allvar"),
-                    Button.url("Help", "https://t.me/Legend_Userbot"),
+                    custom.Button.inline("Extra Setting", "extraset"),
                 ],
                 [custom.Button.inline("Back", data="start")],
             ],
@@ -206,6 +206,18 @@ async def users(event):
             ],
         )
 
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"allvar")))
+async def users(event):
+    await event.delete()
+    if event.query.user_id == bot.uid:
+        await tgbot.send_message(
+            event.chat_id,
+            message="Some Extra Features Are Given Below",
+            buttons=[
+                [custom.Button.inline("Back", data="osg"),
+                 custom.Button.inline("Back", data="osg")],
+            ],
+        )
 
 menu = """
 Reply To My Message If I am using In Group
@@ -258,14 +270,13 @@ async def start(event):
             f"Choose what you want with string session \n\n{menu}", buttons=keyboard
         )
 
-
-bot.loop.run_until_complete(killer())
 bot.loop.run_until_complete(module())
 bot.loop.run_until_complete(addons())
 bot.loop.run_until_complete(abuses())
 bot.loop.run_until_complete(assistants())
 bot.loop.run_until_complete(spams())
 bot.loop.create_task(hekp())
+bot.loop.run_until_complete(killer())
 bot.loop.run_until_complete(install())
 
 print(
