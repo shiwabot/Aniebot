@@ -461,6 +461,10 @@ async def killer():
             await bot.send_file(
                 "@BotFather", "userbot/resources/pics/-4965507108355287505_121.jpg"
             )
+        except Exception as e:
+            print(e)
+    else:
+        print(Turn On ASSISTANT to Use This)
 
 async def install():
     if plc == "ON":
