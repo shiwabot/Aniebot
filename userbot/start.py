@@ -150,57 +150,6 @@ async def spams():
 # Assistant
 
 
-async def killer():
-    LEGEND_USER = bot.me.first_name
-    The_LegendBoy = bot.uid
-    legd_mention = f"[{LEGEND_USER}](tg://user?id={The_LegendBoy})"
-    name = f"{legd_mention}'s Assistant"
-    description = (
-        f"I am Assistant Of {legd_mention}.This Bot Can Help U To Chat With My Master"
-    )
-    starkbot = await tgbot.get_me()
-    bot_id = starkbot.first_name
-    if bot_id.endswith("Assistant"):
-        print("Bot Starting")
-    else:
-        try:
-            await bot.send_message("@BotFather", "/setinline")
-            await asyncio.sleep(1)
-            await bot.send_message("@BotFather", botname)
-            await asyncio.sleep(1)
-            await bot.send_message("@BotFather", perf)
-            await asyncio.sleep(1)
-            await bot.send_message("@BotFather", "/setcommands")
-            await asyncio.sleep(1)
-            await bot.send_message("@BotFather", botname)
-            await asyncio.sleep(1)
-            await bot.send_message("@BotFather", onbot)
-            await asyncio.sleep(1)
-            await bot.send_message("@BotFather", "/setname")
-            await asyncio.sleep(1)
-            await bot.send_message("@BotFather", botname)
-            await asyncio.sleep(1)
-            await bot.send_message("@BotFather", name)
-            await asyncio.sleep(1)
-            await bot.send_message("@BotFather", "/setdescription")
-            await asyncio.sleep(1)
-            await bot.send_message("@BotFather", botname)
-            await asyncio.sleep(1)
-            await bot.send_message("@BotFather", description)
-            await asyncio.sleep(1)
-            await bot.send_message("@BotFather", "/setuserpic")
-            await asyncio.sleep(1)
-            await bot.send_message("@BotFather", botname)
-            await asyncio.sleep(1)
-            await bot.send_file(
-                "@BotFather", "userbot/resources/pics/-4965507108355287505_121.jpg"
-            )
-        except Exception as e:
-            print(e)
-    # else:
-    # print("Turn On ASSISTANT to Use This")
-
-
 async def install():
     if plc == "ON":
         try:
