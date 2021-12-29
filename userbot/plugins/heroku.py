@@ -138,8 +138,8 @@ async def variable(var):
 async def view_config(config):
     if config.fwd_from:
         return
-    app = Heroku.app(HEROKU_APP_NAME) 
-    legend = app.config()
+    app = Heroku.app(HEROKU_APP_NAME)
+    app.config()
     await edit_or_reply(config, f"{app}")
 
 
