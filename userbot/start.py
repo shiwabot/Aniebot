@@ -165,8 +165,6 @@ async def spams():
 
 
 # Assistant
-tgbot = bot.tgbot
-
 
 async def killer():
     LEGEND_USER = bot.me.first_name
