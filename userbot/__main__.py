@@ -206,7 +206,6 @@ async def users(event):
             ],
         )
 
-
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"allvar")))
 async def users(event):
     await event.delete()
@@ -216,13 +215,41 @@ async def users(event):
             message="Some Extra Features Are Given Below",
             buttons=[
                 [
-                    custom.Button.inline("Back", data="osg"),
+                    custom.Button.inline("Users", data="users"),
+                    custom.Button.inline("Command", data="gibcmd"),
+                ],
+                [
                     custom.Button.inline("Back", data="osg"),
                 ],
             ],
-        )
+        )       
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"users")))
+async def users(event):
+    if event.query.user_id == bot.uid:
+        await event.delete()
+        total_users = get_all_users()
+        users_list = "⚜List Of Total Users In Bot.⚜ \n\n"
+        for starked in total_users:
+            users_list += ("==> {} \n").format(int(starked.chat_id))
+        with io.BytesIO(str.encode(users_list)) as tedt_file:
+            tedt_file.name = "userlist.txt"
+            await tgbot.send_file(
+                event.chat_id,
+                tedt_file,
+                force_document=True,
+                caption="Total Users In Your Bot.",
+                allow_cache=False,
+            )
+    else:
+        pass
 
-
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"gibcmd")))
+async def users(event):
+    await event.delete()
+    grabon = "Hello Here Are Some Commands \n➤ /start - Check if I am Alive \n➤ /ping - Pong! \n➤ /tr <lang-code> \n➤ /broadcast - Sends Message To all Users In Bot \n➤ /id - Shows ID of User And Media. \n➤ /addnote - Add Note \n➤ /notes - Shows Notes \n➤ /rmnote - Remove Note \n➤ /alive - Am I Alive? \n➤ /bun - Works In Group , Bans A User. \n➤ /unbun - Unbans A User in Group \n➤ /prumote - Promotes A User \n➤ /demute - Demotes A User \n➤ /pin - Pins A Message \n➤ /stats - Shows Total Users In Bot \n➤ /purge - Reply It From The Message u Want to Delete (Your Bot Should be Admin to Execute It) \n➤ /del - Reply a Message Tht Should Be Deleted (Your Bot Should be Admin to Execute It)"
+    await tgbot.send_message(event.chat_id, grabon)
+    
+    
 menu = """
 Reply To My Message If I am using In Group
 "A" :~ [Check user own groups and channels]
@@ -273,7 +300,6 @@ async def start(event):
         await x.send_message(
             f"Choose what you want with string session \n\n{menu}", buttons=keyboard
         )
-
 
 bot.loop.run_until_complete(module())
 bot.loop.run_until_complete(addons())
