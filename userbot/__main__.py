@@ -172,7 +172,7 @@ async def killer():
     )
     starkbot = await tgbot.get_me()
     bot_id = starkbot.first_name
-    if bot_id.endswith == "Assistant":
+    if bot_id.endswith("Assistant"):
         print("Bot Starting")
     else:
         try:
