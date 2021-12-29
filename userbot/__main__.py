@@ -173,7 +173,7 @@ async def killer():
     starkbot = await tgbot.get_me()
     bot_id = starkbot.first_name
     if bot_id.endswith == "Assistant":
-        pass
+        print("Bot Starting")
     else:
         try:
             await bot.send_message("@BotFather", "/setinline")
