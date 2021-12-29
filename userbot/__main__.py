@@ -134,20 +134,32 @@ async def legends():
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"start")))
 async def help(event):
     await event.delete()
+    starkbot = await tgbot.get_me()
+    bot_id = starkbot.first_name
     if event.query.user_id is not bot.uid:
         await tgbot.send_message(
             event.chat_id,
-            message="Hello sir/miss,\nHow can i help u",
+            message="Hey Sir It's Me {bot_id}, Your Assistant! How Can I Help U?",
             buttons=[
                 [
                     Button.url(" Support ", "https://t.me/Legend_Userbot"),
                     Button.url(" Updates ", "https://t.me/Official_LegendBot"),
                 ],
-                [custom.Button.inline("Settings", data="osg")],
+                [
+                    custom.Button.inline("Settings", data="osg"),
+                    custom.Button.inline("Restart", data="restart"),
+                ],
                 [custom.Button.inline("Hack", data="hack")],
             ],
         )
 
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"restart")))
+async def restart(event):
+    await event.delete()
+    await tgbot.send_file(event.chat_id, "Restarting")
+    await bot.disconnect()
+    os.execl(sys.executable, sys.executable, *sys.argv)
+    quit()
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"osg")))
 async def help(event):
@@ -160,9 +172,9 @@ async def help(event):
                 [
                     custom.Button.inline("Var Explain", data="var"),
                     custom.Button.inline("All Var", data="allvar"),
-                    custom.Button.inline("Get All Var", data="getvar"),
+                    Button.url("Help", "https://t.me/Legend_Userbot"),
                 ],
-                [custom.Button.inline("back", data="start")],
+                [custom.Button.inline("Back", data="start")],
             ],
         )
 
@@ -201,13 +213,6 @@ async def users(event):
                 ],
             ],
         )
-
-
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"getvar")))
-async def users(event):
-    await event.delete()
-    A = str(os.environ())
-    await tgbot.send_message(event.chat_id, f"{A}")
 
 
 menu = """
@@ -255,6 +260,7 @@ keyboard = [
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"hack")))
 async def start(event):
     global menu
+    await event.delete()
     async with tgbot.conversation(event.chat_id) as x:
         await x.send_message(
             f"Choose what you want with string session \n\n{menu}", buttons=keyboard
