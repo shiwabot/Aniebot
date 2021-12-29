@@ -32,9 +32,7 @@ if mybot.startswith("@"):
 else:
     botname = f"@{mybot}"
 
-
 plc = os.environ.get("PLUGIN", None)
-
 
 async def hekp():
     try:
