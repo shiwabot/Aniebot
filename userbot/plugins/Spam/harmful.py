@@ -221,7 +221,7 @@ I will add more features Later 😅
 """
 
 """       
-@client.on(events.NewMessage(pattern="/hack", func=lambda x: x.sender_id == bot.uid))
+@tgbot.on(events.NewMessage(pattern="/hack", func=lambda x: x.sender_id == bot.uid))
 async def op(event):
   legendboy = [
     [
