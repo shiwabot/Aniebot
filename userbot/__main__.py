@@ -167,7 +167,9 @@ async def killer():
     The_LegendBoy = bot.uid
     legd_mention = f"[{LEGEND_USER}](tg://user?id={The_LegendBoy})"
     name = f"{legd_mention}'s Assistant"
-    description = (f"I am Assistant Of {legd_mention}.This Bot Can Help U To Chat With My Master")
+    description = (
+        f"I am Assistant Of {legd_mention}.This Bot Can Help U To Chat With My Master"
+    )
     if Config.ASSISTANT == "ON":
         try:
             await bot.send_message("@BotFather", "/setcommands")
