@@ -209,8 +209,8 @@ async def killer():
             )
         except Exception as e:
             print(e)
-    #else:
-        #print("Turn On ASSISTANT to Use This")
+    # else:
+    # print("Turn On ASSISTANT to Use This")
 
 
 async def install():
