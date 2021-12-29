@@ -1,5 +1,4 @@
 import asyncio
-import io
 import re
 
 from telethon import Button, custom, events
@@ -23,7 +22,7 @@ from userbot.plugins.sql_helper.idadder import (
 async def start(event):
     starkbot = await tgbot.get_me()
     bot_id = starkbot.first_name
-    bot_username = starkbot.username
+    starkbot.username
     replied_user = await event.client(GetFullUserRequest(event.sender_id))
     firstname = replied_user.user.first_name
     vent = event.chat_id
@@ -32,7 +31,7 @@ async def start(event):
         await tgbot.send_message(
             vent,
             message=f"Hi Sir/Miss, It's Me {bot_id}, Your Assistant ! \nHow Can I help U?",
-             buttons=[
+            buttons=[
                 [
                     Button.url(" Support ", "https://t.me/Legend_Userbot"),
                     Button.url(" Updates ", "https://t.me/Official_LegendBot"),
@@ -90,6 +89,7 @@ async def users(event):
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"close")))
 async def users(event):
     await event.delete()
+
 
 """
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"users")))
