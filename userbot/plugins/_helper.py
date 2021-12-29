@@ -167,8 +167,8 @@ async def _(event):
             await bot.send_message("93372553" "/setcommands")
             await asyncio.sleep(1)
             await bot.send_message("93372553" "onbot")
-        except Exception:
-            return await eor("e")
+        except Exception as e:
+            print(e)
             """
                 third = await conv.send_message(botname)
                 fourth = await conv.get_response()
