@@ -1,6 +1,6 @@
 import asyncio
 
-from telethon import functions
+from telethon import functions, events, Button
 from telethon.errors import ChatSendInlineForbiddenError as noin
 from telethon.errors.rpcerrorlist import BotInlineDisabledError as noinline
 from telethon.errors.rpcerrorlist import BotMethodInvalidError as dedbot
