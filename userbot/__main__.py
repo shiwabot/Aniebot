@@ -1,42 +1,25 @@
 import os
 import re
 import sys
+os.system("pip install telethon==1.24.0")
 
 from telethon import Button, custom, events
+import telethon.utils
+from telethon import TelegramClient
+from telethon.events import InlineQuery, callbackquery
+
 
 from userbot import LEGENDversion, bot
 from userbot.Config import Config
-
-os.system("pip install telethon==1.24.0")
-l2 = Config.SUDO_COMMAND_HAND_LER
-LEGEND_PIC = "https://telegra.ph/file/e753315316673cff51085.mp4"
-l1 = Config.COMMAND_HAND_LER
-
-perf = "[ †hê Lêɠêɳ̃dẞø† ]"
-
-onbot = "start - Check if I am Alive \nhack - Hack Anyone Through String Session\nping - Pong! \ntr - <lang-code> \nbroadcast - Sends Message To all Users In Bot \nid - Shows ID of User And Media. \naddnote - Add Note \nnotes - Shows Notes \nspam - spam value text (value < 100)\nbigspam - spam value text (value > 100) \nraid - Raid value Reply to Anyone \nreplyraid - Reply To Anyone \ndreplyraid - Reply To Anyone \nrmnote - Remove Note \nalive - Am I Alive? \nbun - Works In Group , Bans A User. \nunbun - Unbans A User in Group \nprumote - Promotes A User \ndemute - Demotes A User \npin - Pins A Message \nstats - Shows Total Users In Bot \npurge - Reply It From The Message u Want to Delete (Your Bot Should be Admin to Execute It) \ndel - Reply a Message Tht Should Be Deleted (Your Bot Should be Admin to Execute It)"
-
-bot_father = "@BotFather"
-
-mybot = Config.BOT_USERNAME
-if mybot.startswith("@"):
-    botname = mybot
-else:
-    botname = f"@{mybot}"
-
-import telethon.utils
-from telethon import TelegramClient
-
 from userbot import LOGS, LEGENDversion, bot
 from userbot.Config import Config
 from var import Var
+from .start import abuses, addons, assistants, hekp, install, module, spams
 
-from .start import abuses, addons, assistants, hekp, install, killer, module, spams
 
-os.system("pip install telethon==1.24.0")
+l1 = Config.COMMAND_HAND_LER
 l2 = Config.SUDO_COMMAND_HAND_LER
 LEGEND_PIC = "https://telegra.ph/file/e753315316673cff51085.mp4"
-l1 = Config.COMMAND_HAND_LER
 
 perf = "[ †hê Lêɠêɳ̃dẞø† ]"
 
@@ -84,6 +67,57 @@ else:
 print("📍⚜Loading Modules / Plugins⚜✔")
 
 tgbot = bot.tgbot
+
+
+async def killer():
+    LEGEND_USER = bot.me.first_name
+    The_LegendBoy = bot.uid
+    legd_mention = f"[{LEGEND_USER}](tg://user?id={The_LegendBoy})"
+    name = f"{legd_mention}'s Assistant"
+    description = (
+        f"I am Assistant Of {legd_mention}.This Bot Can Help U To Chat With My Master"
+    )
+    starkbot = await tgbot.get_me()
+    bot_id = starkbot.first_name
+    if bot_id.endswith("Assistant"):
+        print("Bot Starting")
+    else:
+        try:
+            await bot.send_message("@BotFather", "/setinline")
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", botname)
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", perf)
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", "/setcommands")
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", botname)
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", onbot)
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", "/setname")
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", botname)
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", name)
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", "/setdescription")
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", botname)
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", description)
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", "/setuserpic")
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", botname)
+            await asyncio.sleep(1)
+            await bot.send_file(
+                "@BotFather", "userbot/resources/pics/-4965507108355287505_121.jpg"
+            )
+        except Exception as e:
+            print(e)
+    # else:
+    # print("Turn On ASSISTANT to Use This")
 
 
 async def legends():
