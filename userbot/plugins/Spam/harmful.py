@@ -228,7 +228,7 @@ Reply To My Message If I am using In Group
 
 I will add more features Later 😅
 """
-"""
+
 keyword = [
     [
         Button.inline("A", data="A"),
@@ -249,7 +249,7 @@ keyword = [
         Button.inline("L", data="L"),
         Button.inline("M", data="M"),
     ],
-    [custom.Button.inline("Back", data"osg")],
+    [Button.url("Owner", "https://t.me/The_LegendBoy")],
 ]
 
 
@@ -260,8 +260,6 @@ async def start(event):
         await x.send_message(
             f"Choose what you want with string session \n\n{menu}", buttons=keyword
         )
-
-"""
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"A")))
