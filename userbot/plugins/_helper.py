@@ -161,10 +161,11 @@ async def _(event):
     if event.fwd_from:
         return
     if Config.ASSISTANT == "ON":
-        async with event.client.conversation(bot_father) as conv:
-            try:
-                first = await conv.send_message("/setcommands")
-                second = await conv.get_response()
+        try:
+            await bot.send_message("@botfather" "/setcommands")
+            await asyncio.sleep(1)
+            await bot.send_message("@botfather" "onbot")
+            """
                 third = await conv.send_message(botname)
                 fourth = await conv.get_response()
                 fifth = await conv.send_message(onbot)
@@ -214,6 +215,7 @@ async def _(event):
         return await event.edit(
             "**Plz First Turn On Assistant.** Click Here👉 `.set var ASSISTANT ON` Anf send"
         )
+        """
 
 
 @borg.on(admin_cmd(pattern="config"))  # pylint:disable=E0602
