@@ -1,25 +1,15 @@
-import asyncio
 import os
-import re
 import sys
-from pathlib import Path
 
 import telethon.utils
-from telethon import Button, TelegramClient, custom, events
-from telethon.tl.functions.channels import JoinChannelRequest
-from telethon.tl.types import InputMessagesFilterDocument
+from telethon import TelegramClient
 
 from userbot import LOGS, LEGENDversion, bot
 from userbot.Config import Config
-from userbot.utils import (
-    load_abuse,
-    load_addons,
-    load_module,
-    start_assistant,
-    start_spam,
-)
 from var import Var
+
 from .start import *
+
 os.system("pip install telethon==1.24.0")
 l2 = Config.SUDO_COMMAND_HAND_LER
 LEGEND_PIC = "https://telegra.ph/file/e753315316673cff51085.mp4"
@@ -69,7 +59,6 @@ else:
         sys.exit()
 
 print("📍⚜Loading Modules / Plugins⚜✔")
-
 
 
 bot.loop.run_until_complete(killer())

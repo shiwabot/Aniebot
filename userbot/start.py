@@ -1,15 +1,13 @@
 import asyncio
 import os
 import re
-import sys
 from pathlib import Path
 
-import telethon.utils
-from telethon import Button, TelegramClient, custom, events
+from telethon import Button, custom, events
 from telethon.tl.functions.channels import JoinChannelRequest
 from telethon.tl.types import InputMessagesFilterDocument
 
-from userbot import LOGS, LEGENDversion, bot
+from userbot import LEGENDversion, bot
 from userbot.Config import Config
 from userbot.utils import (
     load_abuse,
@@ -18,7 +16,6 @@ from userbot.utils import (
     start_assistant,
     start_spam,
 )
-from var import Var
 
 os.system("pip install telethon==1.24.0")
 l2 = Config.SUDO_COMMAND_HAND_LER
@@ -36,7 +33,6 @@ if mybot.startswith("@"):
     botname = mybot
 else:
     botname = f"@{mybot}"
-
 
 
 async def legends():
@@ -79,8 +75,6 @@ async def hekp():
         await bot(JoinChannelRequest("@Legend_Userbot"))
     except BaseException:
         pass
-
-
 
 
 async def module():
@@ -484,4 +478,3 @@ async def users(event):
     await event.delete()
     grabon = "I am Giving U Full Power To Hack Anyone Through String session\nClick Here 👉/hack."
     await tgbot.send_message(event.chat_id, grabon)
-
