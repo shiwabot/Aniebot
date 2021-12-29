@@ -162,9 +162,9 @@ async def spams():
         print("⚠️Spam Not Loading⚠️")
 
 
-
 # Assistant
 tgbot = bot.tgbot
+
 
 async def killer():
     if Config.ASSISTANT == "ON":
@@ -225,6 +225,7 @@ async def install():
                 print(f"{i} plugin install")
             else:
                 print("Failed")
+
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"start")))
 async def help(event):
@@ -506,7 +507,6 @@ async def hekp():
     # return
     # except BaseException:
     #  pass
-
 
 
 bot.loop.run_until_complete(killer())
