@@ -3,7 +3,6 @@ import os
 import re
 from os import system
 
-import telethon
 from telethon import Button
 from telethon import TelegramClient as tg
 from telethon import events, functions, types
