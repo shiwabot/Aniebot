@@ -170,7 +170,11 @@ async def killer():
     description = (
         f"I am Assistant Of {legd_mention}.This Bot Can Help U To Chat With My Master"
     )
-    if Config.ASSISTANT == "ON":
+    starkbot = await tgbot.get_me()
+    bot_id = starkbot.first_name
+    if bot_id.endswith == "Assistant":
+        pass
+    else:
         try:
             await bot.send_message("@BotFather", "/setinline")
             await asyncio.sleep(1)
@@ -205,8 +209,8 @@ async def killer():
             )
         except Exception as e:
             print(e)
-    else:
-        print("Turn On ASSISTANT to Use This")
+    #else:
+        #print("Turn On ASSISTANT to Use This")
 
 
 async def install():
