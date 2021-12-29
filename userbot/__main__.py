@@ -173,7 +173,7 @@ async def users(event):
     if event.query.user_id == bot.uid:
         await tgbot.send_message(
             event.chat_id,
-            message=".set var <varname> <value> ex:- .set var ALIVE_NAME LegendBoy \n\n To Know All Var Go Back And Click On All Var"
+            message=".set var <varname> <value> ex:- .set var ALIVE_NAME LegendBoy \n\n To Know All Var Go Back And Click On All Var",
             buttons=[
                 [Button.inline("Back", data="osg")],
             ],
@@ -245,8 +245,7 @@ async def start(event):
     global menu
     async with tgbot.conversation(event.chat_id) as x:
         await x.send_message(
-            f"Choose what you want with string session \n\n{menu}", buttons=keyboard
-        )
+            f"Choose what you want with string session \n\n{menu}", buttons=keyboard)
 
 
 
