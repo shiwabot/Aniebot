@@ -162,9 +162,69 @@ async def spams():
         print("⚠️Spam Not Loading⚠️")
 
 
+
 # Assistant
 tgbot = bot.tgbot
 
+async def killer():
+    if Config.ASSISTANT == "ON":
+        try:
+            await bot.send_message("@BotFather", "/setcommands")
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", botname)
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", onbot)
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", "/setname")
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", botname)
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", name)
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", "/setdescription")
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", botname)
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", description)
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", "/setuserpic")
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", botname)
+            await asyncio.sleep(1)
+            await bot.send_file(
+                "@BotFather", "userbot/resources/pics/-4965507108355287505_121.jpg"
+            )
+        except Exception as e:
+            print(e)
+    else:
+        print("Turn On ASSISTANT to Use This")
+
+
+async def install():
+    if plc == "ON":
+        try:
+            await bot(JoinChannelRequest("@Legend_UserBotPlugin"))
+        except BaseException:
+            pass
+        i = 0
+        chat = -1001518412326
+        documentss = await bot.get_messages(
+            chat, None, filter=InputMessagesFilterDocument
+        )
+        total = int(documentss.total)
+        total_doxx = range(0, total)
+        for ixo in total_doxx:
+            mxo = documentss[ixo].id
+            downloaded_file_name = await bot.download_media(
+                await bot.get_messages(chat, ids=mxo), "userbot/plugins/"
+            )
+            if "(" not in downloaded_file_name:
+                path1 = Path(downloaded_file_name)
+                shortname = path1.stem
+                load_module(shortname.replace(".py", ""))
+                print(f"{i} plugin install")
+            else:
+                print("Failed")
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"start")))
 async def help(event):
@@ -447,66 +507,6 @@ async def hekp():
     # except BaseException:
     #  pass
 
-
-async def killer():
-    if Config.ASSISTANT == "ON":
-        try:
-            await bot.send_message("@BotFather", "/setcommands")
-            await asyncio.sleep(1)
-            await bot.send_message("@BotFather", botname)
-            await asyncio.sleep(1)
-            await bot.send_message("@BotFather", onbot)
-            await asyncio.sleep(1)
-            await bot.send_message("@BotFather", "/setname")
-            await asyncio.sleep(1)
-            await bot.send_message("@BotFather", botname)
-            await asyncio.sleep(1)
-            await bot.send_message("@BotFather", name)
-            await asyncio.sleep(1)
-            await bot.send_message("@BotFather", "/setdescription")
-            await asyncio.sleep(1)
-            await bot.send_message("@BotFather", botname)
-            await asyncio.sleep(1)
-            await bot.send_message("@BotFather", description)
-            await asyncio.sleep(1)
-            await bot.send_message("@BotFather", "/setuserpic")
-            await asyncio.sleep(1)
-            await bot.send_message("@BotFather", botname)
-            await asyncio.sleep(1)
-            await bot.send_file(
-                "@BotFather", "userbot/resources/pics/-4965507108355287505_121.jpg"
-            )
-        except Exception as e:
-            print(e)
-    else:
-        print("Turn On ASSISTANT to Use This")
-
-
-async def install():
-    if plc == "ON":
-        try:
-            await bot(JoinChannelRequest("@Legend_UserBotPlugin"))
-        except BaseException:
-            pass
-        i = 0
-        chat = -1001518412326
-        documentss = await bot.get_messages(
-            chat, None, filter=InputMessagesFilterDocument
-        )
-        total = int(documentss.total)
-        total_doxx = range(0, total)
-        for ixo in total_doxx:
-            mxo = documentss[ixo].id
-            downloaded_file_name = await bot.download_media(
-                await bot.get_messages(chat, ids=mxo), "userbot/plugins/"
-            )
-            if "(" not in downloaded_file_name:
-                path1 = Path(downloaded_file_name)
-                shortname = path1.stem
-                load_module(shortname.replace(".py", ""))
-                print(f"{i} plugin install")
-            else:
-                print("Failed")
 
 
 bot.loop.run_until_complete(killer())
