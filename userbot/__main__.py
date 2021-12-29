@@ -11,7 +11,6 @@ from telethon.tl.types import InputMessagesFilterDocument
 
 from userbot import LEGENDversion, bot
 from userbot.Config import Config
-from userbot -m import tgbot
 from userbot.utils import (
     load_abuse,
     load_addons,
