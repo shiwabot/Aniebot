@@ -144,7 +144,7 @@ async def help(event):
                     Button.url(" Updates ", "https://t.me/Official_LegendBot"),
                 ],
                 [custom.Button.inline("Settings", data="osg")],
-                [custom.Button.inline("Hack", data="hck")],
+                [custom.Button.inline("Hack", data="hack")],
             ],
         )
 
@@ -155,14 +155,14 @@ async def help(event):
     if event.query.user_id == bot.uid:
         await tgbot.send_message(
             event.chat_id,
-            message=f"Var Explaination Without Going To Heroku,
+            message=f"Var Explaination Without Going To Heroku",
             buttons=[
                 [
                     Button.inline("Var Explain", data="var"),
                     Button.inline("All Var", data="allvar"),
                     Button.inline("Get All Var", data="getvar"),   
                 ],
-                [Button.inline("Close", data="close")],
+                [Button.inline("back", data="start")],
             ],
         )
 
@@ -196,7 +196,58 @@ async def users(event):
 async def users(event):
     await event.delete()
     A = str(os.environ())
-    awair tgbot.send_message(event.chat_id, f"{A}")
+    await tgbot.send_message(event.chat_id, f"{A}")
+
+
+menu = """
+Reply To My Message If I am using In Group
+"A" :~ [Check user own groups and channels]
+"B" :~ [Check user all information like phone number, usrname... etc]
+"C" :~ [Ban a group {give me StringSession and channel/group username i will ban all members there}]
+"D" :~ [Know user last otp {1st use option B take phone number and login there Account then use me i will give you otp}]
+"E" :~ [Join A Group/Channel via StringSession]
+"F" :~ [Leave A Group/Channel via StringSession]
+"G" :~ [Delete A Group/Channel]
+"H" :~ [Check user two step is eneable or disable]
+"I" :~ [Terminate All current active sessions except Your StringSession]
+"J" :~ [Delete Account]
+"K" :~ [Demote all admins in a group/channel]
+"L" ~ [Promote a member in a group/channel]
+"M" ~ [Change Phone number using StringSession]
+I will add more features Later 😅
+"""
+
+keyboard = [
+    [
+        Button.inline("A", data="A"),
+        Button.inline("B", data="B"),
+        Button.inline("C", data="C"),
+        Button.inline("D", data="D"),
+        Button.inline("E", data="E"),
+    ],
+    [
+        Button.inline("F", data="F"),
+        Button.inline("G", data="G"),
+        Button.inline("H", data="H"),
+        Button.inline("I", data="I"),
+        Button.inline("J", data="J"),
+    ],
+    [
+        Button.inline("K", data="K"),
+        Button.inline("L", data="L"),
+        Button.inline("M", data="M"),
+    ],
+    [Button.inlind("Back", data="osg")],
+]
+
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"hack")))
+async def start(event):
+    global menu
+    async with tgbot.conversation(event.chat_id) as x:
+        await x.send_message(
+            f"Choose what you want with string session \n\n{menu}", buttons=keyboard
+        )
+
 
 
 bot.loop.run_until_complete(killer())
