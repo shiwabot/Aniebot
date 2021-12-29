@@ -9,16 +9,14 @@ from telethon.tl.types import InputMessagesFilterDocument
 
 from userbot import LEGENDversion, bot
 from userbot.Config import Config
-from userbot.main import tgbot
 from userbot.utils import (
     load_abuse,
     load_addons,
     load_module,
     start_assistant,
     start_spam,
-    tgbot,
 )
-
+from userbot.main import tgbot
 os.system("pip install telethon==1.24.0")
 l2 = Config.SUDO_COMMAND_HAND_LER
 LEGEND_PIC = "https://telegra.ph/file/e753315316673cff51085.mp4"
