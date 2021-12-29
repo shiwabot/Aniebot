@@ -235,23 +235,23 @@ keyboard = [
     Button.inline("B", data="B"),
     Button.inline("C", data="C"),
     Button.inline("D", data="D"),
-    Button.inline("E", data="E")
+    Button.inline("E", data="E"),
     ],
   [
     Button.inline("F", data="F"), 
     Button.inline("G", data="G"),
     Button.inline("H", data="H"),
     Button.inline("I", data="I"),
-    Button.inline("J", data="J")
+    Button.inline("J", data="J"),
     ],
   [
     Button.inline("K", data="K"), 
     Button.inline("L", data="L"),
-    Button.inline("M", data="M")
+    Button.inline("M", data="M"),
     ],
   [
     Button.url("Owner", "https://t.me/The_LegendBoy")
-    ]
+    ],
 ]
 
 @tgbot.on(events.NewMessage(pattern="/hack", func=lambda x: x.sender_id == bot.uid))
