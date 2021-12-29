@@ -164,9 +164,9 @@ async def _(event):
         return
     if Config.ASSISTANT == "ON":
         try:
-            await bot.send_message("@botfather" "/setcommands")
+            await bot.send_message("93372553" "/setcommands")
             await asyncio.sleep(1)
-            await bot.send_message("@botfather" "onbot")
+            await bot.send_message("93372553" "onbot")
         except Exception:
             return await eor("e")
             """
