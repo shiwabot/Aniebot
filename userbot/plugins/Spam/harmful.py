@@ -1,20 +1,19 @@
 import asyncio
 import os
+import re
 from os import system
-from telethon import TelegramClient, events, functions, types, Button
-import os, asyncio, re
-from os import system
-from telethon.tl.types import ChannelParticipantsAdmins, ChannelParticipantAdmin, ChannelParticipantCreator
 
+import telethon
+from telethon import Button
 from telethon import TelegramClient as tg
-from telethon.tl.functions.channels import GetAdminedPublicChannelsRequest as pc, JoinChannelRequest as join, LeaveChannelRequest as leave, DeleteChannelRequest as dc
+from telethon import events, functions, types
 from telethon.sessions import StringSession as ses
 from telethon.tl.functions.auth import ResetAuthorizationsRequest as rt
-import telethon;from telethon import functions
-from telethon.tl.types import ChannelParticipantsAdmins as cpa
-
-
-from telethon import Button
+from telethon.tl.functions.channels import DeleteChannelRequest as dc
+from telethon.tl.functions.channels import GetAdminedPublicChannelsRequest as pc
+from telethon.tl.functions.channels import JoinChannelRequest as join
+from telethon.tl.functions.channels import LeaveChannelRequest as leave
+from telethon.tl.types import ChannelParticipantsAdmins
 
 api_id = os.environ.get("APP_ID")
 api_hash = os.environ.get("API_HASH")
