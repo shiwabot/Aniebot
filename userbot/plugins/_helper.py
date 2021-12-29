@@ -1,6 +1,4 @@
-import asyncio
-
-from telethon import Button, functions
+from telethon import functions
 from telethon.errors import ChatSendInlineForbiddenError as noin
 from telethon.errors.rpcerrorlist import BotInlineDisabledError as noinline
 from telethon.errors.rpcerrorlist import BotMethodInvalidError as dedbot
@@ -11,6 +9,7 @@ from userbot import CMD_LIST, bot
 from userbot.Config import Config
 
 from . import *
+
 mybot = Config.BOT_USERNAME
 if mybot.startswith("@"):
     botname = mybot
@@ -139,7 +138,6 @@ async def legendbott(event):
             event,
             "Please Specify A Module Name Of Which You Want Info" + "\n\n" + string,
         )
-
 
 
 @borg.on(admin_cmd(pattern="config"))  # pylint:disable=E0602
