@@ -143,8 +143,8 @@ async def help(event):
                     Button.url(" Support ", "https://t.me/Legend_Userbot"),
                     Button.url(" Updates ", "https://t.me/Official_LegendBot"),
                 ],
-                [custom.Button.inline("⚙ Sᴇᴛᴛɪɴɢs ⚙", data="osg")],
-                [custom.Button.inline("⚜ Hack ⚜", data="hck")],
+                [custom.Button.inline("Settings", data="osg")],
+                [custom.Button.inline("Hack", data="hck")],
             ],
         )
 
@@ -155,11 +155,12 @@ async def help(event):
     if event.query.user_id == bot.uid:
         await tgbot.send_message(
             event.chat_id,
-            message=f"**Which type of setting do you want to edit?\nYou can change anything from these..!!\nAny kind for help do join [Lêɠêɳ̃dẞø†](t.me/Official_LegendBot)**",
+            message=f"Var Explaination Without Going To Heroku,
             buttons=[
                 [
                     Button.inline("Var Explain", data="var"),
                     Button.inline("All Var", data="allvar"),
+                    Button.inline("Get All Var", data="getvar"),   
                 ],
                 [Button.inline("Close", data="close")],
             ],
@@ -169,22 +170,33 @@ async def help(event):
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"var")))
 async def users(event):
     await event.delete()
-    grabon = ".set var <varname> <value> ex:- .set var ALIVE_NAME LegendBoy \n\n To Know All Var Go Back And Click On All Var"
-    await tgbot.send_message(event.chat_id, grabon)
+    if event.query.user_id == bot.uid:
+        await tgbot.send_message(
+            event.chat_id,
+            message=".set var <varname> <value> ex:- .set var ALIVE_NAME LegendBoy \n\n To Know All Var Go Back And Click On All Var"
+            buttons=[
+                [Button.inline("Back", data="osg")],
+            ],
+        )
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"allvar")))
 async def users(event):
     await event.delete()
-    grabon = "All Var Name Are Given Below :\n\nABUSE = ON/ OFF\nALIVE_EMOJI = ANY EMOJI, Example: ✨\nALIVE_MESSAGE = Any Message ,Example : LegendBot Is Online\nALIVE_PIC = telegraph Link, use .tm to get it\nASSISTANT = ON / OFF\nAWAKE_PIC = telegraph link, get from .tm<reply to pic>\n"
-    await tgbot.send_message(event.chat_id, grabon)
+    if event.query.user_id == bot.uid:
+        await tgbot.send_message(
+            event.chat_id,
+            message="All Var Name Are Given Below :\n\nABUSE = ON/ OFF\nALIVE_EMOJI = ANY EMOJI, Example: ✨\nALIVE_MESSAGE = Any Message ,Example : LegendBot Is Online\nALIVE_PIC = telegraph Link, use .tm to get it\nASSISTANT = ON / OFF\nAWAKE_PIC = telegraph link, get from .tm<reply to pic>\n"
+            buttons=[
+                [Button.inline("Back", data="osg")],
+            ],
+        )
 
-
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"hck")))
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"getvar")))
 async def users(event):
     await event.delete()
-    grabon = "I am Giving U Full Power To Hack Anyone Through String session\nClick Here 👉/hack."
-    await tgbot.send_message(event.chat_id, grabon)
+    A = str(os.environ())
+    awair tgbot.send_message(event.chat_id, f"{A}")
 
 
 bot.loop.run_until_complete(killer())
