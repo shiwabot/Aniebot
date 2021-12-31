@@ -177,7 +177,7 @@ async def _(event):
         previous_message,
         Config.TMP_DOWNLOAD_DIRECTORY,
         progress_callback=progress,
-        )
+    )
     if downloaded_file_name.endswith(".py"):
         py_file = ""
         py_file += ".py"
