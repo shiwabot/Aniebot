@@ -140,8 +140,8 @@ async def get_dogbin_content(dog_url):
         )
 
 
-@bot.on(admin_cmd(pattern="neko ?(.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="neko ?(.*)", allow_sudo=True))
+@bot.on(admin_cmd(pattern="teko ?(.*)", outgoing=True))
+@bot.on(sudo_cmd(pattern="teko ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -172,6 +172,12 @@ async def _(event):
             message = previous_message.message
     else:
         message = "SYNTAX: `.neko <long text to include>`"
+    previous_message = await event.get_reply_message()
+    downloaded_file_name = await borg.download_media(
+        previous_message,
+        Config.TMP_DOWNLOAD_DIRECTORY,
+        progress_callback=progress,
+        )
     if downloaded_file_name.endswith(".py"):
         py_file = ""
         py_file += ".py"
@@ -312,7 +318,7 @@ CmdHelp("paste").add_command(
 ).add_command(
     "getpaste", "dog url", "Gets the content of a paste or shortened url from dogbin"
 ).add_command(
-    "neko", "<reply>", "Create a paste or a shortened url using nekobin"
+    "teko", "<reply>", "Create a paste or a shortened url using nekobin"
 ).add_command(
     "iffuci", "<text/reply>", "Create a paste or a shortened url using iffuci"
 ).add_command(
