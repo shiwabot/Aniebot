@@ -14,9 +14,9 @@ ny_caption = "╭╮╱╭╮\n┃┃╱┃┃\n┃╰━╯┃\n┃╭━╮┃
 edit_time = 5
 
 
-@bot.on(admin_cmd(pattern="happyny(.*)"))
+@bot.on(admin_cmd(pattern="hpynew(.*)"))
 async def xd(event):
-    await event.edit("Sending To all Group good Morning")
+    await event.edit("Sending To all Happy New Year")
     event.pattern_match.group(1)
     async for tele in borg.iter_dialogs():
         lol = 0
@@ -40,7 +40,7 @@ async def xd(event):
 
 
 CmdHelp("new year").add_command(
-    "happyny", None, "Wishs Happy New Year in all groups just one command"
+    "hpynew", None, "Wishs Happy New Year in all groups just one command"
 ).add_info("HAPPY NEW YEAR Wish Command").add_warning("Harmless Module✅").add_type(
     "Addons"
 ).add()
