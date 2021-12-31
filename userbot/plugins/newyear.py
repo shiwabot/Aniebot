@@ -1,10 +1,9 @@
-from . import *
-
 import asyncio
 
 from LEGENDBOT.utils import admin_cmd
 from userbot.cmdhelp import CmdHelp
-from userbot.Config import Config
+
+from . import *
 
 file1 = "https://telegra.ph/file/7b901525920ba2ed6a534.jpg"
 file2 = "https://telegra.ph/file/e6b71c2f7cd63c7b0dadf.jpg"
@@ -13,6 +12,8 @@ file4 = "https://telegra.ph/file/a73639ead72c9d3e36566.jpg"
 
 ny_caption = "╭╮╱╭╮\n┃┃╱┃┃\n┃╰━╯┃\n┃╭━╮┃\n┃┃╱┃┃\n╰╯╱╰╯\n╭━━━╮\n┃╭━╮┃\n┃┃╱┃┃\n┃╰━╯┃\n┃╭━╮┃\n╰╯╱╰╯\n╭━━━╮\n┃╭━╮┃\n┃╰━╯┃\n┃╭━━╯\n┃┃\n╰╯\n╭━━━╮\n┃╭━╮┃\n┃╰━╯┃\n┃╭━━╯\n┃┃\n╰╯\n╭╮╱╱╭╮\n┃╰╮╭╯┃\n╰╮╰╯╭╯\n╱╰╮╭╯\n╱╱┃┃\n╱╱╰╯\n╭━╮╱╭╮\n┃┃╰╮┃┃\n┃╭╮╰╯┃\n┃┃╰╮┃┃\n┃┃╱┃┃┃\n╰╯╱╰━╯\n╭━━━╮\n┃╭━━╯\n┃╰━━╮\n┃╭━━╯\n┃╰━━╮\n╰━━━╯\n╭╮╭╮╭╮\n┃┃┃┃┃┃\n┃┃┃┃┃┃\n┃╰╯╰╯┃\n╰╮╭╮╭╯\n╱╰╯╰╯\n╭╮╱╱╭╮\n┃╰╮╭╯┃\n╰╮╰╯╭╯\n╱╰╮╭╯\n╱╱┃┃\n╱╱╰╯\n╭━━━╮\n┃╭━━╯\n┃╰━━╮\n┃╭━━╯\n┃╰━━╮\n╰━━━╯\n╭━━━ \n┃╭━╮┃\n┃┃╱┃┃\n┃╰━╯┃\n┃╭━╮┃\n╰╯╱╰╯\n╭━━━╮\n┃╭━╮┃\n┃╰━╯┃\n┃╭╮╭╯\n┃┃┃╰╮\n╰╯╰━╯\n"
 edit_time = 5
+
+
 @bot.on(admin_cmd(pattern="happyny(.*)"))
 async def xd(event):
     await event.edit("Sending To all Group good Morning")
@@ -40,10 +41,6 @@ async def xd(event):
 
 CmdHelp("new year").add_command(
     "happyny", None, "Wishs Happy New Year in all groups just one command"
-).add_info(
-    "HAPPY NEW YEAR Wish Command"
-).add_warning(
-    "Harmless Module✅"
-).add_type(
+).add_info("HAPPY NEW YEAR Wish Command").add_warning("Harmless Module✅").add_type(
     "Addons"
 ).add()
