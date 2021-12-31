@@ -13,8 +13,6 @@ from userbot import *
 from userbot.Config import Config
 from userbot.utils import *
 
-from . import *
-
 neko_category = [
     "feet",
     "yuri",
