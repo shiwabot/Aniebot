@@ -85,5 +85,5 @@ async def butts(event):
 
 
 CmdHelp("adultzone").add_command("boobs", None, "Sends a random boobs pic").add_command(
-    "butts", None, "Sends a random Butt pic").add_command("nekos", None, "18+ pic
+    "butts", None, "Sends a random Butt pic").add_command("nekos", None, "18+ pic"
 ).add_info("Use at Night Its Send U bad pic").add_warning("18+").add_type("Abuse").add()
