@@ -135,11 +135,11 @@ async def legends():
 async def help(event):
     await event.delete()
     starkbot = await tgbot.get_me()
-    starkbot.first_name
+    bot_id = starkbot.first_name
     if event.query.user_id is not bot.uid:
         await tgbot.send_message(
             event.chat_id,
-            message="Hey Sir It's Me {bot_id}, Your Assistant! How Can I Help U?",
+            message=f"Hey Sir It's Me {bot_id}, Your Assistant! How Can I Help U?",
             buttons=[
                 [
                     Button.url(" Support ", "https://t.me/Legend_Userbot"),
