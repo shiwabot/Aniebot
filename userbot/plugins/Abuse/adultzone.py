@@ -3,19 +3,84 @@
 
 import asyncio
 import os
-import urllib
-import nekos
 import random
+import urllib
+
+import nekos
 import requests
 
 from userbot import *
 from userbot.Config import Config
 from userbot.utils import *
+
 from . import *
 
+neko_category = [
+    "feet",
+    "yuri",
+    "trap",
+    "futanari",
+    "hololewd",
+    "lewdkemo",
+    "solog",
+    "feetg",
+    "cum",
+    "erokemo",
+    "les",
+    "wallpaper",
+    "lewdk",
+    "ngif",
+    "tickle",
+    "lewd",
+    "feed",
+    "gecg",
+    "eroyuri",
+    "eron",
+    "cum_jpg",
+    "bj",
+    "nsfw_neko_gif",
+    "solo",
+    "kemonomimi",
+    "nsfw_avatar",
+    "gasm",
+    "poke",
+    "anal",
+    "slap",
+    "hentai",
+    "avatar",
+    "erofeet",
+    "holo",
+    "keta",
+    "blowjob",
+    "pussy",
+    "tits",
+    "holoero",
+    "lizard",
+    "pussy_jpg",
+    "pwankg",
+    "classic",
+    "kuni",
+    "waifu",
+    "pat",
+    "8ball",
+    "kiss",
+    "femdom",
+    "neko",
+    "spank",
+    "cuddle",
+    "erok",
+    "fox_girl",
+    "boobs",
+    "random_hentai_gif",
+    "smallboobs",
+    "hug",
+    "ero",
+    "smug",
+    "goose",
+    "baka",
+    "woof",
+]
 
-
-neko_category = ['feet', 'yuri', 'trap', 'futanari', 'hololewd', 'lewdkemo', 'solog', 'feetg', 'cum', 'erokemo', 'les', 'wallpaper', 'lewdk', 'ngif', 'tickle', 'lewd', 'feed', 'gecg', 'eroyuri', 'eron', 'cum_jpg', 'bj', 'nsfw_neko_gif', 'solo', 'kemonomimi', 'nsfw_avatar', 'gasm', 'poke', 'anal', 'slap', 'hentai', 'avatar', 'erofeet', 'holo', 'keta', 'blowjob', 'pussy', 'tits', 'holoero', 'lizard', 'pussy_jpg', 'pwankg', 'classic', 'kuni', 'waifu', 'pat', '8ball', 'kiss', 'femdom', 'neko', 'spank', 'cuddle', 'erok', 'fox_girl', 'boobs', 'random_hentai_gif', 'smallboobs', 'hug', 'ero', 'smug', 'goose', 'baka', 'woof']
 
 @bot.on(admin_cmd(pattern="nekos(?:\s|$)([\s\S]*)"))
 async def _(event):
@@ -25,7 +90,10 @@ async def _(event):
     if y == 1496036895:
         return await eor(event, "Can't use this command here.")
     if Config.ABUSE != "ON":
-        return await eor(event, "**This command is only for users with heroku variable** `ABUSE` **as** `ON`")
+        return await eor(
+            event,
+            "**This command is only for users with heroku variable** `ABUSE` **as** `ON`",
+        )
     owo = event.text[7:]
     if owo in neko_category:
         king = await eor(event, f"`Searching {owo} ...`")
@@ -43,9 +111,12 @@ async def _(event):
         if link.endswith((".gif")):
             await unsave_gif(event, x)
     else:
-        await eor(event, f"**Unmatched argument.** \n\n__Get all the required queries for nekos here__ -> **[Nekos Queries](http://telegra.ph/Nekos-Queries-08-20)**")
-        
-        
+        await eor(
+            event,
+            f"**Unmatched argument.** \n\n__Get all the required queries for nekos here__ -> **[Nekos Queries](http://telegra.ph/Nekos-Queries-08-20)**",
+        )
+
+
 @bot.on(admin_cmd("boobs$"))
 @bot.on(sudo_cmd(pattern="boobs$", allow_sudo=True))
 async def boobs(event):
@@ -85,5 +156,11 @@ async def butts(event):
 
 
 CmdHelp("adultzone").add_command("boobs", None, "Sends a random boobs pic").add_command(
-    "butts", None, "Sends a random Butt pic").add_command("nekos", None, "18+ pic"
-).add_info("Use at Night Its Send U bad pic").add_warning("18+").add_type("Abuse").add()
+    "butts", None, "Sends a random Butt pic"
+).add_command("nekos", None, "18+ pic").add_info(
+    "Use at Night Its Send U bad pic"
+).add_warning(
+    "18+"
+).add_type(
+    "Abuse"
+).add()
