@@ -232,6 +232,8 @@ async def _(event):
             for i in animation_ttl:
                 await asyncio.sleep(animation_interval)
                 await event.edit(animation_chars[i % 5], link_preview=True)
+    else:
+        await event.edit("No User is Defined\nAre u dumb\n\nreply to a user.")
 
 
 @bot.on(admin_cmd(pattern=f"ding$"))
