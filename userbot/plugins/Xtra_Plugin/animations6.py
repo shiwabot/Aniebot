@@ -17,6 +17,8 @@ sed4 = "https://telegra.ph/file/f5c968e0dd5bf01748678.mp4"
 sed5 = "https://telegra.ph/file/026f3b4776af1f3277614.mp4"
 sed6 = "https://telegra.ph/file/3593c809b7dcc17090b6c.mp4"
 sed = "https://telegra.ph/file/f29468b5fba0ad146bae2.mp4"
+
+
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "set ur alive name"
 remd = bot.me.id
 cap = f"Yeah My Friend This Suprise is for you\nThanks for Being my Friend, I am Blessed With a friend like you✨\n                           ~[{DEFAULTUSER}](tg://user?id={remd})"
@@ -379,8 +381,8 @@ async def _(event):
         await event.edit(animation_chars[i % 13])
 
 
-@bot.on(admin_cmd(pattern=r"happy?(.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern=r"happy?(.*)", allow_sudo=True))
+@bot.on(admin_cmd(pattern=r"imhappy?(.*)", outgoing=True))
+@bot.on(sudo_cmd(pattern=r"imhappy?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -436,7 +438,7 @@ async def _(event):
 
 
 CmdHelp("animations6").add_command("bigoof", None, "🇮🇳🇮🇳🇮🇳").add_command(
-    "happy", None, "Use and see"
+    "imhappy", None, "Use and see"
 ).add_command("smile", None, "Use and see").add_command(
     "animate", None, "Use a d See"
 ).add_command(
