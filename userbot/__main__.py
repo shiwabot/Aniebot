@@ -19,7 +19,6 @@ l2 = Config.SUDO_COMMAND_HAND_LER
 LEGEND_PIC = "https://telegra.ph/file/e753315316673cff51085.mp4"
 
 from userbot.helpers.logger import logging
-
 LOGS = logging.getLogger(__name__)
 
 perf = "[ †hê Lêɠêɳ̃dẞø† ]"
@@ -34,6 +33,16 @@ if mybot.startswith("@"):
 else:
     botname = f"@{mybot}"
 
+
+from telethon.errors import (
+    ChannelInvalidError,
+    ChannelPrivateError,
+    ChannelPublicGroupNaError,
+)
+from telethon.tl import functions
+from telethon.tl.functions.channels import GetFullChannelRequest, InviteToChannelRequest
+from telethon.tl.functions.messages import GetFullChatRequest
+from telethon import Button, functions, types, utils
 
 async def add_bot(bot_token):
     try:
@@ -68,15 +77,13 @@ else:
 print("📍⚜Loading Modules / Plugins⚜✔")
 
 tgbot = bot.tgbot
-
-
-async def add_bot_to_logger_group(chat_id):
+async def auto_start(chat_id):
     """
     To add bot to logger groups
     """
-    bot_details = await catub.tgbot.get_me()
+    bot_details = await bot.tgbot.get_me()
     try:
-        await catub(
+        await bot(
             functions.messages.AddChatUserRequest(
                 chat_id=chat_id,
                 user_id=bot_details.username,
@@ -85,7 +92,7 @@ async def add_bot_to_logger_group(chat_id):
         )
     except BaseException:
         try:
-            await catub(
+            await bot(
                 functions.channels.InviteToChannelRequest(
                     channel=chat_id,
                     users=[bot_details.username],
@@ -93,7 +100,6 @@ async def add_bot_to_logger_group(chat_id):
             )
         except Exception as e:
             LOGS.error(str(e))
-
 
 async def killer():
     LEGEND_USER = bot.me.first_name
@@ -344,7 +350,7 @@ bot.loop.run_until_complete(spams())
 bot.loop.create_task(hekp())
 bot.loop.run_until_complete(killer())
 bot.loop.run_until_complete(install())
-
+bot.loop.run_until_complete(auto_start())
 print(
     f"""
 ╔════❰LEGENDBOT❱═❍⊱❁۪۪
