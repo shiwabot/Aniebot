@@ -7,6 +7,8 @@ os.system("pip install telethon==1.24.0")
 
 import telethon.utils
 from telethon import Button, TelegramClient, custom, events
+from telethon.tl.functions.channels import GetFullChannelRequest, InviteToChannelRequest
+from telethon.tl.functions.messages import GetFullChatRequest
 
 from userbot import LOGS, LEGENDversion, bot
 from userbot.Config import Config
