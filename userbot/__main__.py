@@ -8,19 +8,18 @@ os.system("pip install telethon==1.24.0")
 import telethon.utils
 from telethon import Button, TelegramClient, custom, events
 from telethon.tl.functions.channels import InviteToChannelRequest
+from telethon.tl.functions.messages import AddChatUserRequest
 
 from userbot import LOGS, LEGENDversion, bot
 from userbot.Config import Config
 from var import Var
+from userbot.helpers.logger import logging
 
 from .start import abuses, addons, assistants, hekp, install, module, spams
 
 l1 = Config.COMMAND_HAND_LER
 l2 = Config.SUDO_COMMAND_HAND_LER
 LEGEND_PIC = "https://telegra.ph/file/e753315316673cff51085.mp4"
-chat_id = Config.PLUGIN_CHANNEL
-from userbot.helpers.logger import logging
-
 LOGS = logging.getLogger(__name__)
 
 perf = "[ †hê Lêɠêɳ̃dẞø† ]"
@@ -128,6 +127,7 @@ async def auto_start(chat_id):
     To add bot to logger groups
     """
     Bot_details = await tgbot.get_me()
+    chat_id = os.environ.get("PLUGIN_CHANNEL", None)
     try:
         await bot(
             AddChatUserRequest(
