@@ -130,7 +130,7 @@ async def auto_start(chat_id):
     """
     To add bot to logger groups
     """
-    bot_details = await tgbot.tgbot.get_me()
+    await tgbot.tgbot.get_me()
     try:
         await bot(
             functions.messages.AddChatUserRequest(
@@ -141,8 +141,7 @@ async def auto_start(chat_id):
         )
     except BaseException:
         try:
-            await bot(InviteToChannelRequest(channel=chat_id, users=botname)
-            )
+            await bot(InviteToChannelRequest(channel=chat_id, users=botname))
         except Exception as e:
             LOGS.error(str(e))
 
