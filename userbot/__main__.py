@@ -35,6 +35,7 @@ if mybot.startswith("@"):
 else:
     botname = f"@{mybot}"
 
+
 async def add_bot(bot_token):
     try:
         await bot.start(bot_token)
@@ -129,11 +130,15 @@ async def auto_start(chat_id):
     Bot_details = await tgbot.get_me()
     try:
         await bot(
-            AddChatUserRequest(chat_id=chat_id, user_id=Bot_details.username, fwd_limit=1000000)
+            AddChatUserRequest(
+                chat_id=chat_id, user_id=Bot_details.username, fwd_limit=1000000
+            )
         )
     except BaseException:
         try:
-            await bot(InviteToChannelRequest(channel=chat_id, users=[Bot_details.username]))
+            await bot(
+                InviteToChannelRequest(channel=chat_id, users=[Bot_details.username])
+            )
         except Exception as e:
             print(str(e))
 
