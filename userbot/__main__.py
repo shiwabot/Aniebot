@@ -18,6 +18,9 @@ l1 = Config.COMMAND_HAND_LER
 l2 = Config.SUDO_COMMAND_HAND_LER
 LEGEND_PIC = "https://telegra.ph/file/e753315316673cff51085.mp4"
 
+from userbot.helpers.logger import logging
+LOGS = logging.getLogger(__name__)
+
 perf = "[ †hê Lêɠêɳ̃dẞø† ]"
 
 onbot = "start - Check if I am Alive \nhack - Hack Anyone Through String Session\nping - Pong! \ntr - <lang-code> \nbroadcast - Sends Message To all Users In Bot \nid - Shows ID of User And Media. \naddnote - Add Note \nnotes - Shows Notes \nspam - spam value text (value < 100)\nbigspam - spam value text (value > 100) \nraid - Raid value Reply to Anyone \nreplyraid - Reply To Anyone \ndreplyraid - Reply To Anyone \nrmnote - Remove Note \nalive - Am I Alive? \nbun - Works In Group , Bans A User. \nunbun - Unbans A User in Group \nprumote - Promotes A User \ndemute - Demotes A User \npin - Pins A Message \nstats - Shows Total Users In Bot \npurge - Reply It From The Message u Want to Delete (Your Bot Should be Admin to Execute It) \ndel - Reply a Message Tht Should Be Deleted (Your Bot Should be Admin to Execute It)"
@@ -65,6 +68,29 @@ print("📍⚜Loading Modules / Plugins⚜✔")
 
 tgbot = bot.tgbot
 
+async def add_bot_to_logger_group(chat_id):
+    """
+    To add bot to logger groups
+    """
+    bot_details = await catub.tgbot.get_me()
+    try:
+        await catub(
+            functions.messages.AddChatUserRequest(
+                chat_id=chat_id,
+                user_id=bot_details.username,
+                fwd_limit=1000000,
+            )
+        )
+    except BaseException:
+        try:
+            await catub(
+                functions.channels.InviteToChannelRequest(
+                    channel=chat_id,
+                    users=[bot_details.username],
+                )
+            )
+        except Exception as e:
+            LOGS.error(str(e))
 
 async def killer():
     LEGEND_USER = bot.me.first_name
