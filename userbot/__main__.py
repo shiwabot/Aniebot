@@ -74,7 +74,6 @@ print("📍⚜Loading Modules / Plugins⚜✔")
 tgbot = bot.tgbot
 
 
-
 async def killer():
     LEGEND_USER = bot.me.first_name
     The_LegendBoy = bot.uid
@@ -126,6 +125,7 @@ async def killer():
     # else:
     # print("Turn On ASSISTANT to Use This")
 
+
 async def auto_start(chat_id):
     """
     To add bot to logger groups
@@ -149,6 +149,7 @@ async def auto_start(chat_id):
             )
         except Exception as e:
             LOGS.error(str(e))
+
 
 async def legends():
     LEGEND_USER = bot.me.first_name
