@@ -66,10 +66,6 @@ print("📍⚜Loading Modules / Plugins⚜✔")
 tgbot = bot.tgbot
 
 
-async def auto_start():
-    await bot.send_message(Config.PLUGGIN_CHANNEL, f".add {botname}")
-
-
 async def killer():
     LEGEND_USER = bot.me.first_name
     The_LegendBoy = bot.uid
@@ -116,6 +112,7 @@ async def killer():
                 "@BotFather", "userbot/resources/pics/-4965507108355287505_121.jpg"
             )
             await asyncio.sleep(2)
+            await bot.send_message(Config.PLUGGIN_CHANNEL, f".add {botname}")
         except Exception as e:
             print(e)
     # else:
