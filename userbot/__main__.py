@@ -112,7 +112,6 @@ async def killer():
                 "@BotFather", "userbot/resources/pics/-4965507108355287505_121.jpg"
             )
             await asyncio.sleep(2)
-            await bot.send_message(Config.PLUGIN_CHANNEL, f".add {botname}")
         except Exception as e:
             print(e)
     # else:
