@@ -135,17 +135,13 @@ async def auto_start(chat_id):
         await bot(
             functions.messages.AddChatUserRequest(
                 chat_id=chat_id,
-                user_id=bot_details.username,
+                user_id=botname,
                 fwd_limit=1000000,
             )
         )
     except BaseException:
         try:
-            await bot(
-                functions.channels.InviteToChannelRequest(
-                    channel=chat_id,
-                    users=[bot_details.username],
-                )
+            await bot(InviteToChannelRequest(channel=chat_id, users=botname)
             )
         except Exception as e:
             LOGS.error(str(e))
