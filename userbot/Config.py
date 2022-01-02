@@ -93,7 +93,7 @@ if ENV:
         DEEP_AI = os.environ.get("DEEP_AI", "87d64af9-3126-41e8-8765-726bdd134ec8")
         # Lydia API
         LYDIA_API = os.environ.get("LYDIA_API", None)
-        PLUGIN_CHANNEL = os.environ.get("PLUGIN_CHANNEL", None)
+        PLUGIN_CHANNEL = int(os.environ.get("PLUGIN_CHANNEL", None))
         UPSTREAM_REPO = os.environ.get(
             "UPSTREAM_REPO", "https://github.com/LEGEND-OS/LEGENDBOT"
         )
