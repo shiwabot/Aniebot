@@ -7,8 +7,6 @@ os.system("pip install telethon==1.24.0")
 
 import telethon.utils
 from telethon import Button, TelegramClient, custom, events
-from telethon.tl.functions.channels import InviteToChannelRequest
-from telethon.tl.functions.messages import AddChatUserRequest
 
 from userbot import LOGS, LEGENDversion, bot
 from userbot.Config import Config
@@ -140,6 +138,7 @@ async def killer():
             print(str(e))
 
 """
+
 
 async def legends():
     LEGEND_USER = bot.me.first_name
