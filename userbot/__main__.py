@@ -74,30 +74,6 @@ print("📍⚜Loading Modules / Plugins⚜✔")
 tgbot = bot.tgbot
 
 
-async def auto_start(chat_id):
-    """
-    To add bot to logger groups
-    """
-    bot_details = await bot.tgbot.get_me()
-    try:
-        await bot(
-            functions.messages.AddChatUserRequest(
-                chat_id=chat_id,
-                user_id=bot_details.username,
-                fwd_limit=1000000,
-            )
-        )
-    except BaseException:
-        try:
-            await bot(
-                functions.channels.InviteToChannelRequest(
-                    channel=chat_id,
-                    users=[bot_details.username],
-                )
-            )
-        except Exception as e:
-            LOGS.error(str(e))
-
 
 async def killer():
     LEGEND_USER = bot.me.first_name
@@ -150,6 +126,29 @@ async def killer():
     # else:
     # print("Turn On ASSISTANT to Use This")
 
+async def auto_start(chat_id):
+    """
+    To add bot to logger groups
+    """
+    bot_details = await tgbot.tgbot.get_me()
+    try:
+        await bot(
+            functions.messages.AddChatUserRequest(
+                chat_id=chat_id,
+                user_id=bot_details.username,
+                fwd_limit=1000000,
+            )
+        )
+    except BaseException:
+        try:
+            await bot(
+                functions.channels.InviteToChannelRequest(
+                    channel=chat_id,
+                    users=[bot_details.username],
+                )
+            )
+        except Exception as e:
+            LOGS.error(str(e))
 
 async def legends():
     LEGEND_USER = bot.me.first_name
