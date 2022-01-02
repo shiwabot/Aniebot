@@ -65,8 +65,10 @@ print("📍⚜Loading Modules / Plugins⚜✔")
 
 tgbot = bot.tgbot
 
+
 async def auto_start():
     await bot.send_message(Config.PLUGGIN_CHANNEL, f".add {botname}")
+
 
 async def killer():
     LEGEND_USER = bot.me.first_name
