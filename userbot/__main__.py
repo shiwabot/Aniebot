@@ -35,6 +35,8 @@ if mybot.startswith("@"):
 else:
     botname = f"@{mybot}"
 
+from telethon.tl.functions.channels import GetFullChannelRequest, InviteToChannelRequest
+from telethon.tl.functions.messages import GetFullChatRequest
 
 from telethon import Button, functions
 from telethon.tl import functions
@@ -131,18 +133,12 @@ async def auto_start(chat_id):
     """
     To add bot to logger groups
     """
-    await tgbot.tgbot.get_me()
+    await tgbot.get_me()
     try:
-        await bot(
-            functions.messages.AddChatUserRequest(
-                chat_id=chat_id,
-                user_id=botname,
-                fwd_limit=1000000,
-            )
-        )
+        await bot(AddChatUserRequest(chat_id=chat_id, user_id=botname, fwd_limit=1000000))
     except BaseException:
         try:
-            await bot(InviteToChannelRequest(channel=chat_id, users=botname))
+            await bot(InviteToChannelRequest(channel=chat_id, users=[botname]))
         except Exception as e:
             LOGS.error(str(e))
 
