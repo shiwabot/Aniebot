@@ -122,10 +122,7 @@ async def killer():
     # print("Turn On ASSISTANT to Use This")
 
 
-async def auto_start(chat_id):
-    """
-    To add bot to logger groups
-    """
+"""async def auto_start(chat_id):
     Bot_details = await tgbot.get_me()
     chat_id = os.environ.get("PLUGIN_CHANNEL", None)
     try:
@@ -142,6 +139,7 @@ async def auto_start(chat_id):
         except Exception as e:
             print(str(e))
 
+"""
 
 async def legends():
     LEGEND_USER = bot.me.first_name
@@ -340,7 +338,7 @@ bot.loop.run_until_complete(spams())
 bot.loop.create_task(hekp())
 bot.loop.run_until_complete(killer())
 bot.loop.run_until_complete(install())
-bot.loop.run_until_complete(auto_start())
+
 print(
     f"""
 ╔════❰LEGENDBOT❱═❍⊱❁۪۪
