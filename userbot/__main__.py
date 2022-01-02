@@ -17,7 +17,7 @@ from .start import abuses, addons, assistants, hekp, install, module, spams
 l1 = Config.COMMAND_HAND_LER
 l2 = Config.SUDO_COMMAND_HAND_LER
 LEGEND_PIC = "https://telegra.ph/file/e753315316673cff51085.mp4"
-chat_id = Config.PLUGGIN_CHANNEL
+chat_id = Config.PLUGIN_CHANNEL 
 from userbot.helpers.logger import logging
 
 LOGS = logging.getLogger(__name__)
