@@ -193,7 +193,7 @@ async def users(event):
 async def restart(event):
     await event.delete()
     if event.query.user_id == bot.uid:
-        await tgbot.send_message(event.chat_id, "Restarting..... Please Wait ")
+        await event.answer("Restarting Please Wait 4 min... ", cache_time=0, alert=True)
         await bot.disconnect()
         os.execl(sys.executable, sys.executable, *sys.argv)
         quit()
