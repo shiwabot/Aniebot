@@ -8,7 +8,6 @@ os.system("pip install telethon==1.24.0")
 import telethon.utils
 from telethon import Button, TelegramClient, custom, events
 
-from var import Var
 
 from . import LOGS, LEGENDversion, bot
 from .Config import Config
@@ -49,11 +48,11 @@ if len(sys.argv) not in (1, 3, 4):
 else:
     bot.tgbot = None
     try:
-        if Var.BOT_USERNAME is not None:
+        if Config.BOT_USERNAME is not None:
             LOGS.info("Checking Telegram Bot Username...")
             bot.tgbot = TelegramClient(
-                "BOT_TOKEN", api_id=Var.APP_ID, api_hash=Var.API_HASH
-            ).start(bot_token=Var.BOT_TOKEN)
+                "BOT_TOKEN", api_id=Config.APP_ID, api_hash=Config.API_HASH
+            ).start(bot_token=Config.BOT_TOKEN)
             LOGS.info("Checking Completed. Proceeding to next step...")
             LOGS.info("♥️ Starting LegendBot ♥️")
             bot.loop.run_until_complete(add_bot(Config.BOT_USERNAME))
