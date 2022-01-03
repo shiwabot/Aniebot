@@ -4,7 +4,7 @@ from telethon import events
 from uniborg.util import admin_cmd
 
 
-@borg.on(admin_cmd(pattern="moj?(.*)"))
+@borg.on(admin_cmd(pattern="lmoj?(.*)"))
 async def _(event):
     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
         await event.edit("RE")
@@ -36,6 +36,6 @@ async def _(event):
 
 from userbot.cmdhelp import CmdHelp
 
-CmdHelp("lmoj").add_command("moj", None, "Its like abuse").add_command(
+CmdHelp("lmoj").add_command("lmoj", None, "Its like abuse").add_command(
     "nonehi", None, "Try It"
 ).add()
