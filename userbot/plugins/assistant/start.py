@@ -107,8 +107,8 @@ async def users(event):
             cache_time=0,
             alert=True,
         )
-        
-        
+
+
 # Bot Permit.
 @tgbot.on(events.NewMessage(func=lambda e: e.is_private))
 async def all_messages_catcher(event):
