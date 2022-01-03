@@ -11,6 +11,7 @@ from telethon import Button, TelegramClient, custom, events
 from userbot.Config import Config
 from userbot.helpers.logger import logging
 from var import Var
+from userbot.helpers.runner import reload_LEGENDBOT
 
 from . import LOGS, LEGENDversion, bot
 from .start import abuses, addons, assistants, hekp, install, module, spams
@@ -228,7 +229,16 @@ async def help(event):
             alert=True,
         )
 
-
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"reload")))
+async def rel(event):
+    if event.query.user_id == bot.uid:
+        await event.answer("Reloading Lêɠêɳ̃dẞø†... Wait for few seconds..." cache_time=0, alert=True)
+        await reload_LEGENDBOT()
+    else:
+        await event.answer(
+            "Sorry U Dont Have Access to Use this Button", cache_time=0, alert=True)
+    
+    
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"strvar")))
 async def help(event):
     await event.delete()
