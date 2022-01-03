@@ -10,7 +10,6 @@ from telethon import Button, TelegramClient, custom, events
 
 from userbot.Config import Config
 from userbot.helpers.logger import logging
-from userbot.plugins.sql_helper.idadder import get_all_users
 from var import Var
 
 from . import LOGS, LEGENDversion, bot
