@@ -8,7 +8,6 @@ os.system("pip install telethon==1.24.0")
 import telethon.utils
 from telethon import Button, TelegramClient, custom, events
 
-
 from . import LOGS, LEGENDversion, bot
 from .Config import Config
 from .helpers.logger import logging
