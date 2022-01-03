@@ -185,7 +185,7 @@ async def restart(event):
         os.execl(sys.executable, sys.executable, *sys.argv)
         quit()
     else:
-        await event.answer("sorry u cant access", cache_time=0, alert=True)
+        await event.answer("Sorry Only My Master Can Access It", cache_time=0, alert=True)
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"osg")))
