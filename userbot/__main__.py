@@ -180,10 +180,10 @@ async def help(event):
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"restart")))
 async def restart(event):
     await event.delete()
-    if event.query.user_id = bot.uid:
+    if event.query.user_id == bot.uid:
         await event.answer("sorry u cant access", cache_time=0, alert=True)
     else:
-        await tgbot.send_message(event.chat_id, "Restarting")
+        await event.edit(event.chat_id, "Restarting")
         await bot.disconnect()
         os.execl(sys.executable, sys.executable, *sys.argv)
         quit()
