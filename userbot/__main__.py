@@ -218,6 +218,8 @@ async def help(event):
                     custom.Button.inline("Var", data="strvar"),
                     custom.Button.inline("Commmands", data="gibcmd"),
                 ],
+                [
+                    custom.Button.inline("Back", data="start")],
             ],
         )
     else:
