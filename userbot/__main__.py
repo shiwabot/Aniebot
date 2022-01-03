@@ -232,7 +232,7 @@ async def help(event):
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"reload")))
 async def rel(event):
     if event.query.user_id == bot.uid:
-        await event.answer("Reloading Lêɠêɳ̃dẞø†... Wait for few seconds..." cache_time=0, alert=True)
+        await event.answer("Reloading Lêɠêɳ̃dẞø†... Wait for few seconds...", cache_time=0, alert=True)
         await reload_LEGENDBOT()
     else:
         await event.answer(
