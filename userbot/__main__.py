@@ -191,7 +191,6 @@ async def users(event):
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"restart")))
 async def restart(event):
-    await event.delete()
     if event.query.user_id == bot.uid:
         await event.answer("Restarting Please Wait 4 min... ", cache_time=0, alert=True)
         await bot.disconnect()
