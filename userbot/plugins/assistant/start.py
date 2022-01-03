@@ -36,10 +36,13 @@ async def start(event):
                     Button.url(" Support ", "https://t.me/Legend_Userbot"),
                     Button.url(" Updates ", "https://t.me/Official_LegendBot"),
                 ],
-                [custom.Button.inline("Settings", data="osg")],
+                [
+                    custom.Button.inline("Users", data="users"),
+                    custom.Button.inline("Settings", data="osg"),
+                ],
                 [custom.Button.inline("Hack", data="hack")],
             ],
-        )
+       )
     else:
         if already_added(event.sender_id):
             pass
@@ -52,27 +55,31 @@ async def start(event):
             buttons=[
                 [
                     custom.Button.inline(" Rules ", data="rules"),
-                    custom.Button.inline(" Close ", data="close"),
+                    custom.Button.inline(" Close ", data="v_close"),
                 ],
-                [custom.Button.inline(" Hack ", data="v_hack")],
             ],
         )
 
 
 # Data's
 
-
+    
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"rules")))
 async def help(event):
     await event.delete()
     if event.query.user_id is not bot.uid:
+        await event.answer(
+            "This Is Not For U My Master", catch_time=0, alert=True,
+        )
+    else:
         await tgbot.send_message(
             event.chat_id,
             message="🔰Rᴇᴀᴅ Tʜᴇ Rᴜʟᴇꜱ Tᴏᴏ🔰\n\n🔹 Dᴏɴ'ᴛ Sᴩᴀᴍ\n🔹 ᴛᴀʟᴋ Fʀɪᴇɴᴅʟy\n🔹 Dᴏɴ'ᴛ Bᴇ Rᴜᴅᴇ\n🔹 Sᴇɴᴅ Uʀ Mᴇꜱꜱᴀɢᴇꜱ Hᴇʀᴇ\n🔹 Nᴏ Pᴏʀɴᴏɢʀᴀᴘʜʏ\n🔹 Dᴏɴ'ᴛ Wʀɪᴛᴇ Bᴀᴅ Wᴏʀᴅs.\n\nWʜᴇɴ I Gᴇᴛ Fʀᴇᴇ Tɪᴍᴇ , I'ʟʟ Rᴇᴩʟy U 💯✅",
             buttons=[
-                [custom.Button.inline("Back", data="osg")],
+                [custom.Button.inline("Close", data="close")],
             ],
         )
+    
 
 
 # Bot Permit.
