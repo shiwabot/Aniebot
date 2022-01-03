@@ -42,7 +42,7 @@ async def start(event):
                 ],
                 [custom.Button.inline("Hack", data="hack")],
             ],
-       )
+        )
     else:
         if already_added(event.sender_id):
             pass
@@ -63,13 +63,15 @@ async def start(event):
 
 # Data's
 
-    
+
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"rules")))
 async def help(event):
     await event.delete()
     if event.query.user_id is not bot.uid:
         await event.answer(
-            "This Is Not For U My Master", catch_time=0, alert=True,
+            "This Is Not For U My Master",
+            catch_time=0,
+            alert=True,
         )
     else:
         await tgbot.send_message(
@@ -79,7 +81,6 @@ async def help(event):
                 [custom.Button.inline("Close", data="close")],
             ],
         )
-    
 
 
 # Bot Permit.
