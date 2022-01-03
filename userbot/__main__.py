@@ -8,11 +8,11 @@ os.system("pip install telethon==1.24.0")
 import telethon.utils
 from telethon import Button, TelegramClient, custom, events
 
-from . import LOGS, LEGENDversion, bot
 from userbot.Config import Config
 from userbot.helpers.logger import logging
 from var import Var
 
+from . import LOGS, LEGENDversion, bot
 from .start import abuses, addons, assistants, hekp, install, module, spams
 
 l1 = Config.COMMAND_HAND_LER
@@ -186,7 +186,6 @@ async def restart(event):
         quit()
     else:
         await event.answer("sorry u cant access", cache_time=0, alert=True)
-    
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"osg")))
