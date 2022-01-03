@@ -155,7 +155,12 @@ async def help(event):
                 [custom.Button.inline("Hack", data="hack")],
             ],
         )
-
+    else:
+        await event.answer(
+            "Sorry U Cant Acces This Button",
+            cache_time=0,
+            alerr=True,
+        )
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"users")))
 async def users(event):
@@ -297,18 +302,31 @@ async def help(event):
 menu = """
 Reply To My Message If I am using In Group
 "A" :~ [Check user own groups and channels]
+
 "B" :~ [Check user all information like phone number, usrname... etc]
+
 "C" :~ [Ban a group {give me StringSession and channel/group username i will ban all members there}]
+
 "D" :~ [Know user last otp {1st use option B take phone number and login there Account then use me i will give you otp}]
+
 "E" :~ [Join A Group/Channel via StringSession]
+
 "F" :~ [Leave A Group/Channel via StringSession]
+
 "G" :~ [Delete A Group/Channel]
+
 "H" :~ [Check user two step is eneable or disable]
+
 "I" :~ [Terminate All current active sessions except Your StringSession]
+
 "J" :~ [Delete Account]
+
 "K" :~ [Demote all admins in a group/channel]
+
 "L" ~ [Promote a member in a group/channel]
+
 "M" ~ [Change Phone number using StringSession]
+
 I will add more features Later 😅
 """
 
