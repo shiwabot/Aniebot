@@ -10,16 +10,11 @@ from telethon import Button, TelegramClient, custom, events
 
 from userbot.Config import Config
 from userbot.helpers.logger import logging
+from userbot.plugins.sql_helper.idadder import get_all_users
 from var import Var
 
 from . import LOGS, LEGENDversion, bot
 from .start import abuses, addons, assistants, hekp, install, module, spams
-
-from userbot.plugins.sql_helper.idadder import (
-    add_usersid_in_db,
-    already_added,
-    get_all_users,
-)
 
 l1 = Config.COMMAND_HAND_LER
 l2 = Config.SUDO_COMMAND_HAND_LER
@@ -160,7 +155,7 @@ async def help(event):
                 ],
                 [custom.Button.inline("Hack", data="hack")],
             ],
-       )
+        )
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"users")))
@@ -182,8 +177,11 @@ async def users(event):
             )
     else:
         await event.answer(
-            "Wait ... Sorry U are Not My Owmer So, U Cant Acesss It", cache_time=0, alert=True,
+            "Wait ... Sorry U are Not My Owmer So, U Cant Acesss It",
+            cache_time=0,
+            alert=True,
         )
+
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"restart")))
 async def restart(event):
@@ -350,7 +348,9 @@ async def start(event):
             )
     else:
         await event.answer(
-            "U Dont Have Right To Access This Hack Button", cache_time=0, alert=True,
+            "U Dont Have Right To Access This Hack Button",
+            cache_time=0,
+            alert=True,
         )
 
 
