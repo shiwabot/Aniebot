@@ -84,6 +84,31 @@ async def help(event):
         )
 
 
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"users")))
+async def users(event):
+    if event.query.user_id == bot.uid:
+        await event.delete()
+        total_users = get_all_users()
+        users_list = "⚜List Of Total Users In Bot.⚜ \n\n"
+        for starked in total_users:
+            users_list += ("==> {} \n").format(int(starked.chat_id))
+        with io.BytesIO(str.encode(users_list)) as tedt_file:
+            tedt_file.name = "userlist.txt"
+            await tgbot.send_file(
+                event.chat_id,
+                tedt_file,
+                force_document=True,
+                caption="Total Users In Your Bot.",
+                allow_cache=False,
+            )
+    else:
+        await event.answer(
+            "Wait ... Sorry U are Not My Owmer So, U Cant Acesss It",
+            cache_time=0,
+            alert=True,
+        )
+        
+        
 # Bot Permit.
 @tgbot.on(events.NewMessage(func=lambda e: e.is_private))
 async def all_messages_catcher(event):
