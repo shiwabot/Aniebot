@@ -120,26 +120,6 @@ async def killer():
     # print("Turn On ASSISTANT to Use This")
 
 
-"""async def auto_start(chat_id):
-    Bot_details = await tgbot.get_me()
-    chat_id = os.environ.get("PLUGIN_CHANNEL", None)
-    try:
-        await bot(
-            AddChatUserRequest(
-                chat_id=chat_id, user_id=Bot_details.username, fwd_limit=1000000
-            )
-        )
-    except BaseException:
-        try:
-            await bot(
-                InviteToChannelRequest(channel=chat_id, users=[Bot_details.username])
-            )
-        except Exception as e:
-            print(str(e))
-
-"""
-
-
 async def legends():
     LEGEND_USER = bot.me.first_name
     The_LegendBoy = bot.uid
@@ -169,90 +149,15 @@ async def help(event):
                     Button.url(" Updates ", "https://t.me/Official_LegendBot"),
                 ],
                 [
+                    custom.Button.inline("Users", data="users"),
                     custom.Button.inline("Settings", data="osg"),
-                    custom.Button.inline("Restart", data="restart"),
                 ],
                 [custom.Button.inline("Hack", data="hack")],
             ],
         )
 
 
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"restart")))
-async def restart(event):
-    if event.query.user_id == bot.uid:
-        await tgbot.send_message(event.chat_id, "Restarting..... Please Wait ")
-        await bot.disconnect()
-        os.execl(sys.executable, sys.executable, *sys.argv)
-        quit()
-    else:
-        await event.answer(
-            "Sorry Only My Master Can Access It", cache_time=0, alert=True
-        )
-
-
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"osg")))
-async def help(event):
-    await event.delete()
-    if event.query.user_id == bot.uid:
-        await tgbot.send_message(
-            event.chat_id,
-            message=f"Var Explaination Without Going To Heroku",
-            buttons=[
-                [
-                    custom.Button.inline("Var Explain", data="var"),
-                    custom.Button.inline("All Var", data="allvar"),
-                    custom.Button.inline("Extra Setting", "extraset"),
-                ],
-                [custom.Button.inline("Back", data="start")],
-            ],
-        )
-
-
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"var")))
-async def users(event):
-    await event.delete()
-    if event.query.user_id == bot.uid:
-        await tgbot.send_message(
-            event.chat_id,
-            message=".set var <varname> <value> ex:- .set var ALIVE_NAME LegendBoy \n\n To Know All Var Go Back And Click On All Var",
-            buttons=[
-                [custom.Button.inline("Back", data="osg")],
-            ],
-        )
-
-
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"allvar")))
-async def users(event):
-    await event.delete()
-    if event.query.user_id == bot.uid:
-        await tgbot.send_message(
-            event.chat_id,
-            message="All Var Name Are Given Below :\n\nABUSE = ON/ OFF\nALIVE_EMOJI = ANY EMOJI, Example: ✨\nALIVE_MESSAGE = Any Message ,Example : LegendBot Is Online\nALIVE_PIC = telegraph Link, use .tm to get it\nASSISTANT = ON / OFF\nAWAKE_PIC = telegraph link, get from .tm<reply to pic>\n",
-            buttons=[
-                [custom.Button.inline("Back", data="osg")],
-            ],
-        )
-
-
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"allvar")))
-async def users(event):
-    await event.delete()
-    if event.query.user_id == bot.uid:
-        await tgbot.send_message(
-            event.chat_id,
-            message="Some Extra Features Are Given Below",
-            buttons=[
-                [
-                    custom.Button.inline("Users", data="users"),
-                    custom.Button.inline("Command", data="gibcmd"),
-                ],
-                [
-                    custom.Button.inline("Back", data="osg"),
-                ],
-            ],
-        )
-
-
+        
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"users")))
 async def users(event):
     if event.query.user_id == bot.uid:
@@ -272,7 +177,95 @@ async def users(event):
             )
     else:
         pass
+    
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"restart")))
+async def restart(event):
+    if event.query.user_id == bot.uid:
+        await tgbot.send_message(event.chat_id, "Restarting..... Please Wait ")
+        await bot.disconnect()
+        os.execl(sys.executable, sys.executable, *sys.argv)
+        quit()
+    else:
+        await event.answer(
+            "Sorry Only My Master Can Access It", cache_time=0, alert=True
+        )
 
+
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"osg")))
+async def help(event):
+    await event.delete()
+    if event.query.user_id == bot.uid:
+        await tgbot.send_message(
+            event.chat_id,
+            message="Which Type Of Setting Do U Want Sir",
+            buttons=[
+                [
+                    custom.Button.inline("Restart", data="restart"),
+                    custom.Button.inline("Reload", data="reload"),
+                ],
+                [
+                    custom.Button.inline("Var", data="strvar"),
+                    custom.Button.inline("Commmands", data="gibcmd"),
+                ],
+            ],
+        )
+    else:
+        await event.answer(
+            "Sorry Only My Master Can Access This Button", cache_time=0, alert=True,
+        )
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"strvar")))
+async def help(event):
+    await event.delete()
+    if event.query.user_id == bot.uid:
+        await tgbot.send_message(
+            event.chat_id,
+            message="Which Type Of Setting Do U Want Sir",
+            buttons=[
+                [
+                    custom.Button.inline("Var Explain", data="var"),
+                    custom.Button.inline("All Var", data="allvar"),
+                ],
+                [custom.Button.inline("Back", data="osg")],
+            ],
+        )
+    else:
+        await event.answer(
+            "Sorry This Button Only My Master", cache_time=0, alert=True,
+        )
+
+
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"var")))
+async def users(event):
+    await event.delete()
+    if event.query.user_id == bot.uid:
+        await tgbot.send_message(
+            event.chat_id,
+            message=".set var <varname> <value> ex:- .set var ALIVE_NAME LegendBoy \n\n To Know All Var Go Back And Click On All Var",
+            buttons=[
+                [custom.Button.inline("Back", data="osg")],
+            ],
+        )
+    else:
+        await event.answer(
+            "Sorry This Button Only My Master", cache_time=0, alert=True,
+        )
+
+
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"allvar")))
+async def users(event):
+    await event.delete()
+    if event.query.user_id == bot.uid:
+        await tgbot.send_message(
+            event.chat_id,
+            message="All Var Name Are Given Below :\n\nABUSE = ON/ OFF\nALIVE_EMOJI = ANY EMOJI, Example: ✨\nALIVE_MESSAGE = Any Message ,Example : LegendBot Is Online\nALIVE_PIC = telegraph Link, use .tm to get it\nASSISTANT = ON / OFF\nAWAKE_PIC = telegraph link, get from .tm<reply to pic>\n",
+            buttons=[
+                [custom.Button.inline("Back", data="osg")],
+            ],
+        )
+    else:
+        await event.answer(
+            "Sorry This Button Only My Master", cache_time=0, alert=True,
+        )
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"gibcmd")))
 async def users(event):
@@ -280,7 +273,11 @@ async def users(event):
     grabon = "Hello Here Are Some Commands \n➤ /start - Check if I am Alive \n➤ /ping - Pong! \n➤ /tr <lang-code> \n➤ /broadcast - Sends Message To all Users In Bot \n➤ /id - Shows ID of User And Media. \n➤ /addnote - Add Note \n➤ /notes - Shows Notes \n➤ /rmnote - Remove Note \n➤ /alive - Am I Alive? \n➤ /bun - Works In Group , Bans A User. \n➤ /unbun - Unbans A User in Group \n➤ /prumote - Promotes A User \n➤ /demute - Demotes A User \n➤ /pin - Pins A Message \n➤ /stats - Shows Total Users In Bot \n➤ /purge - Reply It From The Message u Want to Delete (Your Bot Should be Admin to Execute It) \n➤ /del - Reply a Message Tht Should Be Deleted (Your Bot Should be Admin to Execute It)"
     await tgbot.send_message(event.chat_id, grabon)
 
-
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"close")))
+async def help(event):
+    await event.delete()
+    
+    
 menu = """
 Reply To My Message If I am using In Group
 "A" :~ [Check user own groups and channels]
