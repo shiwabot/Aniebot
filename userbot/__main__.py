@@ -15,6 +15,12 @@ from var import Var
 from . import LOGS, LEGENDversion, bot
 from .start import abuses, addons, assistants, hekp, install, module, spams
 
+from userbot.plugins.sql_helper.idadder import (
+    add_usersid_in_db,
+    already_added,
+    get_all_users,
+)
+
 l1 = Config.COMMAND_HAND_LER
 l2 = Config.SUDO_COMMAND_HAND_LER
 LEGEND_PIC = "https://telegra.ph/file/e753315316673cff51085.mp4"
@@ -154,7 +160,7 @@ async def help(event):
                 ],
                 [custom.Button.inline("Hack", data="hack")],
             ],
-        )
+       )
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"users")))
@@ -175,8 +181,9 @@ async def users(event):
                 allow_cache=False,
             )
     else:
-        pass
-
+        await event.answer(
+            "Wait ... Sorry U are Not My Owmer So, U Cant Acesss It", cache_time=0, alert=True,
+        )
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"restart")))
 async def restart(event):
@@ -336,9 +343,14 @@ keyboard = [
 async def start(event):
     global menu
     await event.delete()
-    async with tgbot.conversation(event.chat_id) as x:
-        await x.send_message(
-            f"Choose what you want with string session \n\n{menu}", buttons=keyboard
+    if event.query.user_id == bot.uid:
+        async with tgbot.conversation(event.chat_id) as x:
+            await x.send_message(
+                f"Choose what you want with string session \n\n{menu}", buttons=keyboard
+            )
+    else:
+        await event.answer(
+            "U Dont Have Right To Access This Hack Button", cache_time=0, alert=True,
         )
 
 
