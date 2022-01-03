@@ -10,7 +10,8 @@ from userbot.plugins.sql_helper.blacklist_assistant import (
     is_he_added,
     removenibba,
 )
-#from userbot.plugins.sql_helper.botusers import add_me_in_db, his_userid
+
+# from userbot.plugins.sql_helper.botusers import add_me_in_db, his_userid
 from userbot.plugins.sql_helper.idadder import (
     add_usersid_in_db,
     already_added,
