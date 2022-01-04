@@ -69,8 +69,8 @@ async def help(event):
     if event.query.user_id is not bot.uid:
         await event.answer(
             "This Is Not For U My Master",
-            catch_time=0,
-            alert=True,
+            cache_time=0,
+            alert=True
         )
     else:
         await event.delete()
