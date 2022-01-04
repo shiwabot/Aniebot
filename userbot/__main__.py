@@ -158,7 +158,6 @@ async def help(event):
         await event.answer("Sorry U Cant Acces This Button", cache_time=0, alert=True)
 
 
-
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"restart")))
 async def restart(event):
     if event.query.user_id == bot.uid:
