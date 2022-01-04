@@ -274,8 +274,7 @@ async def hehe(event):
         global username, comment
         username, comment = text.split(".")
     except:
-        await event.edit("`.ytc username.comment reply  to image`")
-    await event.delete()
+        await eod("`.ytc username.comment reply  to image`")
     dc = await event.get_reply_message()
     if isinstance(dc.media, MessageMediaPhoto):
         img = await bot.download_media(dc.media, pathdc)
