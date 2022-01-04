@@ -46,7 +46,6 @@ async def crop(imagefile, endname, x):
     inverted_image.save(endname)
 
 
-from userbot.cmdhelp import CmdHelp
 import asyncio
 import os
 import random
@@ -56,12 +55,17 @@ from datetime import datetime
 from PIL import Image, ImageDraw, ImageFont
 from pySmartDL import SmartDL
 from telethon.tl import functions
-from userbot.Config import Config 
+
+from userbot.cmdhelp import CmdHelp
 from userbot.utils import admin_cmd
 
 FONT_FILE_TO_USE = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
 
-DOWNLOAD_PFP_URL_CLOCK = os.environ.get("Config.DOWNLOAD_PFP_URL_CLOCK", None) or "https://telegra.ph/file/30e65b288e39e29053486.jpg"
+DOWNLOAD_PFP_URL_CLOCK = (
+    os.environ.get("Config.DOWNLOAD_PFP_URL_CLOCK", None)
+    or "https://telegra.ph/file/30e65b288e39e29053486.jpg"
+)
+
 
 @borg.on(admin_cmd(pattern="bloom ?(.*)"))
 async def autopic(event):
@@ -105,7 +109,6 @@ async def autopic(event):
             await asyncio.sleep(60)
         except:
             return
-
 
 
 @LEGENDBOT.on(admin_cmd(pattern="invert$", outgoing=True))
