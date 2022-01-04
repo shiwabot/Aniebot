@@ -158,7 +158,7 @@ async def help(event):
         await event.answer(
             "Sorry U Cant Acces This Button",
             cache_time=0,
-            alerr=True,
+            alert=True
         )
 
 
@@ -183,7 +183,7 @@ async def users(event):
         await event.answer(
             "Wait ... Sorry U are Not My Owmer So, U Cant Acesss It",
             cache_time=0,
-            alert=True,
+            alert=True
         )
 
 
@@ -223,7 +223,7 @@ async def help(event):
         await event.answer(
             "Sorry Only My Master Can Access This Button",
             cache_time=0,
-            alert=True,
+            alert=True
         )
 
 
@@ -259,7 +259,7 @@ async def help(event):
         await event.answer(
             "Sorry This Button Only My Master",
             cache_time=0,
-            alert=True,
+            alert=True
         )
 
 
@@ -278,7 +278,7 @@ async def users(event):
         await event.answer(
             "Sorry This Button Only My Master",
             cache_time=0,
-            alert=True,
+            alert=True
         )
 
 
@@ -297,7 +297,7 @@ async def users(event):
         await event.answer(
             "Sorry This Button Only My Master",
             cache_time=0,
-            alert=True,
+            alert=True
         )
 
 
@@ -371,8 +371,8 @@ keyboard = [
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"hack")))
 async def start(event):
     global menu
-    await event.delete()
     if event.query.user_id == bot.uid:
+        await event.delete()
         async with tgbot.conversation(event.chat_id) as x:
             await x.send_message(
                 f"Choose what you want with string session \n\n{menu}", buttons=keyboard
@@ -381,7 +381,7 @@ async def start(event):
         await event.answer(
             "U Dont Have Right To Access This Hack Button",
             cache_time=0,
-            alert=True,
+            alert=True
         )
 
 
