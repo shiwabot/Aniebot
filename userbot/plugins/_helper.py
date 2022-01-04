@@ -132,8 +132,8 @@ async def legendbott(event):
                 if sira == i.index(i[-1]):
                     string += "`"
                 else:
-                    string += "`, `"
-            string += "\n"
+                    string += "`, "
+            string += "`\n"
         await eor(
             event,
             "Please Specify A Module Name Of Which You Want Info" + "\n\n" + string,
