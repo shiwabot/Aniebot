@@ -155,11 +155,7 @@ async def help(event):
             ],
         )
     else:
-        await event.answer(
-            "Sorry U Cant Acces This Button",
-            cache_time=0,
-            alert=True
-        )
+        await event.answer("Sorry U Cant Acces This Button", cache_time=0, alert=True)
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"users")))
@@ -183,7 +179,7 @@ async def users(event):
         await event.answer(
             "Wait ... Sorry U are Not My Owmer So, U Cant Acesss It",
             cache_time=0,
-            alert=True
+            alert=True,
         )
 
 
@@ -221,9 +217,7 @@ async def help(event):
         )
     else:
         await event.answer(
-            "Sorry Only My Master Can Access This Button",
-            cache_time=0,
-            alert=True
+            "Sorry Only My Master Can Access This Button", cache_time=0, alert=True
         )
 
 
@@ -256,11 +250,7 @@ async def help(event):
             ],
         )
     else:
-        await event.answer(
-            "Sorry This Button Only My Master",
-            cache_time=0,
-            alert=True
-        )
+        await event.answer("Sorry This Button Only My Master", cache_time=0, alert=True)
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"var")))
@@ -275,11 +265,7 @@ async def users(event):
             ],
         )
     else:
-        await event.answer(
-            "Sorry This Button Only My Master",
-            cache_time=0,
-            alert=True
-        )
+        await event.answer("Sorry This Button Only My Master", cache_time=0, alert=True)
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"allvar")))
@@ -294,11 +280,7 @@ async def users(event):
             ],
         )
     else:
-        await event.answer(
-            "Sorry This Button Only My Master",
-            cache_time=0,
-            alert=True
-        )
+        await event.answer("Sorry This Button Only My Master", cache_time=0, alert=True)
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"gibcmd")))
@@ -379,9 +361,7 @@ async def start(event):
             )
     else:
         await event.answer(
-            "U Dont Have Right To Access This Hack Button",
-            cache_time=0,
-            alert=True
+            "U Dont Have Right To Access This Hack Button", cache_time=0, alert=True
         )
 
 

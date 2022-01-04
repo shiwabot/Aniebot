@@ -67,11 +67,7 @@ async def start(event):
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"rules")))
 async def help(event):
     if event.query.user_id is not bot.uid:
-        await event.answer(
-            "This Is Not For U My Master",
-            cache_time=0,
-            alert=True
-        )
+        await event.answer("This Is Not For U My Master", cache_time=0, alert=True)
     else:
         await event.delete()
         await tgbot.send_message(
