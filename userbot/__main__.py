@@ -135,10 +135,10 @@ async def legends():
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"start")))
 async def help(event):
-    await event.delete()
     starkbot = await tgbot.get_me()
     bot_id = starkbot.first_name
     if event.query.user_id is not bot.uid:
+        await event.delete()
         await tgbot.send_message(
             event.chat_id,
             message=f"Hey Sir It's Me {bot_id}, Your Assistant! How Can I Help U?",
