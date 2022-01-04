@@ -82,7 +82,6 @@ async def help(event):
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"users")))
 async def users(event):
     if event.query.user_id == bot.uid:
-        await event.delete()
         total_users = get_all_users()
         users_list = "⚜List Of Total Users In Bot.⚜ \n\n"
         for starked in total_users:
