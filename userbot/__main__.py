@@ -202,8 +202,8 @@ async def restart(event):
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"osg")))
 async def help(event):
-    await event.delete()
     if event.query.user_id == bot.uid:
+        await event.delete()
         await tgbot.send_message(
             event.chat_id,
             message="Which Type Of Setting Do U Want Sir",
@@ -242,8 +242,8 @@ async def rel(event):
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"strvar")))
 async def help(event):
-    await event.delete()
     if event.query.user_id == bot.uid:
+        await event.delete()
         await tgbot.send_message(
             event.chat_id,
             message="Which Type Of Setting Do U Want Sir",
@@ -265,8 +265,8 @@ async def help(event):
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"var")))
 async def users(event):
-    await event.delete()
     if event.query.user_id == bot.uid:
+        await event.delete()
         await tgbot.send_message(
             event.chat_id,
             message=".set var <varname> <value> ex:- .set var ALIVE_NAME LegendBoy \n\n To Know All Var Go Back And Click On All Var",
@@ -284,8 +284,8 @@ async def users(event):
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"allvar")))
 async def users(event):
-    await event.delete()
     if event.query.user_id == bot.uid:
+        await event.delete()
         await tgbot.send_message(
             event.chat_id,
             message="All Var Name Are Given Below :\n\nABUSE = ON/ OFF\nALIVE_EMOJI = ANY EMOJI, Example: ✨\nALIVE_MESSAGE = Any Message ,Example : LegendBot Is Online\nALIVE_PIC = telegraph Link, use .tm to get it\nASSISTANT = ON / OFF\nAWAKE_PIC = telegraph link, get from .tm<reply to pic>\n",
