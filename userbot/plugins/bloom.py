@@ -1,4 +1,4 @@
-"""
+The"""
 Time In Profile Pic.....
 Command: `.bloom`
 Hmmmm U need to config DOWNLOAD_PFP_URL_CLOCK var in Heroku with any telegraph image link
@@ -19,7 +19,7 @@ from datetime import datetime
 from PIL import Image, ImageDraw, ImageFont
 from pySmartDL import SmartDL
 from telethon.tl import functions
-
+from userbot.Config import Config 
 from userbot.utils import admin_cmd
 
 FONT_FILE_TO_USE = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
@@ -30,7 +30,7 @@ async def autopic(event):
     await event.edit("Bloom colour profile pic have been enabled by my master")
     downloaded_file_name = "userbot/original_pic.png"
     downloader = SmartDL(
-        Var.DOWNLOAD_PFP_URL_CLOCK, downloaded_file_name, progress_bar=True
+        Config.DOWNLOAD_PFP_URL_CLOCK, downloaded_file_name, progress_bar=True
     )
     downloader.start(blocking=False)
     photo = "userbot/photo_pfp.png"
