@@ -4,11 +4,16 @@ import shlex
 from typing import Tuple
 
 import PIL.ImageOps
+import requests
 from PIL import Image
+from telegraph import upload_file
+from telethon.tl.types import MessageMediaPhoto
 
 from LEGENDBOT.utils import admin_cmd, sudo_cmd
 from userbot import LOGS, CmdHelp
+from userbot import bot
 from userbot import bot as LEGENDBOT
+from userbot.cmdhelp import CmdHelp
 from userbot.helpers.funct import (
     convert_toimage,
     flip_image,
@@ -18,16 +23,6 @@ from userbot.helpers.funct import (
     solarize,
     take_screen_shot,
 )
-
-import os
-
-import requests
-from telegraph import upload_file
-from telethon.tl.types import MessageMediaPhoto
-
-from LEGENDBOT.utils import admin_cmd, sudo_cmd
-from userbot import bot
-from userbot.cmdhelp import CmdHelp
 
 pathdc = "./userbot/"
 if not os.path.isdir(pathdc):
@@ -79,8 +74,6 @@ DOWNLOAD_PFP_URL_CLOCK = (
     os.environ.get("Config.DOWNLOAD_PFP_URL_CLOCK", None)
     or "https://telegra.ph/file/30e65b288e39e29053486.jpg"
 )
-
-
 
 
 @bot.on(admin_cmd(pattern=r"trig"))
@@ -358,8 +351,6 @@ async def dc(event):
         if files and os.path.exists(files):
             os.remove(files)
     await event.delete()
-
-
 
 
 @borg.on(admin_cmd(pattern="bloom ?(.*)"))
@@ -979,9 +970,13 @@ CmdHelp("img_fun").add_command(
     "solarize", "<reply to img>", "Let the sun Burn your replied image/sticker"
 ).add_command(
     "invert", "<reply to img>", "Inverts the color of replied media file"
-).add_command("trig", None, "🇮🇳🇮🇳🇮🇳").add_command(
+).add_command(
+    "trig", None, "🇮🇳🇮🇳🇮🇳"
+).add_command(
     "wst", None, "Reply to image"
-).add_command("grey", None, "Reply to image").add_command(
+).add_command(
+    "grey", None, "Reply to image"
+).add_command(
     "blur", None, "Reply To image"
 ).add_command(
     "glass", None, "Use and see"
