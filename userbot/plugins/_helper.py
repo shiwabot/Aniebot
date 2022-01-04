@@ -133,7 +133,7 @@ async def legendbott(event):
                     string += "`"
                 else:
                     string += "`, "
-            string += "`\n"
+            string += "\n"
         await eor(
             event,
             "Please Specify A Module Name Of Which You Want Info" + "\n\n" + string,
