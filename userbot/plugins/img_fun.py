@@ -46,6 +46,68 @@ async def crop(imagefile, endname, x):
     inverted_image.save(endname)
 
 
+from userbot.cmdhelp import CmdHelp
+import asyncio
+import os
+import random
+import shutil
+from datetime import datetime
+
+from PIL import Image, ImageDraw, ImageFont
+from pySmartDL import SmartDL
+from telethon.tl import functions
+from userbot.Config import Config 
+from userbot.utils import admin_cmd
+
+FONT_FILE_TO_USE = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
+
+DOWNLOAD_PFP_URL_CLOCK = os.environ.get("Config.DOWNLOAD_PFP_URL_CLOCK", None) or "https://telegra.ph/file/30e65b288e39e29053486.jpg"
+
+@borg.on(admin_cmd(pattern="bloom ?(.*)"))
+async def autopic(event):
+    await event.edit("Bloom colour profile pic have been enabled by my master")
+    downloaded_file_name = "userbot/original_pic.png"
+    downloader = SmartDL(
+        DOWNLOAD_PFP_URL_CLOCK, downloaded_file_name, progress_bar=True
+    )
+    downloader.start(blocking=False)
+    photo = "userbot/photo_pfp.png"
+    while not downloader.isFinished():
+        pass
+
+    while True:
+        # RIP Danger zone Here no editing here plox
+        R = random.randint(0, 256)
+        B = random.randint(0, 256)
+        G = random.randint(0, 256)
+        FR = 256 - R
+        FB = 256 - B
+        FG = 256 - G
+        shutil.copy(downloaded_file_name, photo)
+        image = Image.open(photo)
+        image.paste((R, G, B), [0, 0, image.size[0], image.size[1]])
+        image.save(photo)
+
+        current_time = datetime.now().strftime("\n Time: %H:%M:%S \n \n Date: %d/%m/%y")
+        img = Image.open(photo)
+        drawn_text = ImageDraw.Draw(img)
+        fnt = ImageFont.truetype(FONT_FILE_TO_USE, 60)
+        ofnt = ImageFont.truetype(FONT_FILE_TO_USE, 250)
+        drawn_text.text((350, 350), current_time, font=fnt, fill=(FR, FG, FB))
+        drawn_text.text((350, 350), font=ofnt, fill=(FR, FG, FB))
+        img.save(photo)
+        file = await event.client.upload_file(photo)  # pylint:disable=E0602
+        try:
+            await event.client(
+                functions.photos.UploadProfilePhotoRequest(file)  # pylint:disable=E0602
+            )
+            os.remove(photo)
+            await asyncio.sleep(60)
+        except:
+            return
+
+
+
 @LEGENDBOT.on(admin_cmd(pattern="invert$", outgoing=True))
 @LEGENDBOT.on(sudo_cmd(pattern="invert$", allow_sudo=True))
 async def memes(LEGEND):
@@ -619,6 +681,8 @@ CmdHelp("img_fun").add_command(
     "solarize", "<reply to img>", "Let the sun Burn your replied image/sticker"
 ).add_command(
     "invert", "<reply to img>", "Inverts the color of replied media file"
+).add_command(
+    "bloom", "set var DOWNLOAD_PFP_URL_CLOCK", "Use and See"
 ).add_type(
     "Addons"
 ).add()
