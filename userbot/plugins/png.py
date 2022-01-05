@@ -108,7 +108,13 @@ async def kang(args):
         else:
             packname += "_anim"
             packnick += " (Animated)"
-        await bot.send_file(args.chat_id, packnick, caption=f"Hello")
+        if is_anim:
+            await bot.send_file(arg.chat_id, "AnimatedSticker.tgs")
+            remove(args.chat_id, "AnimatedSticker.tgs")
+        else:
+            file.seek(0)
+            await bot.send_file(args.chat_id, file, force_document=True)
+      #  await bot.send_file(args.chat_id, packnick, caption=f"Hello")
 
 
 async def resize_photo(photo):
