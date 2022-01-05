@@ -1,19 +1,12 @@
 import io
-import math
 import random
-import urllib.request
-from os import remove
 
-from PIL import Image
-from telethon.tl.functions.messages import GetStickerSetRequest
 from telethon.tl.types import (
     DocumentAttributeFilename,
     DocumentAttributeSticker,
-    InputStickerSetID,
     MessageMediaPhoto,
 )
 
-from userbot.cmdhelp import CmdHelp
 from userbot.utils import *
 
 from . import *
@@ -33,6 +26,7 @@ KANGING_STR = [
 
 legend = Config.CUSTOM_STICKER_PACK_NAME
 
+
 @bot.on(admin_cmd(outgoing=True, pattern="kang"))
 @bot.on(sudo_cmd(pattern="kang", allow_sudo=True))
 async def kang(args):
@@ -44,7 +38,6 @@ async def kang(args):
     photo = None
     emojibypass = False
     is_anim = False
-    emoji = None
 
     if message and message.media:
         if isinstance(message.media, MessageMediaPhoto):
@@ -59,7 +52,7 @@ async def kang(args):
                 DocumentAttributeFilename(file_name="sticker.webp")
                 in message.media.document.attributes
             ):
-                emoji = message.media.document.attributes[1].alt
+                message.media.document.attributes[1].alt
                 emojibypass = True
         elif "tgsticker" in message.media.document.mime_type:
             await args.edit(f"`{random.choice(KANGING_STR)}`")
@@ -68,7 +61,7 @@ async def kang(args):
             attributes = message.media.document.attributes
             for attribute in attributes:
                 if isinstance(attribute, DocumentAttributeSticker):
-                    emoji = attribute.alt
+                    attribute.alt
 
             emojibypass = True
             is_anim = True
@@ -83,11 +76,11 @@ async def kang(args):
     if photo:
         splat = args.text.split()
         if not emojibypass:
-            emoji = "😎"
+            pass
         pack = 1
         if len(splat) == 3:
             pack = splat[2]  # User sent both
-            emoji = splat[1]
+            splat[1]
         elif len(splat) == 2:
             if splat[1].isnumeric():
                 # User wants to push into different pack, but is okay with
@@ -96,7 +89,7 @@ async def kang(args):
             else:
                 # User sent just custom emote, wants to push to default
                 # pack
-                emoji = splat[1]
+                splat[1]
 
         packname = f"{user.username}"
         packnick = (
@@ -104,7 +97,6 @@ async def kang(args):
             if legend
             else f"@{user.username}'s legend Vol.{pack}"
         )
-        cmd = "/newpack"
         file = io.BytesIO()
 
         if not is_anim:
@@ -114,5 +106,4 @@ async def kang(args):
         else:
             packname += "_anim"
             packnick += " (Animated)"
-            cmd = "/newanimated"
         await bot.send_file(args.chat_id, packnick, caption=f"Hello")
