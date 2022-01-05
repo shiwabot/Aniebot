@@ -1,4 +1,3 @@
-
 import io
 import math
 import random
@@ -115,7 +114,7 @@ async def kang(args):
         else:
             file.seek(0)
             await bot.send_file(args.chat_id, file, force_document=True)
-      #  await bot.send_file(args.chat_id, packnick, caption=f"Hello")
+    #  await bot.send_file(args.chat_id, packnick, caption=f"Hello")
 
 
 async def resize_photo(photo):
