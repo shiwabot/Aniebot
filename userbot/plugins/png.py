@@ -134,5 +134,8 @@ async def resize_photo(photo):
     return image
 
 
-from userbot.cmdhelp import CmdHelp 
-CmdHelp("png").add_command("png", "<reply to image/sticker>", "Its Help U To Convert Into Png File").add()
+from userbot.cmdhelp import CmdHelp
+
+CmdHelp("png").add_command(
+    "png", "<reply to image/sticker>", "Its Help U To Convert Into Png File"
+).add()
