@@ -13,17 +13,9 @@ from userbot.utils import *
 
 from . import *
 
-KANGING_STR = [
-    "Using Witchery to kang this sticker...",
-    "Plagiarising hehe...",
-    "Inviting this sticker over to my pack...",
-    "Kanging this sticker...",
-    "Hey that's a nice sticker!\nMind if I kang?!..",
-    "hehe me stel ur stikér\nhehe.",
-    "Ay look over there (☉｡☉)!→\nWhile I kang this...",
-    "Roses are red violets are blue, kanging this sticker so my pacc looks cool",
-    "Imprisoning this sticker...",
-    "Mr.Steal Your Sticker is stealing this sticker... ",
+LEGEND = [
+    "Wait Few Minute...",
+    "Wait A Sec Processing...",
 ]
 
 legend = Config.CUSTOM_STICKER_PACK_NAME
@@ -43,11 +35,11 @@ async def kang(args):
 
     if message and message.media:
         if isinstance(message.media, MessageMediaPhoto):
-            await args.edit(f"`{random.choice(KANGING_STR)}`")
+            await args.edit(f"`{random.choice(LEGEND)}`")
             photo = io.BytesIO()
             photo = await bot.download_media(message.photo, photo)
         elif "image" in message.media.document.mime_type.split("/"):
-            await args.edit(f"`{random.choice(KANGING_STR)}`")
+            await args.edit(f"`{random.choice(LEGEND)}`")
             photo = io.BytesIO()
             await bot.download_file(message.media.document, photo)
             if (
@@ -57,7 +49,7 @@ async def kang(args):
                 message.media.document.attributes[1].alt
                 emojibypass = True
         elif "tgsticker" in message.media.document.mime_type:
-            await args.edit(f"`{random.choice(KANGING_STR)}`")
+            await args.edit(f"`{random.choice(LEGEND)}`")
             await bot.download_file(message.media.document, "AnimatedSticker.tgs")
 
             attributes = message.media.document.attributes
@@ -140,3 +132,7 @@ async def resize_photo(photo):
         image.thumbnail(maxsize)
 
     return image
+
+
+from userbot.cmdhelp import CmdHelp 
+CmdHelp("png").add_command("png", "<reply to image/sticker>", "Its Help U To Convert Into Png File").add()
