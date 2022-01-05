@@ -1,30 +1,14 @@
 import io
-import random
-
-from telethon.tl.types import (
-    DocumentAttributeFilename,
-    DocumentAttributeSticker,
-    MessageMediaPhoto,
-)
-import io
 import math
 import random
-import urllib.request
-from os import remove
 
 from PIL import Image
-from telethon.tl.functions.messages import GetStickerSetRequest
 from telethon.tl.types import (
     DocumentAttributeFilename,
     DocumentAttributeSticker,
-    InputStickerSetID,
     MessageMediaPhoto,
 )
 
-from userbot.cmdhelp import CmdHelp
-from userbot.utils import *
-
-from . import *
 from userbot.utils import *
 
 from . import *
@@ -127,7 +111,6 @@ async def kang(args):
         await bot.send_file(args.chat_id, packnick, caption=f"Hello")
 
 
-
 async def resize_photo(photo):
     """Resize the given photo to 512x512"""
     image = Image.open(photo)
@@ -151,4 +134,3 @@ async def resize_photo(photo):
         image.thumbnail(maxsize)
 
     return image
-
