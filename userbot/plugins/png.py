@@ -1,6 +1,5 @@
 import io
 import math
-import random
 
 from PIL import Image
 from telethon.tl.types import (
@@ -24,7 +23,6 @@ async def kang(args):
         user.username = user.first_name
     message = await args.get_reply_message()
     photo = None
-    emojibypass = False
     is_anim = False
 
     if message and message.media:
@@ -40,7 +38,6 @@ async def kang(args):
                 in message.media.document.attributes
             ):
                 message.media.document.attributes[1].alt
-                emojibypass = True
         elif "tgsticker" in message.media.document.mime_type:
             await bot.download_file(message.media.document, "AnimatedSticker.tgs")
 
@@ -49,7 +46,6 @@ async def kang(args):
                 if isinstance(attribute, DocumentAttributeSticker):
                     attribute.alt
 
-            emojibypass = True
             is_anim = True
             photo = 1
         else:
@@ -66,8 +62,7 @@ async def kang(args):
             file.name = "sticker.png"
             image.save(file, "PNG")
         else:
-            packname += "_anim"
-            packnick += " (Animated)"
+            pass
         if is_anim:
             await bot.send_file(arg.chat_id, "AnimatedSticker.tgs")
             remove(args.chat_id, "AnimatedSticker.tgs")
