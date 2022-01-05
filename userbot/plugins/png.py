@@ -24,7 +24,6 @@ legend = Config.CUSTOM_STICKER_PACK_NAME
 @bot.on(admin_cmd(outgoing=True, pattern="png"))
 @bot.on(sudo_cmd(pattern="png", allow_sudo=True))
 async def kang(args):
-    """For .kang command, kangs stickers or creates new ones."""
     user = await bot.get_me()
     if not user.username:
         user.username = user.first_name
@@ -35,11 +34,11 @@ async def kang(args):
 
     if message and message.media:
         if isinstance(message.media, MessageMediaPhoto):
-            await args.edit(f"`{random.choice(LEGEND)}`")
+            await args.edit(f"wait a min")
             photo = io.BytesIO()
             photo = await bot.download_media(message.photo, photo)
         elif "image" in message.media.document.mime_type.split("/"):
-            await args.edit(f"`{random.choice(LEGEND)}`")
+            await args.edit(f"Wait A Min")
             photo = io.BytesIO()
             await bot.download_file(message.media.document, photo)
             if (
@@ -92,6 +91,7 @@ async def kang(args):
             else f"@{user.username}'s legend Vol.{pack}"
         )
         file = io.BytesIO()
+        await args.delete()
 
         if not is_anim:
             image = await resize_photo(photo)
