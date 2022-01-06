@@ -110,7 +110,7 @@ async def killer():
             await bot.send_message("@BotFather", botname)
             await asyncio.sleep(1)
             await bot.send_file(
-                "@BotFather", "userbot/resources/pics/-4965507108355287505_121.jpg"
+                "@BotFather", "userbot/resources/pics/main.jpg"
             )
             await asyncio.sleep(2)
         except Exception as e:
