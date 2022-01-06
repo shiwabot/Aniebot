@@ -7,7 +7,7 @@ from userbot.utils import admin_cmd
 
 telegraph = Telegraph()
 mee = telegraph.create_account(short_name="yohohehe")
-
+from . import *
 
 @borg.on(admin_cmd(pattern="recognized ?(.*)"))
 async def _(event):
