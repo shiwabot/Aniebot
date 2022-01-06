@@ -10,12 +10,14 @@ from userbot.utils import *
 LEGEND_USER = bot.me.first_name
 The_LegendBoy = bot.uid
 legend_mention = f"[{LEGEND_USER}](tg://user?id={The_LegendBoy})"
-LEGEND_logo = "./userbot/resources/pics/-6163428037589314866_121.jpg"
-LEGEND_logo1 = "./userbot/resources/pics/-4965507108355287505_121.jpg"
-LEGEND_logo2 = "./userbot/resources/pics/-4965507108355287505_121.jpg"
-LEGEND_logo4 = "./userbot/resources/pics/-4965507108355287505_121.jpg"
-LEGEND_logo3 = "./userbot/resources/pics/-4965507108355287505_121.jpg"
 
+gban_pic = "./userbot/resources/pics/gban.mp4"
+main_pic = "./userbot/resources/pics/main.jpg"
+core_pic = "./userbot/resources/pics/core.jpg"
+chup_pic = "./userbot/resources/pics/chup.mp4"
+bsdk_pic = "./userbot/resources/pics/bsdk.jpg"
+bsdkwale_pic = "./userbot/resources/pics/bsdk_wale.jpg"
+chutiya_pic = "./userbot/resources/pics/chutiya.jpg
 
 perf = "[ †hê Lêɠêɳ̃dẞø† ]"
 
