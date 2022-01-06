@@ -17,7 +17,7 @@ from userbot.plugins.sql_helper.gvar_sql import *
 
 from . import *
 
-gbpic = Config.ALIVE_PIC or LEGEND_logo3
+gbpic = Config.ALIVE_PIC or gban_pic
 
 
 async def get_full_user(event):
@@ -212,7 +212,7 @@ async def _(event):
     if userid == The_LegendBoy:
         return await eod(legend, "🥴 **Nashe me hai kya lawde ‽**")
     if str(userid) in DEVLIST:
-        return await eod(legend, "😑 **GBan my creator ?¿ Really‽**")
+        return await eod(legend, "😑 **Nashe Me Hai kya lawde **")
     if is_gbanned(userid):
         return await eor(
             legend,
@@ -232,13 +232,13 @@ async def _(event):
     a = gvarstat("ALIVE_PIC")
     if a is not None:
         b = a.split(" ")
-        c = [LEGEND_logo2]
+        c = [gban_pic]
         for d in b:
             c.append(d)
         gbpic = random.choice(c)
     else:
-        gbpic = LEGEND_logo2
-    gmsg = f"🥴 [{name}](tg://user?id={userid}) **Gbanned** By {legend_mention} **Reason = Not Mentioned 😏**\n\n📍 Added to Gban Watch!!\n**🔰 Total Chats :**  `{chats}`"
+        gbpic = gban_pic
+    gmsg = f"🥴 [{name}](tg://user?id={userid}) **Gbanned** By {legend_mention} \n\n📍 Added to Gban Watch!!\n**🔰 Total Chats :**  `{chats}`"
     if reason != "":
         gmsg += f"\n**🔰 Reason :**  `{reason}`"
     ogmsg = f"[{name}](tg://user?id={userid}) **Is now GBanned by** {legend_mention} **in**  `{chats}`  **Chats!! 😏**\n\n**📍 Also Added to Gban Watch!!**"
@@ -358,12 +358,12 @@ async def gkick(event):
     a = gvarstat("ALIVE_PIC")
     if a is not None:
         b = a.split(" ")
-        c = [LEGEND_logo2]
+        c = [gban_pic]
         for d in b:
             c.append(d)
         gbpic = random.choice(c)
     else:
-        gbpic = LEGEND_logo2
+        gbpic = gban_pic
     gkmsg = f"🏃 **Globally Kicked** [{name}](tg://user?id={userid})'s butts !! \n\n📝 **Chats :**  `{chats}`"
     if Config.ABUSE == "ON":
         await bot.send_file(event.chat_id, gbpic, caption=gkmsg, reply_to=reply)
@@ -411,7 +411,7 @@ async def gm(event):
         if Config.ABUSE == "ON":
             await bot.send_file(
                 event.chat_id,
-                LEGEND_logo1,
+                chup_pic,
                 caption=f"**(~‾▿‾)~ Ab Chup Rah[GMUTE](tg://user?id={userid}) ....**",
                 reply_to=reply,
             )
