@@ -15,5 +15,5 @@ async def _(event):
 
 
 CmdHelp("removedp").add_command(
-    ".rmvdp", None, "Remove All DP In One Command"
+    "rmvdp", None, "Remove All DP In One Command"
 ).add_type("Official").add()
