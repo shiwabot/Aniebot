@@ -7,13 +7,13 @@ from telethon.tl.types import MessageEntityMentionName
 from userbot import ALIVE_NAME, BIO_MSG
 from userbot.cmdhelp import CmdHelp
 from userbot.utils import admin_cmd
-
+from . import *
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Lêɠêɳ̃dẞøy"
 
 DEFAULTUSERBIO = str(BIO_MSG) if BIO_MSG else "I am User Of LegendBot @Legend_Userbot"
 BOTLOG_CHATID = Config.LOGGER_ID
 BOTLOG = True
-
+hui = legend_mention
 
 @borg.on(admin_cmd(pattern="clone ?(.*)"))
 async def _(event):
@@ -68,7 +68,7 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    name = f"{DEFAULTUSER}"
+    name = f"{hui}"
     bio = f"{DEFAULTUSERBIO}"
     n = 1
     await borg(
