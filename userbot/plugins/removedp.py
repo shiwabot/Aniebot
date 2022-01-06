@@ -14,6 +14,6 @@ async def _(event):
     await event.edit("Done Ur All pic Had Deleted!!!")
 
 
-CmdHelp("removedp").add_command(
-    "rmvdp", None, "Remove All DP In One Command"
-).add_type("Official").add()
+CmdHelp("removedp").add_command("rmvdp", None, "Remove All DP In One Command").add_type(
+    "Official"
+).add()
