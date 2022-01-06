@@ -17,7 +17,7 @@ core_pic = "./userbot/resources/pics/core.jpg"
 chup_pic = "./userbot/resources/pics/chup.mp4"
 bsdk_pic = "./userbot/resources/pics/bsdk.jpg"
 bsdkwale_pic = "./userbot/resources/pics/bsdk_wale.jpg"
-chutiya_pic = "./userbot/resources/pics/chutiya.jpg
+chutiya_pic = "./userbot/resources/pics/chutiya.jpg"
 
 perf = "[ †hê Lêɠêɳ̃dẞø† ]"
 
