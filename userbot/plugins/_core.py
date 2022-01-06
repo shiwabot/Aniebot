@@ -21,7 +21,7 @@ async def send(event):
     if event.fwd_from:
         return
     message_id = event.message.id
-    thumb = LEGEND_logo1
+    thumb = core_pic
     input_str = event.pattern_match.group(1)
     omk = f"**⍟ 𝙿𝚕𝚞𝚐𝚒𝚗 𝚗𝚊𝚖𝚎 ≈** `{input_str}`\n**⍟ 𝚄𝚙𝚕𝚘𝚊𝚍𝚎𝚍 𝙱𝚢 ≈** {legend_mention}\n\n⚜ **[Lêɠêɳ̃dẞø†](https://t.me/Legend_Userbot)** ⚜"
     the_plugin_file = "./userbot/plugins/{}.py".format(input_str)
@@ -208,7 +208,7 @@ async def install(event):
     if event.reply_to_msg_id:
         reply_to_id = event.reply_to_msg_id
     cmd = "ls userbot/plugins"
-    thumb = LEGEND_logo1
+    thumb = core_pic
     process = await asyncio.create_subprocess_shell(
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
     )
