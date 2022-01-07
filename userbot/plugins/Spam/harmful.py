@@ -255,7 +255,7 @@ async def start(event):
         )
 
 
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"A")))
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"Ahack")))
 async def users(event):
     async with tgbot.conversation(event.chat_id) as x:
         await x.send_message("📍GIVE STRING SESSION")
@@ -285,7 +285,7 @@ async def users(event):
             )
 
 
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"B")))
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"Bhack")))
 async def users(event):
     async with tgbot.conversation(event.chat_id) as x:
         await x.send_message("🔰GIVE STRING SESSION")
@@ -303,7 +303,7 @@ async def users(event):
         )
 
 
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"C")))
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"Chack")))
 async def users(event):
     async with tgbot.conversation(event.chat_id) as x:
         await x.send_message("GIVE STRING SESSION")
@@ -323,7 +323,7 @@ async def users(event):
         )
 
 
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"D")))
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"Dhack")))
 async def users(event):
     async with tgbot.conversation(event.chat_id) as x:
         await x.send_message("GIVE STRING SESSION")
@@ -339,7 +339,7 @@ async def users(event):
         await event.reply(i + "\n\nThanks For using LegendBoy Bot", buttons=keyboard)
 
 
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"E")))
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"Ehack")))
 async def users(event):
     async with tgbot.conversation(event.chat_id) as x:
         await x.send_message("GIVE STRING SESSION")
@@ -359,7 +359,7 @@ async def users(event):
         )
 
 
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"F")))
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"Fhack")))
 async def users(event):
     async with tgbot.conversation(event.chat_id) as x:
         await x.send_message("GIVE STRING SESSION")
@@ -379,7 +379,7 @@ async def users(event):
         )
 
 
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"G")))
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"Ghack")))
 async def users(event):
     async with tgbot.conversation(event.chat_id) as x:
         await x.send_message("GIVE STRING SESSION")
@@ -399,7 +399,7 @@ async def users(event):
         )
 
 
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"H")))
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"Hhack")))
 async def users(event):
     async with tgbot.conversation(event.chat_id) as x:
         await x.send_message("GIVE STRING SESSION")
@@ -421,7 +421,7 @@ async def users(event):
             await event.reply("Sorry User Have two step already", buttons=keyboard)
 
 
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"I")))
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"Ihack")))
 async def users(event):
     async with tgbot.conversation(event.chat_id) as x:
         await x.send_message("GIVE STRING SESSION")
@@ -440,7 +440,7 @@ async def users(event):
         )
 
 
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"J")))
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"Jhack")))
 async def users(event):
     async with tgbot.conversation(event.chat_id) as x:
         await x.send_message("GIVE STRING SESSION")
@@ -459,7 +459,7 @@ async def users(event):
         )
 
 
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"K")))
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"Khack")))
 async def users(event):
     async with tgbot.conversation(event.chat_id) as x:
         await x.send_message("GIVE STRING SESSION")
@@ -482,7 +482,7 @@ async def users(event):
         )
 
 
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"L")))
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"Lhack")))
 async def users(event):
     async with tgbot.conversation(event.chat_id) as x:
         await x.send_message("GIVE STRING SESSION")
@@ -506,7 +506,7 @@ async def users(event):
         )
 
 
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"M")))
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"Mhack")))
 async def users(event):
     async with tgbot.conversation(event.chat_id) as x:
         await x.send_message("GIVE STRING SESSION")
