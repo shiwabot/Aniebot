@@ -3,40 +3,30 @@ import random
 
 from telethon import events
 
+import asyncio
+
+from . import *
 
 @borg.on(events.NewMessage(pattern=r"\.belo", outgoing=True))
 async def _(event):
-
     if event.fwd_from:
-
         return
-
     await event.edit("Typing...")
-
     await asyncio.sleep(2)
-
     x = random.randrange(1, 96)
-
     if x == 1:
-
         await event.edit(
             '`"Underwater bubbles and raindrops are total opposites of each other."`'
         )
-
     if x == 2:
-
         await event.edit(
             '`"If you buy an eraser you are literally paying for your mistakes."`'
         )
-
     if x == 3:
-
         await event.edit(
             '`"The Person you care for most has the potential to destroy you the most."`'
         )
-
     if x == 4:
-
         await event.edit(
             '`"If humans colonize the moon, it will probably attract retirement homes as the weaker gravity will allow the elderly to feel stronger."`'
         )
@@ -572,8 +562,35 @@ async def _(event):
         )
 
 
-from userbot.cmdhelp import CmdHelp
+@bot.on(admin_cmd(pattern="yaadash"))
+async def _(event):
+    await event.edit("***falled while walking***")
+    await asyncio.sleep(3)
+    await event.edit("***2 Hours Later***")
+    await asyncio.sleep(6)
+    await event.edit("who i am here ?")
+    await asyncio.sleep(1)
+    await event.edit("Where I Am?")
+    await asyncio.sleep(1)
+    await event.edit("What I Am Using?")
+    await asyncio.sleep(1)
+    await event.edit("What Is Phone?")
+    await asyncio.sleep(1)
+    await event.edit("What Is Telegram?")
+    await asyncio.sleep(1)
+    await event.edit("Why Life Exists?")
+    await asyncio.sleep(1)
+    await event.edit("What is Language?")
+    await asyncio.sleep(1)
+    await event.edit("Does Reborn Take Place?")
+    await asyncio.sleep(1)
+    await event.edit("What Is Thinking?")
+    await asyncio.sleep(1)
+    await event.edit("Does Superman Exists")
+    await asyncio.sleep(3)
+    await event.edit("Oof I Guess I Should Die")
 
-CmdHelp("belo").add_command("belo", None, "Use and See").add_warning(
+
+CmdHelp("belo").add_command("belo", None, "Use and See").add_command("yaadash", None, "Use And See").add_warning(
     "Harmless Module"
 ).add_info("Its Random String Plugin").add_type("Addons").add()
