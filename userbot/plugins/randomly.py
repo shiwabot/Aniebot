@@ -11,7 +11,7 @@ async def _(event):
     if event.fwd_from:
         return
     await event.edit("Typing...")
-    await asyncio.sleep(2)
+    await asyncio.sleep(1)
     x = random.randrange(1, 96)
     if x == 1:
         await event.edit(
@@ -554,44 +554,167 @@ async def _(event):
             '`"Bermuda Triangle might be the exit portal of this simulation."`'
         )
 
-    if x == 97:
 
+img1 = "https://t.me/Legend_Mr_Xmas/2"
+img2 = "https://t.me/Legend_Mr_Xmas/3"
+img3 = "https://t.me/Legend_Mr_Xmas/4"
+img4 = "https://t.me/Legend_Mr_Xmas/5"
+img5 = "https://t.me/Legend_Mr_Xmas/6"
+img6 = "https://t.me/Legend_Mr_Xmas/7"
+img7 = "https://t.me/Legend_Mr_Xmas/8"
+img8 = "https://t.me/Legend_Mr_Xmas/9"
+img9 = "https://t.me/Legend_Mr_Xmas/10"
+img10 = "https://t.me/Legend_Mr_Xmas/11"
+img11 = "https://t.me/Legend_Mr_Xmas/12"
+img12 = "https://t.me/Legend_Mr_Xmas/13"
+img13 = "https://t.me/Legend_Mr_Xmas/14"
+img14 = "https://t.me/Legend_Mr_Xmas/15"
+img15 = "https://t.me/Legend_Mr_Xmas/16"
+img16 = "https://t.me/Legend_Mr_Xmas/17"
+img17 = "https://t.me/Legend_Mr_Xmas/18"
+img18 = "https://t.me/Legend_Mr_Xmas/19"
+img19 = "https://t.me/Legend_Mr_Xmas/20"
+img20 = "https://t.me/Legend_Mr_Xmas/21"
+img21 = "https://t.me/Legend_Mr_Xmas/22"
+img22 = "https://t.me/Legend_Mr_Xmas/23"
+img23 = "https://t.me/Legend_Mr_Xmas/24"
+img24 = "https://t.me/Legend_Mr_Xmas/25"
+img25 = "https://t.me/Legend_Mr_Xmas/26"
+img26 = "https://t.me/Legend_Mr_Xmas/27"
+img27 = "https://t.me/Legend_Mr_Xmas/28"
+img28 = "https://t.me/Legend_Mr_Xmas/29"
+img29 = "https://t.me/Legend_Mr_Xmas/30"
+img30 = "https://t.me/Legend_Mr_Xmas/31"
+
+
+@bot.on(admin_cmd(outgoing=True, pattern="xmas"))
+async def _(event):
+
+    if event.fwd_from:
         await event.edit(
             '`"If we put solar panels above parking lots, then our cars wouldn\'t get hot and we would have a lot of clean energy."`'
         )
+        return
+    await event.edit("**.\n\n😊 ℍ𝕠 ℍ𝕠 ℍ𝕠... 🎅🏻\n\n.**")
+    await sleep(1.6)
+    await event.edit("🎉")
+    await sleep(3)
+    await event.edit("🎊")
+    await sleep(3)
+    await event.edit("💔")
+    await sleep(1.5)
+    await event.edit("❤")
+    await sleep(3)
+    await event.edit(".\n\n\n😊𝓜𝓔𝓡𝓡𝓨 𝓒𝓗𝓡𝓘𝓢𝓣𝓜𝓐𝓢😁\n\n\n.")
+    await sleep(3)
+    await event.edit("🥳")
+    await sleep(3.3)
+    await event.edit("⛄")
+    await sleep(3.4)
+    await event.edit("🌨🌨🌨🌨🌨\n\n❄❄❄❄❄\n❄️❄️❄️❄️❄️")
+    await sleep(2.8)
+    await event.edit("☃️")
+    await sleep(3.7)
+    await event.edit("🥶")
+    await sleep(3.7)
+    await event.edit("🎄")
+    await sleep(3.2)
+    await event.edit(".\n\n\n**𝐌𝒆𝒓𝒓𝒚 𝑪𝒉𝒊𝒔𝒕𝒎𝒂𝒔😊😊**\n\n\n.")
+    await sleep(2.9)
+    danish = await bot.send_file(event.chat_id, "https://t.me/mcmc2021/36")
+    await sleep(4)
+    x = random.randrange(0, 30)
+    if x == 1:
+        await bot.send_file(event.chat_id, img1)
+
+    if x == 2:
+        await bot.send_file(event.chat_id, img2)
+
+    if x == 3:
+        await bot.send_file(event.chat_id, img3)
+
+    if x == 4:
+        await bot.send_file(event.chat_id, img4)
+
+    if x == 5:
+        await bot.send_file(event.chat_id, img5)
+
+    if x == 6:
+        await bot.send_file(event.chat_id, img6)
+
+    if x == 7:
+        await bot.send_file(event.chat_id, img7)
+
+    if x == 8:
+        await bot.send_file(event.chat_id, img8)
+
+    if x == 9:
+        await bot.send_file(event.chat_id, img9)
+
+    if x == 10:
+        await bot.send_file(event.chat_id, img10)
+
+    if x == 11:
+        await bot.send_file(event.chat_id, img11)
+
+    if x == 12:
+        await bot.send_file(event.chat_id, img12)
+
+    if x == 13:
+        await bot.send_file(event.chat_id, img13)
+
+    if x == 14:
+        await bot.send_file(event.chat_id, img14)
+
+    if x == 15:
+        await bot.send_file(event.chat_id, img15)
+
+    if x == 16.0:
+        await bot.send_file(event.chat_id, img16)
+
+    if x == 17:
+        await bot.send_file(event.chat_id, img17)
+
+    if x == 18:
+        await bot.send_file(event.chat_id, img18)
+
+    if x == 19:
+        await bot.send_file(event.chat_id, img19)
+
+    if x == 20:
+        await bot.send_file(event.chat_id, img20)
+
+    if x == 21:
+        await bot.send_file(event.chat_id, img21)
+
+    if x == 22:
+        await bot.send_file(event.chat_id, img22)
+
+    if x == 23:
+        await bot.send_file(event.chat_id, img23)
+
+    if x == 24:
+        await bot.send_file(event.chat_id, img24)
+
+    if x == 25:
+        await bot.send_file(event.chat_id, img25)
+
+    if x == 26:
+        await bot.send_file(event.chat_id, img26)
+
+    if x == 27:
+        await bot.send_file(event.chat_id, img27)
+
+    if x == 28:
+        await bot.send_file(event.chat_id, img28)
+
+    if x == 29:
+        await bot.send_file(event.chat_id, img29)
+
+    if x == 30:
+        await bot.send_file(event.chat_id, img30)
 
 
-@bot.on(admin_cmd(pattern="yaadash"))
-async def _(event):
-    await event.edit("***falled while walking***")
-    await asyncio.sleep(3)
-    await event.edit("***2 Hours Later***")
-    await asyncio.sleep(6)
-    await event.edit("who i am here ?")
-    await asyncio.sleep(1)
-    await event.edit("Where I Am?")
-    await asyncio.sleep(1)
-    await event.edit("What I Am Using?")
-    await asyncio.sleep(1)
-    await event.edit("What Is Phone?")
-    await asyncio.sleep(1)
-    await event.edit("What Is Telegram?")
-    await asyncio.sleep(1)
-    await event.edit("Why Life Exists?")
-    await asyncio.sleep(1)
-    await event.edit("What is Language?")
-    await asyncio.sleep(1)
-    await event.edit("Does Reborn Take Place?")
-    await asyncio.sleep(1)
-    await event.edit("What Is Thinking?")
-    await asyncio.sleep(1)
-    await event.edit("Does Superman Exists")
-    await asyncio.sleep(3)
-    await event.edit("Oof I Guess I Should Die")
-
-
-CmdHelp("belo").add_command("belo", None, "Use and See").add_command(
-    "yaadash", None, "Use And See"
-).add_warning("Harmless Module").add_info("Its Random String Plugin").add_type(
+CmdHelp("randomly").add_command("xmas", None, "Use and see").add_command("belo", None, "Use and See").add_warning("Harmless Module").add_info("Its Random String Plugin").add_type(
     "Addons"
 ).add()
