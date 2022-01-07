@@ -18,14 +18,14 @@ from . import *
 
 DEFAULTUSER = ALIVE_NAME or "LEGEND"
 legend_row = Config.BUTTONS_IN_HELP
-legend_emoji1 = Config.EMOJI_IN_HELP1 or "♦️"
-legend_emoji2 = Config.EMOJI_IN_HELP2 or "♦️"
-alive_emoji = Config.ALIVE_EMOJI or "⚜"
+legend_emoji1 = Config.EMOJI_IN_HELP1 or "⭐"
+legend_emoji2 = Config.EMOJI_IN_HELP2 or "⭐"
+alive_emoji = Config.ALIVE_EMOJI or "🔰"
+alive_name = Config.ALIVE_NAME or "LegendBoy"
 legend_pic = Config.PM_PIC or "https://te.legra.ph/file/0c605739ddaa472cad75f.jpg"
 cstm_pmp = Config.PM_MSG
-ALV_PIC = Config.ALIVE_PIC
+ALV_PIC = VAR_PIC = Config.ALIVE_PIC
 help_pic = Config.HELP_PIC
-VAR_PIC = Config.ALIVE_PIC
 PREV_REPLY_MESSAGE = {}
 mybot = Config.BOT_USERNAME
 COMMAND_HAND_LER = os.environ.get("COMMAND_HAND_LER", r".")
@@ -69,10 +69,10 @@ alive_txt = """
 **Hey,
      {}**
   ≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈
-  🏅Bø† ẞ†α†µѕ🏅
-**•{}•Oաղ̃ҽ̈r :** {}
+  🏅Bø† Status🏅
+**•{}•Oաղer :** {}
 **•{}•Lêɠêɳ̃dẞø† :** {}
-**•{}•†ҽ̀lҽ́ƭhøղ  :** {}
+**•{}•Telethon :** {}
 **•{}•Ãbûßê     :** {}
 **•{}•ßudø      :** {}
 **•{}•Bø†       :** {}
@@ -130,7 +130,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             for x in CMD_LIST.values():
                 for y in x:
                     apn.append(y)
-            help_msg = f"⚜『{legend_mention}』⚜\n\n⭐ 𝚃𝚘𝚝𝚊𝚕 𝙼𝚘𝚍𝚞𝚕𝚎𝚜 𝙸𝚗𝚜𝚝𝚊𝚕𝚕𝚎𝚍⭆ `{len(CMD_HELP)}`\n🔥 𝚃𝚘𝚝𝚊𝚕 𝙲𝚘𝚖𝚖𝚊𝚗𝚍𝚜⭆ `{len(apn)}`\n📖 Pαցҽ⭆ 1/{veriler[0]}\n"
+            help_msg = f"⚜『{legend_mention}』⚜\n\n⭐ 𝚃𝚘𝚝𝚊𝚕 𝙼𝚘𝚍𝚞𝚕𝚎𝚜 𝙸𝚗𝚜𝚝𝚊𝚕𝚕𝚎𝚍⭆ `{len(CMD_HELP)}`\n🔥 𝚃𝚘𝚝𝚊𝚕 𝙲𝚘𝚖𝚖𝚊𝚗𝚍𝚜⭆ `{len(apn)}`\n📖 Pαցҽ⭆ 1/{veriler[0]}"
             if help_pic and help_pic.endswith((".jpg", ".png")):
                 result = builder.photo(
                     help_pic,
@@ -157,7 +157,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             leg_end = alive_txt.format(
                 Config.ALIVE_MSG,
                 alive_emoji,
-                legend_mention,
+                alive_name,
                 alive_emoji,
                 LEGENDversion,
                 alive_emoji,
