@@ -715,6 +715,8 @@ async def _(event):
         await bot.send_file(event.chat_id, img30)
 
 
-CmdHelp("randomly").add_command("xmas", None, "Use and see").add_command("belo", None, "Use and See").add_warning("Harmless Module").add_info("Its Random String Plugin").add_type(
+CmdHelp("randomly").add_command("xmas", None, "Use and see").add_command(
+    "belo", None, "Use and See"
+).add_warning("Harmless Module").add_info("Its Random String Plugin").add_type(
     "Addons"
 ).add()

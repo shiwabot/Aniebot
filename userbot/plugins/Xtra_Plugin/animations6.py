@@ -436,6 +436,7 @@ async def _(event):
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 35])
 
+
 @bot.on(admin_cmd(pattern="yaadash"))
 async def _(event):
     await event.edit("***falled while walking***")
@@ -463,6 +464,7 @@ async def _(event):
     await event.edit("Does Superman Exists")
     await asyncio.sleep(3)
     await event.edit("Oof I Guess I Should Die")
+
 
 CmdHelp("animations6").add_command("bigoof", None, "🇮🇳🇮🇳🇮🇳").add_command(
     "imhappy", None, "Use and see"
