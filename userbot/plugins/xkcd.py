@@ -53,4 +53,4 @@ Year: {}""".format(
         await event.edit("xkcd n.{} not found!".format(xkcd_id))
 
 
-CmdHelp("xkbcd").add_command("xkcd", None, "Use and See").add()
+CmdHelp("xkcd").add_command("xkcd", "<day in digit/without day>" , "Give Detail Of That Day", "xkcd 19").add_info("It Can Help U To Find Information About That Day").add_warning("Harmless Module").add_type("Addons").add()
