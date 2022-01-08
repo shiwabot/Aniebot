@@ -3,12 +3,6 @@ from telethon.tl.types import ChannelParticipantsAdmins
 
 from userbot.cmdhelp import CmdHelp
 from userbot.utils import admin_cmd
-from telethon.tl.functions.channels import JoinChannelRequest
-from telethon.errors import (
-    ChannelInvalidError,
-    ChannelPrivateError,
-    ChannelPublicGroupNaError,
-)
 
 CmdHelp("join").add_command("join", None, "use and see").add_command(
     "pay", None, "use and see"
@@ -21,13 +15,13 @@ async def _(event):
         return
     yukki = event.pattern_match.group(1)
     text = "Joining..."
-    event = await e.reply(text, parse_mode=None, link_preview=None )
+    event = await e.reply(text, parse_mode=None, link_preview=None)
     try:
         await e.client(functions.channels.JoinChannelRequest(channel=yukki))
         await event.edit("𝐉𝐎𝐢𝐍 𝐇𝐎𝐆𝐘𝐀 𝐕𝐀𝐈 ")
     except Exception as e:
-        await event.edit(str(e))   
-  
+        await event.edit(str(e))
+
 
 @borg.on(admin_cmd("pay"))
 async def _(event):
