@@ -2,22 +2,12 @@ import asyncio
 import os
 import re
 import sys
-
-os.system("pip install telethon==1.24.0")
-
 import telethon.utils
 from telethon import Button, TelegramClient, custom, events
-
-from . import LOGS, LEGENDversion, bot
-from .Config import Config
-from .helpers.logger import logging
-from .helpers.runner import reload_LEGENDBOT
-from .start import abuses, addons, assistants, hekp, install, module, spams
 
 l1 = Config.COMMAND_HAND_LER
 l2 = Config.SUDO_COMMAND_HAND_LER
 LEGEND_PIC = "https://telegra.ph/file/e753315316673cff51085.mp4"
-LOGS = logging.getLogger(__name__)
 
 perf = "[ †hê Lêɠêɳ̃dẞø† ]"
 
@@ -30,6 +20,13 @@ if mybot.startswith("@"):
     botname = mybot
 else:
     botname = f"@{mybot}"
+
+from userbot import LOGS, LEGENDversion, bot
+from .Config import Config
+from .helpers.logger import logging
+from .helpers.runner import reload_LEGENDBOT
+from .start import abuses, addons, assistants, hekp, install, module, spams
+
 
 
 async def add_bot(bot_token):
