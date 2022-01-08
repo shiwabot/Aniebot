@@ -7,7 +7,7 @@ from telethon import events
 from userbot import bot, tbot
 
 from . import *
-
+from userbot.Config import Config 
 NUMBER = ["0", "1"]
 
 que = {}
@@ -389,7 +389,8 @@ async def _(event):
 async def _(e):
     global que
     if ABUSE == "ON":
-        if e.text[0].isalpha() and e.text[0] in ("/", "#", "@", "!"):
+        usage = "/replyraid"
+        if e.text[0].isalpha() and e.text[0] in ("/", "#", "@", "!"):  
             return await e.reply(usage, parse_mode=None, link_preview=None)
         legend = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
         await e.get_reply_message()
@@ -401,7 +402,7 @@ async def _(e):
             qeue = que.get(g)
             appendable = [g]
             qeue.append(appendable)
-            text = f"Activated Reply Raid By {legend_mention}"
+            text = f"Activated Reply Raid By {Config.ALIVE_NAME}"
             await e.reply(text, parse_mode=None, link_preview=None)
         elif e.reply_to_msg_id:
             a = await e.get_reply_message()
@@ -423,6 +424,7 @@ async def _(e):
 async def _(e):
     global que
     if ABUSE == "ON":
+        usage = "/dreplyraid "
         if e.text[0].isalpha() and e.text[0] in ("/", "#", "@", "!"):
             return await e.reply(usage, parse_mode=None, link_preview=None)
         legend = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
