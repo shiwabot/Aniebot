@@ -5,9 +5,10 @@ import random
 from telethon import events
 
 from userbot import bot, tbot
+from userbot.Config import Config
 
 from . import *
-from userbot.Config import Config 
+
 NUMBER = ["0", "1"]
 
 que = {}
@@ -390,7 +391,7 @@ async def _(e):
     global que
     if ABUSE == "ON":
         usage = "/replyraid"
-        if e.text[0].isalpha() and e.text[0] in ("/", "#", "@", "!"):  
+        if e.text[0].isalpha() and e.text[0] in ("/", "#", "@", "!"):
             return await e.reply(usage, parse_mode=None, link_preview=None)
         legend = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
         await e.get_reply_message()
