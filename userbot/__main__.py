@@ -24,9 +24,9 @@ else:
 
 from userbot import LOGS, LEGENDversion, bot
 
-from .Config import Config
-from .helpers.runner import reload_LEGENDBOT
-from .start import abuses, addons, assistants, hekp, install, module, spams
+from userbot.Config import Config
+from userbot.helpers.runner import reload_LEGENDBOT
+from userbot.start import abuses, addons, assistants, hekp, install, module, spams
 
 
 async def add_bot(bot_token):
