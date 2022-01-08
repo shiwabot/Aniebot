@@ -1,4 +1,3 @@
-
 import json
 from datetime import datetime
 
@@ -126,7 +125,6 @@ async def _(event):
             await event.reply(file=out_file)
 
     await event.edit(input_str)
-
 
 
 @bot.on(admin_cmd(pattern="weather(?: |$)(.*)", outgoing=True))
@@ -299,5 +297,9 @@ async def set_default_city(city):
 
 
 CmdHelp("weather").add_command(
-    "setcity", "<city>", "Sets your default city so you can just use .weather").add_command("wttr", "<city>", "use and Seee").add_command("wether", "<city>", "Use and see"
-).add_command("weather", "<city>", "Gets the weather of a city").add()
+    "setcity", "<city>", "Sets your default city so you can just use .weather"
+).add_command("wttr", "<city>", "use and Seee").add_command(
+    "wether", "<city>", "Use and see"
+).add_command(
+    "weather", "<city>", "Gets the weather of a city"
+).add()
