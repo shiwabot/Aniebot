@@ -6,7 +6,7 @@ import sys
 import telethon.utils
 from telethon import Button, TelegramClient, custom, events
 
-from userbot import LEGENDversion, bot
+from userbot import LEGENDversion, bot, LOGS
 from userbot.Config import Config
 from userbot.helpers.runner import reload_LEGENDBOT
 from userbot.start import abuses, addons, assistants, hekp, install, module, spams
@@ -51,7 +51,7 @@ else:
             print("Checking Completed. Proceeding to next step...")
             print("♥️ Starting LegendBot ♥️")
             bot.loop.run_until_complete(add_bot(Config.BOT_USERNAME))
-            print("🥇🔥 LegendBot Startup Completed 🔥🥇")
+            LOGS.info("🥇🔥 LegendBot Startup Completed 🔥🥇")
         else:
             bot.start()
     except Exception as e:
