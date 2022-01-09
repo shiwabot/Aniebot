@@ -12,8 +12,6 @@ from userbot.helpers.logger import logging
 from userbot.helpers.runner import reload_LEGENDBOT
 from userbot.start import abuses, addons, assistants, hekp, install, module, spams
 
-LOGS = logging.getLogger(__name__)
-
 l1 = Config.COMMAND_HAND_LER
 l2 = Config.SUDO_COMMAND_HAND_LER
 LEGEND_PIC = "https://telegra.ph/file/e753315316673cff51085.mp4"
@@ -47,18 +45,18 @@ else:
     bot.tgbot = None
     try:
         if Config.BOT_USERNAME is not None:
-            LOGS.info("Checking Telegram Bot Username...")
+            print("Checking Telegram Bot Username...")
             bot.tgbot = TelegramClient(
                 "BOT_TOKEN", api_id=Config.APP_ID, api_hash=Config.API_HASH
             ).start(bot_token=Config.BOT_TOKEN)
-            LOGS.info("Checking Completed. Proceeding to next step...")
-            LOGS.info("♥️ Starting LegendBot ♥️")
+            print("Checking Completed. Proceeding to next step...")
+            print("♥️ Starting LegendBot ♥️")
             bot.loop.run_until_complete(add_bot(Config.BOT_USERNAME))
-            LOGS.info("🥇🔥 LegendBot Startup Completed 🔥🥇")
+            print("🥇🔥 LegendBot Startup Completed 🔥🥇")
         else:
             bot.start()
     except Exception as e:
-        LOGS.error(f"BOT_TOKEN - {str(e)}")
+        print(f"BOT_TOKEN - {str(e)}")
         sys.exit()
 
 print("📍⚜Loading Modules / Plugins⚜✔")
