@@ -6,10 +6,12 @@ import sys
 import telethon.utils
 from telethon import Button, TelegramClient, custom, events
 
-from userbot import LOGS, LEGENDversion, bot
+from userbot import LEGENDversion, bot
 from userbot.Config import Config
 from userbot.helpers.runner import reload_LEGENDBOT
 from userbot.start import abuses, addons, assistants, hekp, install, module, spams
+from userbot.helpers.logger import logging
+LOGS = logging.getLogger(__name__)
 
 l1 = Config.COMMAND_HAND_LER
 l2 = Config.SUDO_COMMAND_HAND_LER
