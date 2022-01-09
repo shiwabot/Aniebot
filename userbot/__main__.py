@@ -8,7 +8,6 @@ from telethon import Button, TelegramClient, custom, events
 
 from userbot import LEGENDversion, bot
 from userbot.Config import Config
-from userbot.helpers.logger import logging
 from userbot.helpers.runner import reload_LEGENDBOT
 from userbot.start import abuses, addons, assistants, hekp, install, module, spams
 
