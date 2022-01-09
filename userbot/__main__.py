@@ -2,6 +2,7 @@ import asyncio
 import os
 import re
 import sys
+os.system("pip install telethon")
 
 import telethon.utils
 from telethon import Button, TelegramClient, custom, events
