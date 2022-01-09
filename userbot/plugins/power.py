@@ -11,12 +11,12 @@ from userbot.helpers.runner import reload_LEGENDBOT
 async def _(event):
     if event.fwd_from:
         return
-    await event.edit("яєϐοοτιиg **[ ░░░ ]** ...\nωαιτ ƒєω мιиυτє⚠️")
-    await event.edit("яєϐοοτιиg **[ █░░ ]** ...\nωαιτ ƒєω мιиυτє☣️")
-    await event.edit("яєϐοοτιиg **[ ██░ ]** ...\nωαιτ ƒєω мιиυτє☢️")
-    await event.edit("яєϐοοτιиg **[ ███ ]** ...\nωαιτ ƒєω мιиυτєѕ☢️")
+    await event.edit("Rєϐοοτιиg **[ ░░░ ]** ...\nωαιτ ƒєω мιиυτє⚠️")
+    await event.edit("Rєϐοοτιиg **[ █░░ ]** ...\nωαιτ ƒєω мιиυτє☣️")
+    await event.edit("Rєϐοοτιиg **[ ██░ ]** ...\nωαιτ ƒєω мιиυτє☢️")
+    await event.edit("Rєϐοοτιиg **[ ███ ]** ...\nωαιτ ƒєω мιиυτєѕ☢️")
     await event.edit(
-        f"Rebooted 𝕷𝐞̂𝐠𝐞́𝐧̃𝐝𝕭ø𝖙 {LEGENDversion} **[ ✔️ ]** ...\nType `.ping` or `.legend` after 5min to check if I am working✔️"
+        f"Rebooted LegendBot - {LEGENDversion} **[ ⚡ ]** ...\n**Type `.ping` or `.legend` after 5min to check if I am working**"
     )
     await bot.disconnect()
     os.execl(sys.executable, sys.executable, *sys.argv)
